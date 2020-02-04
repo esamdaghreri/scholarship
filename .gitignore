@@ -1,3 +1,14 @@
+*.exe
+*.exe~
+*.orig
+*.test
+.*.swp
+.DS_Store
+.idea/
+nbproject/
+/nbproject/private/
+.vscode/
+/data
 /node_modules
 /public/hot
 /public/storage
@@ -6,7 +17,24 @@
 .env
 .env.backup
 .phpunit.result.cache
+composer.lock
+package.json
+package-lock.json
 Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+/public/js
+.gitignore
+
+# Webpack build
+/public/assets/css/
+/public/assets/js/
+/public/mix-manifest.json
+/public/images
+
+
+# eclipse ide
+.buildpath
+.project
+.settings/
