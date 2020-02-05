@@ -8,6 +8,7 @@
         <title>Scholarship</title>
     </head>
     <body>
+        @include('user.partials.header')
         <div class="container">
             @yield('content')
         </div>

@@ -1,4 +1,6 @@
 @extends('user.layouts.master')
 @section('content')
-    <h1>Scholarship</h1>
+    <section class="hero-section">
+        <p>@lang('public.title')</p>
+    </section>
 @endsection
