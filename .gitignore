@@ -30,8 +30,11 @@ yarn-error.log
 # Webpack build
 /public/assets/css/
 /public/assets/js/
+/public/assets/images
+/public/assets/fonts
+/public/css
+/public/js
 /public/mix-manifest.json
-/public/images
 
 
 # eclipse ide
