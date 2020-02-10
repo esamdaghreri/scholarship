@@ -12,7 +12,7 @@
         'first_step_explanation' => 'Request for scholarship',
         'second_step' => 'Fill',
         'second_step_explanation' => 'Fill all information need',
-        'third_step' => 'waitng',
+        'third_step' => 'waiting',
         'third_step_explanation' => 'Waiting for your accept',
         'email' => 'E-mail',
         'notes' => 'notes',
