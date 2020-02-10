@@ -64,8 +64,9 @@ body{
     padding: 0;
     width: 100%;
     font-weight: 300;
-    background: url('/assets/images/stars_purple.jpg');
+    background: url('/assets/images/hero_section.jpg');
     background-position: top;
+    background-repeat: no-repeat;
 }
 
 // Default
@@ -262,9 +263,16 @@ header{
     .logo{
         float: left;
         margin-left: 100px;
+        width: 200px;
+        max-height: 10vh;
         a{
             line-height: 10vh;
             color: $white;
+            img {
+                height: 10vh;
+                width: 150px;
+                padding: 5px;
+            }
         }
     }
     nav{
