@@ -12,9 +12,9 @@ class RolesTableSeeder extends Seeder
     public function run()
     {
         DB::table('roles')->insert([
-            ['name' => 'college_supervisor'],
-            ['name' => 'university_supervisor'],
-            ['name' => 'scholarship'],
+            ['name_en' => 'College Supervisor', 'name_ar' => 'مشرف الكلية'],
+            ['name_en' => 'University Supervisor', 'name_ar' => 'مشرف الجامعة'],
+            ['name_en' => 'Scholarship', 'name_ar' => 'مبتعث'],
         ]);
     }
 }

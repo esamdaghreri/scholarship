@@ -16,13 +16,12 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('email')->unique();
-            $table->string('username')-unique();
+            $table->string('username')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('first_name', 25)->nullable();
             $table->string('second_name', 25)->nullable();
             $table->string('third_name', 25)->nullable();
-            $table->string('fourth_name', 25)->nullable();
             $table->string('fourth_name', 25)->nullable();
             $table->unsignedBigInteger('phone')->nullable();
             $table->unsignedBigInteger('telephone')->nullable();
@@ -41,14 +40,6 @@ class CreateUsersTable extends Migration
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->dateTime('updated_at')->nullable();
             $table->rememberToken();
-            
-            $table->foreign('created_by')->references('id')->on('users');
-            $table->foreign('updated_by')->references('id')->on('users');
-            $table->foreign('role_id')->references('id')->on('roles');
-            $table->foreign('graduation_country_id')->references('id')->on('countries');
-            $table->foreign('graduation_university_id')->references('id')->on('university');
-            $table->foreign('graduation_college_id')->references('id')->on('college');
-            $table->foreign('degree_id')->references('id')->on('degrees');
         });
     }
 

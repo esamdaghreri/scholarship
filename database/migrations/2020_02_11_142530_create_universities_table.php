@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTableUniversities extends Migration
+class CreateUniversitiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateTableUniversities extends Migration
      */
     public function up()
     {
-        Schema::create('table_universities', function (Blueprint $table) {
+        Schema::create('universities', function (Blueprint $table) {
             $table->tinyIncrements('id');
-            $table->string('name_ar', 25);
-            $table->string('name_en', 25);
+            $table->string('name_ar', 100);
+            $table->string('name_en', 100);
             $table->dateTime('created_at')->useCurrent();
         });
     }
@@ -28,6 +28,6 @@ class CreateTableUniversities extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_universities');
+        Schema::dropIfExists('universities');
     }
 }
