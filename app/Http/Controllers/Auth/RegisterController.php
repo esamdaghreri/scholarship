@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
@@ -29,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/en';
 
     /**
      * Create a new controller instance.
@@ -42,6 +43,15 @@ class RegisterController extends Controller
     }
 
     /**
+     * create an index page to register
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm(){
+        return view('user.auth.register')->with('locale', App::getlocale());
+    }
+
+    /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
@@ -50,9 +60,11 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'email' => 'required | email | min:4 | max:26 | unique:users',
+            'username' => 'required | min:4 | max:26 | unique:users.username',
+            'password' => ['required' , 'min:8' , 'max:26' , 'confirmed' , 'regex:/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[a-zA-Z0-9_.-]{8,26}$/'], // regex is make sure the user add at least one small letter ,one capital letter and one number between 8 to 26 character
+            'created_by' => 'required',
+            'created_at' => 'required',
         ]);
     }
 
@@ -65,9 +77,11 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
             'email' => $data['email'],
+            'username' => $data['username'],
             'password' => Hash::make($data['password']),
+            'created_by' => DB::table('users')->select('id')->orderBy('id','desc')->limit(1)->value('id') + 1,
+            'created_at' => date('Y-m-d H:i:s'),
         ]);
     }
 }

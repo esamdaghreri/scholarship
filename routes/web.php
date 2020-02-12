@@ -13,5 +13,7 @@
 // When enter to main link of website, redirect to default language
 Route::redirect('/', '/'.App::getlocale());
 Route::group([ 'prefix' => '{locale}','middleware' => 'setlocale'], function() {
+    // Authentication routes
+    Auth::routes();
     Route::get('/', 'User\HomeController@index')->name('user.home');
 });
