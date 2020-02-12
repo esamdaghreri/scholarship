@@ -20,4 +20,7 @@ return [
     'if_you_did_not_receive_the_email' => 'If you did not receive the email',
     'click_here_to_request_another' => 'click here to request another',
     'you_do_not_have_the_authorization' => 'you don\'t have authorization',
+    'already_have_an_account' => 'Already have an account ?',
+    'Forgot_your_password' => 'Forgot your password ?',
+    'do_not_have_an_account' => "Don't have an account ?",
 ];

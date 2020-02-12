@@ -44,7 +44,7 @@
         'topic' => 'العنوان',
         'content' => 'المحتوى',
         'message_time' => 'وقت الرسالة',
-        'send' => 'أرسل',
+        'send' => 'إرسال',
         'comment' => 'تعليق',
         'your_commend' => 'تعليقك',
         'created_by' => 'انشأ من قبل',
@@ -55,4 +55,5 @@
         'arabic' => 'عربي',
         'english' => 'إنجليزي',
         'any_note_feel_free_to_let_us_know' => 'اي ملاحظة، لا تتردد في ابلاغنا',
+        'username_or_email' => 'اسم المستخدم أو كلمة المرور',
     ];

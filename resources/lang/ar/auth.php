@@ -20,4 +20,7 @@ return [
     'if_you_did_not_receive_the_email' => 'إذا لم تصلك رسالة على بريدك الالكتروني',
     'click_here_to_request_another' => 'أضغط هنا للطلب مرة اخرى',
     'you_do_not_have_the_authorization' => 'لا تملك الصلاحية لهذا العمل',
+    'already_have_an_account' => 'هل لديك حساب؟',
+    'Forgot_your_password' => 'نسيت كلمة المرور؟',
+    'do_not_have_an_account' => 'ليس لديك حساب؟',
 ];
