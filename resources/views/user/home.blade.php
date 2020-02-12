@@ -10,13 +10,13 @@
                 <div class="card-container">
                     <div class="upper-container">
                         <div class="image-container flex center-center">
-                            <img src="{{asset('assets/images/accept.png')}}" alt="accept_step"/>
+                            <img src="{{asset('assets/images/register_new.png')}}" alt="register_step"/>
                         </div>
                     </div>
                     <div class="lower-container">
                         <div>
-                            <h2>@lang('public.third_step')</h2>
-                            <p>@lang('public.third_step_explanation')</p>
+                            <h2>@lang('public.first_step')</h2>
+                            <p>@lang('public.first_step_explanation')</p>
                         </div>
                     </div>
                 </div>
@@ -34,17 +34,17 @@
                         </div>
                     </div>
                 </div>
-
+                
                 <div class="card-container">
                     <div class="upper-container">
                         <div class="image-container flex center-center">
-                            <img src="{{asset('assets/images/register_new.png')}}" alt="register_step"/>
+                            <img src="{{asset('assets/images/accept.png')}}" alt="accept_step"/>
                         </div>
                     </div>
                     <div class="lower-container">
                         <div>
-                            <h2>@lang('public.first_step')</h2>
-                            <p>@lang('public.first_step_explanation')</p>
+                            <h2>@lang('public.third_step')</h2>
+                            <p>@lang('public.third_step_explanation')</p>
                         </div>
                     </div>
                 </div>
