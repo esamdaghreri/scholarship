@@ -14,12 +14,4 @@
 Route::redirect('/', '/'.App::getlocale());
 Route::group([ 'prefix' => '{locale}','middleware' => 'setlocale'], function() {
     Route::get('/', 'User\HomeController@index')->name('user.home');
-
-    // For change language
-    Route::get('local/{locale}', function($locale) {
-        App::setLocale($locale);
-        // Session::put('locale', $locale);
-        return redirect()->back();
-    })->name('localization');
-
 });
