@@ -29,7 +29,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/en';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -58,7 +58,6 @@ class LoginController extends Controller
     {
         throw ValidationException::withMessages([
             $this->username() => [trans('auth.failed')],
-            // 'password' => [trans('auth.failed')]
         ]);
     }
 

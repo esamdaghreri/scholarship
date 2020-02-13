@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="form-container login flex center-center">
-        <form method="POST" action="{{ route('login', App::getlocale())}}" class="flex center-center flex-column">
+        <form method="POST" action="{{ route('login')}}" class="flex center-center flex-column">
             <div class="form-sample flex flex-row">
                 @csrf
                 <div class="label-side flex flex-column">
@@ -15,8 +15,8 @@
                 </div>
             </div>
             <button class="btn btn-primary">@lang('public.login')</button>
-            <a href="{{route('password.request', App::getlocale())}}">@lang('auth.Forgot_your_password')</a>
-            <a href="{{route('register', App::getlocale())}}">@lang('auth.do_not_have_an_account')</a>
+            <a href="{{route('password.request')}}">@lang('auth.Forgot_your_password')</a>
+            <a href="{{route('register')}}">@lang('auth.do_not_have_an_account')</a>
         </form>
     </div>
 @endsection

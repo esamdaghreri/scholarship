@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="form-container email flex center-center">
-        <form method="POST" action="{{ route('password.email', App::getlocale())}}" class="flex center-center flex-column">
+        <form method="POST" action="{{ route('password.email')}}" class="flex center-center flex-column">
             <div class="form-sample flex flex-row">
                 @csrf
                 <div class="label-side flex flex-column">
