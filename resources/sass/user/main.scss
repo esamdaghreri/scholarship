@@ -191,11 +191,14 @@ label{
 
 // Default alert message
 .alert{
-    width: 70%;
-    min-height: 2rem;
-    margin-right: 20%;
-    font-size: 1rem;
-    line-height: 2rem;
+    width: 100%;
+    min-height: 16px;
+    position: fixed;
+    font-size: 15px;
+    line-height: 15px;
+    ul{
+        padding: 20px;
+    }
     &.success{
         background: $success;
         color: $white;

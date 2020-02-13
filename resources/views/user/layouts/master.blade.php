@@ -10,6 +10,7 @@
     <body>
         @include('user.partials.header')
         <div class="container">
+            @include('user.error.message')
             @yield('content')
         </div>
         @include('user.partials.footer')

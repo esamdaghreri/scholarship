@@ -147,9 +147,9 @@ return [
     */
 
     'attributes' => [
-        'email' =>' ',
+        'email' =>'البريد الاكتروني',
         'username' => 'الإسم',
-        'password' => ' ',
+        'password' => 'كلمة المرور',
     ],
 
 ];
