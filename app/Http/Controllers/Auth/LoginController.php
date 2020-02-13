@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Auth;
 use App;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
@@ -39,7 +41,42 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function showLoginForm(){
-        return view('user.auth.login')->with('locale', App::getlocale());
+    // Return login page
+    public function showLoginForm()
+    {
+        return view('user.auth.login');
+    }
+
+    /**
+     *  Add validation message to password field
+     *
+     *  Author: Esam Daghreri
+     *
+     ***/
+
+    protected function sendFailedLoginResponse(Request $request)
+    {
+        throw ValidationException::withMessages([
+            $this->username() => [trans('auth.failed')],
+            // 'password' => [trans('auth.failed')]
+        ]);
+    }
+
+    /**
+     *  Capable to login in with email or username
+     *  by check of the request has email or not, if it's email
+     *  return 'email' => 'example@scholarship.com' or if username
+     *  return 'username' => 'exampleScholarship'
+     *
+     *  Author: Esam Daghreri
+     *
+     ***/
+
+    public function username()
+    {
+        $login = request()->input('username');
+        $field = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+        request()->merge([$field => $login]);
+        return $field;
     }
 }

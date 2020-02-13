@@ -4,13 +4,20 @@
     </div>
     <nav>
         <ul>
-            <li><a href="{{route('login', App::getlocale())}}" class="btn btn-primary">@lang('public.login')</a></li>
-            <li><a href="{{route('register', App::getlocale())}}" class="btn btn-secondary">@lang('public.sign_up')</a></li>
-            @if(App::isLocale('ar'))
-                <li><a href="{{route(Route::currentRouteName(), 'en')}}" class="locale">@lang('public.english')</a></li>
-            @endif
-            @if(App::isLocale('en'))
-                <li><a href="{{route(Route::currentRouteName(), 'ar')}}" class="locale">@lang('public.arabic')</a></li>
+            @if(Auth::check())
+                <li><a class="btn btn-primary" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">@lang('public.logout')</a></li>
+                <form id="logout-form" action="{{ route('logout', App::getlocale()) }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            @else
+                <li><a href="{{route('login', App::getlocale())}}" class="btn btn-primary">@lang('public.login')</a></li>
+                <li><a href="{{route('register', App::getlocale())}}" class="btn btn-secondary">@lang('public.sign_up')</a></li>
+                @if(App::isLocale('ar'))
+                    <li><a href="{{route(Route::currentRouteName(), 'en')}}" class="locale">@lang('public.english')</a></li>
+                @endif
+                @if(App::isLocale('en'))
+                    <li><a href="{{route(Route::currentRouteName(), 'ar')}}" class="locale">@lang('public.arabic')</a></li>
+                @endif
             @endif
         </ul>
     </nav>

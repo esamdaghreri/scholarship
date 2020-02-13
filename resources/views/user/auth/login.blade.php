@@ -6,8 +6,8 @@
             <div class="form-sample flex flex-row">
                 @csrf
                 <div class="label-side flex flex-column">
-                    <label>@lang('public.username_or_email')</label>@if ($errors->has('email')) <small class="error">{{ $errors->first('email') }}</small> @endif
-                    <label>@lang('public.password')</label>@if ($errors->has('password')) <small class="error">{{ $errors->first('password') }}</small> @endif
+                    <label>@lang('public.username_or_email')</label>
+                    <label>@lang('public.password')</label>
                 </div>
                 <div class="input-side flex flex-column">
                     <input type="text" name="username" class="input-text @if($errors->has('username'))input-error @endif"  placeholder="scholarship" value="{{ \Illuminate\Support\Facades\Request::old('username') }}" required>
