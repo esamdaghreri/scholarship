@@ -11,10 +11,21 @@
 |
 */
 // When enter to main link of website, redirect to default language
+
 Route::group(['middleware' => 'setlocale'], function() {
     // Authentication routes
-    Auth::routes();
+    Auth::routes(['verify' => true]);
     Route::get('/', 'User\HomeController@index')->name('user.home');
+});
+
+
+// ================ Route has middleware that users must be verifying email ==============
+Route::group(['middleware' => ['setlocale', 'verified']], function() {
+    Route::group([['middleware' => 'verified']], function(){
+        Route::get('/dashboard', function(){
+            //
+        });
+    });
 });
 
 // Change language

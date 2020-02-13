@@ -277,7 +277,7 @@ section{
         background-color: $white;
         opacity: 0.95;
         border-radius: 40px;
-        form.sample{
+        .form-sample{
             margin-bottom: 20px;
         }
         button{
@@ -438,5 +438,47 @@ footer {
     }
 }
 
+// verify page
+// path: views/users/auth/verify
+
+.verify{
+    height: 90vh;
+    background: $white;
+    .box {
+        background-color: $light;
+        width: 60%;
+        height: 200px;
+        border: 1px solid $primary-color;
+        border-radius: 0 0 10px 10px;
+        .up {
+            flex: 1.5;
+            background: $primary-color;
+            .showcase {
+                width: 100%;
+                .showcase-content {
+                    font-size: 2rem;
+                    color: $white;
+                }
+            }
+        }
+
+        .down {
+            flex: 4;
+            width: 100%;
+            .content{
+                width: 100%;
+                font-size: 1.3rem;
+            }
+            a{
+                color: $primary-color;
+                text-decoration: none;
+                size: 16px;
+                &:hover {
+                    color: $primary-color-hover;
+                }
+            }
+        }
+    }
+}
 // End login system forms
 

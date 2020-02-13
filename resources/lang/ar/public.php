@@ -39,6 +39,8 @@
         'country' => 'الدولة',
         'password' => 'كلمة المرور',
         're_password' => 'إعادة كلمة المرور',
+        'new_password' => 'كلمة المرور الجديدة',
+        'reset_password' => 'إعادة تعيين كلمة المرور',
         'update' => 'تحديث',
         'message_system' => 'نظام الرسائل',
         'topic' => 'العنوان',

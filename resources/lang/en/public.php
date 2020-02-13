@@ -31,6 +31,8 @@
         'country' => 'country',
         'password' => 'Password',
         're_password' => 'Re-Password',
+        'new_password' => 'New password',
+        'reset_password' => 'Reset password',
         'update' => 'update',
         'message_system' => 'message system',
         'topic' => 'topic',
