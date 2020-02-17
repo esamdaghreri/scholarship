@@ -14,7 +14,7 @@ return [
     */
 
     'failed' => 'هذه المعلومات لا تطابق سجلاتنا',
-    'throttle' => 'محاولات عديدة لتسجيل الدخول. يرجى الإنتظار لمدة: ثانية seconds',
+    'throttled' => 'محاولات عديدة لتسجيل الدخول. يرجى الإنتظار لمدة: ثانية seconds',
     'verify_your_email_address' => 'تفعيل بريدك الالكتروني',
     'before_proceeding_please_check_your_email_for_a_verification_link' => 'قبل التصفح، الرجاء تفقد بريدك الالكتروني للحصول على رابط التفعيل',
     'if_you_did_not_receive_the_email' => 'إذا لم تصلك رسالة على بريدك الالكتروني',

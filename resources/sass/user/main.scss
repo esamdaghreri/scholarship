@@ -440,6 +440,16 @@ footer {
 
 // verify page
 // path: views/users/auth/verify
+.form-container.reset{
+    form{        
+        button{
+            width: 200px;
+        }
+    }
+}
+
+// verify page
+// path: views/users/auth/verify
 
 .verify{
     height: 90vh;
