@@ -16,6 +16,7 @@
         'logout' => 'تسجيل خروج',
         'sign_up' => 'تسجيل',
         'register' => 'تسجيل',
+        'register_in_scholarship' => 'التسجيل في البعثة',
         'search' => 'بحث',
         'first_step' => 'الطلب',
         'first_step_explanation' => 'أطلب بعثة',
@@ -58,4 +59,6 @@
         'english' => 'إنجليزي',
         'any_note_feel_free_to_let_us_know' => 'اي ملاحظة، لا تتردد في ابلاغنا',
         'username_or_email' => 'اسم المستخدم أو كلمة المرور',
+        'orders' => 'الطلبات',
+        'profile' => 'الملف الشخصي',
     ];

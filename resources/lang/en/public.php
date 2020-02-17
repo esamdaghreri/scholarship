@@ -7,6 +7,7 @@
         'logout' => 'Logout',
         'sign_up' => 'Sign up',
         'register' => 'Register',
+        'register_in_scholarship' => 'Register in scholarship',
         'search' => 'search',
         'first_step' => 'Request',
         'first_step_explanation' => 'Request for scholarship',
@@ -50,4 +51,6 @@
         'english' => 'English',
         'any_note_feel_free_to_let_us_know' => 'Any note, feel free to let us know',
         'username_or_email' => 'username or E-mail',
+        'orders' => 'Orders',
+        'profile' => 'Profile',
     ];

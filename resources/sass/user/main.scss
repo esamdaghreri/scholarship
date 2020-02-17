@@ -57,6 +57,8 @@ $dark: #343a40;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    list-style: none;
+    text-decoration: none;
 }
 
 body{
@@ -305,34 +307,126 @@ header{
     text-align: center;
     background-color: $light;
     border-bottom: 1px solid $primary-color;
-    .logo{
-        float: left;
-        margin-left: 100px;
-        width: 200px;
-        max-height: 10vh;
-        a{
-            line-height: 10vh;
-            color: $white;
-            img {
+    nav{
+        justify-content: space-between;
+        height: 10vh;
+        .logo{
+            justify-content: flex-end;
+            align-items: center;
+            flex: 1;
+            a{
                 height: 10vh;
-                width: 150px;
-                padding: 5px;
+                align-items: center;
+                img {
+                    height: 7vh;
+                    width: 150px;
+                }
             }
         }
-    }
-    nav{
-        float: right;
-        height: 10vh;
-        margin-right: 100px;
-        ul{
-            line-height: 10vh;
+        .register-form{
+            height: 10vh;
+            max-width: 600px;
+            justify-content: space-around;
+            align-items: center;
+            flex: 2;
             li{
-                display: inline-block;
-                margin: 0 20px;
-                a.locale{
-                    color: $primary-color;
-                    &:hover{
-                        color: $primary-color-hover;
+                a{
+                    width: 250px;
+                }
+            }
+        }
+        .account{
+            height: 10vh;
+            justify-content: flex-start;
+            flex: 1;
+            .auth{
+                height: 10vh;
+                width: 420px;
+                justify-content: flex-end;
+                align-items: center;
+                .right{
+                    position: relative;
+                    ul{
+                        li{
+                            a{
+                                align-items: center;
+                                i, p, span, img{
+                                    margin: 0 10px;
+                                    color: $primary-color;
+                                    &:hover{
+                                        color: $primary-color-hover;
+                                    }
+                                }
+                                p{
+                                    font-size: 15px;
+                                }
+                            }
+                            .dropdown{
+                                width: 250px;
+                                position: absolute;
+                                top: 10vh;
+                                right: 15px;
+                                left: 15px;
+                                background-color: $white;
+                                padding: 10px 25px;
+                                border-radius: 5px;
+                                display: none;
+                                .fas{
+                                    margin: 0 10px;
+                                }
+                                &:before{
+                                    content: "";
+                                    position: absolute;
+                                    top: -20px;
+                                    left: 50%;
+                                    transform: translateX(-50%);
+                                    border: 10px solid;
+                                    border-color: transparent transparent $white transparent;
+                                }
+                                ul{
+                                    li{
+                                        a{
+                                            color: $primary-color;
+                                            &:hover{
+                                                color: $primary-color-hover;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            &.active{
+                                .dropdown{
+                                    display: block;
+                                }
+                            }
+                        }
+                    }
+                }
+                .left{
+                    ul{
+                        li{
+                            margin: 0 15px;
+                            a{
+                                color: $primary-color;
+                                &:hover{
+                                    color: $primary-color-hover;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            ul.not-auth{
+                height: 10vh;
+                line-height: 10vh;
+                li{
+                    display: inline-block;
+                    margin: 0 20px;
+                    a.locale{
+                        color: $primary-color;
+                        &:hover{
+                            color: $primary-color-hover;
+                        }
                     }
                 }
             }

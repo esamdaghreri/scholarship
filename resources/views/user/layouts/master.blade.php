@@ -6,6 +6,7 @@
         <link rel="stylesheet" type="text/css" href="{{asset('assets/css/user/main.css')}}">
         <link rel="icon" href="favicon.ico"/>
         <title>Scholarship</title>
+        <script src="https://kit.fontawesome.com/abc82d1ac7.js" crossorigin="anonymous"></script>
     </head>
     <body>
         @include('user.partials.header')
@@ -16,6 +17,7 @@
         @include('user.partials.footer')
         {{-- script --}}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        @yield('script')
         @if(App::getLocale() === 'ar')
             <script>
                 $('html').attr('dir', 'rtl');
