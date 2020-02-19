@@ -58,7 +58,7 @@
         'arabic' => 'عربي',
         'english' => 'إنجليزي',
         'any_note_feel_free_to_let_us_know' => 'اي ملاحظة، لا تتردد في ابلاغنا',
-        'username_or_email' => 'اسم المستخدم أو كلمة المرور',
+        'username_or_email' => 'اسم المستخدم او البريد الالكتروني',
         'orders' => 'الطلبات',
         'profile' => 'الملف الشخصي',
     ];
