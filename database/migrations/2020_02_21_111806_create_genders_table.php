@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCountriesTable extends Migration
+class CreateGendersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateCountriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('countries', function (Blueprint $table) {
-            $table->tinyIncrements('id');
-            $table->string('name_ar', 70);
-            $table->string('name_en', 70);
-            $table->dateTime('created_at')->useCurrent();
+        Schema::create('genders', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('name', 10);
         });
     }
 
@@ -28,6 +26,6 @@ class CreateCountriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('countries');
+        Schema::dropIfExists('genders');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDegreesTable extends Migration
+class CreateQualificationUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateDegreesTable extends Migration
      */
     public function up()
     {
-        Schema::create('degrees', function (Blueprint $table) {
-            $table->tinyIncrements('id');
-            $table->string('name_ar', 25);
-            $table->string('name_en', 25);
-            $table->dateTime('created_at')->useCurrent();
+        Schema::create('qualification_user', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('qualification_id');
+            $table->unsignedBigInteger('user_id');
+            $table->timestamps();
         });
     }
 
@@ -28,6 +28,6 @@ class CreateDegreesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('degrees');
+        Schema::dropIfExists('qualification_user');
     }
 }

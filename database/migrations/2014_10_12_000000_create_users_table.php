@@ -30,11 +30,11 @@ class CreateUsersTable extends Migration
             $table->dateTime('release_date')->nullable();
             $table->dateTime('expiry_date')->nullable();
             $table->string('highest_qualification', 40)->nullable();
+            $table->unsignedTinyInteger('gender_id')->nullable();
             $table->unsignedTinyInteger('role_id')->default('3');
             $table->unsignedSmallInteger('graduation_country_id')->nullable();
             $table->unsignedSmallInteger('graduation_university_id')->nullable();
             $table->unsignedSmallInteger('graduation_college_id')->nullable();
-            $table->unsignedSmallInteger('degree_id')->nullable();
             $table->unsignedBigInteger('created_by');
             $table->dateTime('created_at')->useCurrent();
             $table->unsignedBigInteger('updated_by')->nullable();
