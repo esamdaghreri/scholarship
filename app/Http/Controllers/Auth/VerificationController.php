@@ -27,7 +27,7 @@ class VerificationController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/dashboard';
+    protected $redirectTo = '/user-panel/personnel';
 
     /**
      * Show the email verification notice.
