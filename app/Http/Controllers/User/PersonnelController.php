@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 use App;
 use App\User;
 use App\Model\User\Country;
@@ -85,7 +86,48 @@ class PersonnelController extends Controller
         $user->graduation_country_id = $request->graduation_country;
         $user->graduation_university_id = $request->graduation_university;
         $user->graduation_college_id = $request->graduation_college;
-        $user->updated_by = Auth::id();
+        $user->updated_by = $id;
+        $user->updated_at = now();
+        $user->save();
+        return redirect()->back()->with('success', trans('public.updated_successfully'));
+    }
+
+    // Privacy page for each user
+    public function showPrivacy($id)
+    {
+        $user = User::where('id', $id)->select(['username', 'email'])->firstOrFail();
+        return view('user.personnel.show_privacy', ['user' => $user]);
+    }
+
+    public function updatePrivacy(Request $request, $id)
+    {
+        $validator = Validator::make(
+            $request->all(), [
+                'email' => 'required | unique:users,email,'.$id,
+                'username' => 'required | min:4 | max:26 | unique:users,username,'.$id,
+                'password' => ['min:8' , 'max:26', 'required_with:password_confirmation', 'same:password_confirmation', 'regex:/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[a-zA-Z0-9_.-]{8,26}$/', 'nullable'], // regex is make sure the user add at least one small letter ,one capital letter and one number between 8 to 26 character
+                'password_confirmation' => ['min:8' , 'max:26', 'regex:/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[a-zA-Z0-9_.-]{8,26}$/', 'nullable'], // regex is make sure the user add at least one small letter ,one capital letter and one number between 8 to 26 character
+            ]
+        );
+
+        /**
+         *  checks if there an error in validator above then return to same page with error messages
+         *
+         ***/
+        if ($validator->fails())
+            return redirect()->back()->withErrors($validator)->withInput();
+
+        $user = User::where('id', $id)->firstOrFail();
+        $user->username = $request->username;
+        if($user->email != $request->email)
+        {
+            $user->email = $request->email;
+            $user->email_verified_at = null;
+        }
+        if(!is_null($request->password)){
+            $user->password = Hash::make(request('password'));
+        }
+        $user->updated_by = $id;
         $user->updated_at = now();
         $user->save();
         return redirect()->back()->with('success', trans('public.updated_successfully'));

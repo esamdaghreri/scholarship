@@ -68,4 +68,5 @@
         'university' => 'University',
         'college' => 'College',
         'updated_successfully' => 'Updated successfully',
+        'privacy' => 'Privacy',
     ];

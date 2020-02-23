@@ -76,4 +76,5 @@
         'university' => 'الجامعة',
         'college' => 'الكلية',
         'updated_successfully' => 'تم التحديث بنجاح',
+        'privacy' => 'الخصوصية',
     ];
