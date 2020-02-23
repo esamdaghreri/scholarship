@@ -189,6 +189,24 @@ label{
 .flex-row{
     flex-direction: row;
 }
+.just-cont-center{
+    justify-content: center;
+}
+.just-cont-flex-start{
+    justify-content: flex-start;
+}
+.just-cont-flex-end{
+    justify-content: flex-end;
+}
+.al-items-center{
+    align-items: center;
+}
+.al-items-flex-start{
+    align-items: flex-start;
+}
+.al-items-flex-end{
+    align-items: flex-end;
+}
 // End flex classes
 
 // Default alert message
@@ -294,6 +312,55 @@ section{
             &:hover{
                 color: $primary-color-hover;
             }
+        }
+    }
+}
+
+// Default title-field
+.wrapper{
+    width: 100%;
+    min-height: 90vh;
+    .back-button{
+        width: 90%;
+        margin: 50px 40px;
+    }
+    .title-with-field{
+        width: auto;
+        min-width: 60%;
+        .fields-section{
+            width: 100%;
+            .header-title{
+                margin: 20px 0;
+                p{ 
+                    font-size: 30px;
+                    color: $gray;
+                }
+                hr.bar{
+                    width: 250px;
+                    height: 1px;
+                    background-color: $primary-color;
+                }
+            }
+            .fields{
+                width: 100%;
+                justify-content: space-between;
+                .column{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-around;
+                    align-items: center;
+                    .label-side, .input-side{
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: flex-start;
+                        width: 250px;
+                    }
+                }
+            }
+        }
+        .button{
+            margin: 40px 0;
         }
     }
 }

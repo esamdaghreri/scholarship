@@ -21,10 +21,10 @@ Route::group(['middleware' => 'setlocale'], function() {
 
 // ================ Route has middleware that users must be verifying email ==============
 Route::group(['middleware' => ['setlocale', 'verified']], function() {
-    Route::group([['middleware' => 'verified']], function(){
-        Route::get('/dashboard', function(){
-            //
-        });
+    Route::group([['middleware' => ['verified', 'auth', 'signed']]], function(){
+        Route::resource('/user-panel/personnel', 'User\PersonnelController')->only([
+            'show', 'update'
+        ]);
     });
 });
 
