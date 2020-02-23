@@ -103,7 +103,7 @@ class PersonnelController extends Controller
     {
         $validator = Validator::make(
             $request->all(), [
-                'email' => 'required | unique:users,email,'.$id,
+                'email' => 'required | email |unique:users,email,'.$id,
                 'username' => 'required | min:4 | max:26 | unique:users,username,'.$id,
                 'password' => ['min:8' , 'max:26', 'required_with:password_confirmation', 'same:password_confirmation', 'regex:/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[a-zA-Z0-9_.-]{8,26}$/', 'nullable'], // regex is make sure the user add at least one small letter ,one capital letter and one number between 8 to 26 character
                 'password_confirmation' => ['min:8' , 'max:26', 'regex:/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[a-zA-Z0-9_.-]{8,26}$/', 'nullable'], // regex is make sure the user add at least one small letter ,one capital letter and one number between 8 to 26 character

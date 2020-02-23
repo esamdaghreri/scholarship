@@ -431,7 +431,7 @@ header{
                                 }
                             }
                             .dropdown{
-                                width: 250px;
+                                min-width: 220px;
                                 position: absolute;
                                 top: 10vh;
                                 right: 15px;
@@ -453,6 +453,10 @@ header{
                                     border-color: transparent transparent $white transparent;
                                 }
                                 ul{
+                                    display: flex;
+                                    flex-direction: column;
+                                    justify-content: cn;
+                                    align-items: flex-start;
                                     li{
                                         a{
                                             color: $primary-color;

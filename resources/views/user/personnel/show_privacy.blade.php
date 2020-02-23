@@ -21,7 +21,7 @@
                                 <label>@lang('public.username')</label>
                             </div>
                             <div class="input-side">
-                                <input type="text" name="email" class="input-text @if($errors->has('email'))input-error @endif" value="{{$user->email ?? \Illuminate\Support\Facades\Request::old('email')}}" required>
+                                <input type="email" name="email" class="input-text @if($errors->has('email'))input-error @endif" value="{{$user->email ?? \Illuminate\Support\Facades\Request::old('email')}}" required>
                                 <input type="text" name="username" class="input-text @if($errors->has('username'))input-error @endif" value="{{$user->username ?? \Illuminate\Support\Facades\Request::old('username')}}" required>
                             </div>
                         </div>
