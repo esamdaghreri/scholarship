@@ -63,7 +63,7 @@
         'username_or_email' => 'اسم المستخدم او البريد الالكتروني',
         'orders' => 'الطلبات',
         'profile' => 'الملف الشخصي',
-        'national_id' => 'رقم الهوية',
+        'national_number' => 'رقم الهوية',
         'save_number' => 'رقم الحفظ',
         'release_date' => 'تاريخ الإصدار',
         'expirty_date' => 'تاريخ الإنتهاء',
@@ -75,4 +75,5 @@
         'highest_qualification' => 'أعلى المؤهلات',
         'university' => 'الجامعة',
         'college' => 'الكلية',
+        'updated_successfully' => 'تم التحديث بنجاح',
     ];

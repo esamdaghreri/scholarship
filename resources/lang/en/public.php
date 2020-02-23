@@ -55,7 +55,7 @@
         'username_or_email' => 'username or E-mail',
         'orders' => 'Orders',
         'profile' => 'Profile',
-        'national_id' => 'National ID',
+        'national_number' => 'National Number',
         'save_number' => 'Save number',
         'release_date' => 'Release Date',
         'expirty_date' => 'Expiry date',
@@ -67,4 +67,5 @@
         'highest_qualification' => 'Highest Qualification',
         'university' => 'University',
         'college' => 'College',
+        'updated_successfully' => 'Updated successfully',
     ];
