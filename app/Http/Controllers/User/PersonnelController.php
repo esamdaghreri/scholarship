@@ -55,8 +55,10 @@ class PersonnelController extends Controller
                 "fourth_name" => "required | min:2 | max:25",
                 "phone" => 'required | min:5 | max:20 | unique:users,phone,'.$id,
                 "telephone" => 'required | min:5 | max:20',
-                "national_number" => 'required | min:5 | max:20',
+                "national_number" => 'required | min:5 | max:20 | unique:users,national_number,'.$id,
                 "save_number" => 'required | min:3 | max:20',
+                "release_date" => 'required | date',
+                "expiry_date" => 'required | date',
                 "highest_qualification" => 'required | exists:qualifications,id',
                 "gender" => 'required | exists:genders,id',
                 "graduation_country" => 'required | exists:countries,id',
@@ -81,6 +83,9 @@ class PersonnelController extends Controller
         $user->telephone = $request->telephone;
         $user->national_number = $request->national_number;
         $user->save_number = $request->save_number;
+        $user->release_date = $request->release_date;
+        $user->expiry_date = $request->expiry_date;
+        //TODO:save all qualification in qualification user table
         $user->highest_qualification = $request->highest_qualification;
         $user->gender_id = $request->gender;
         $user->graduation_country_id = $request->graduation_country;

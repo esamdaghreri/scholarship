@@ -19,10 +19,9 @@ class CreateOrderScholarshipsTable extends Migration
             $table->unsignedSmallInteger('country_id');
             $table->unsignedSmallInteger('university_id');
             $table->unsignedSmallInteger('college_id');
-            $table->unsignedSmallInteger('degree_id');
-            $table->integer('university_order');
+            $table->unsignedSmallInteger('qualification_id');
             $table->unsignedSmallInteger('specialist_id');
-            $table->json('attachment');
+            // $table->json('attachment');
             $table->unsignedBigInteger('created_by');
             $table->dateTime('created_at')->useCurrent();
             $table->unsignedBigInteger('updated_by')->nullable();

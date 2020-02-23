@@ -20,14 +20,13 @@ Route::group(['middleware' => 'setlocale'], function() {
 
 
 // ================ Route has middleware that users must be verifying email ==============
-Route::group(['middleware' => ['setlocale', 'verified']], function() {
-    Route::group([['middleware' => ['verified', 'auth', 'signed']]], function(){
-        Route::resource('/user-panel/personnel', 'User\PersonnelController')->only([
-            'show', 'update',
-        ]);
-        Route::get('/user-panel/personnel/showPrivacy/{personnel}', 'User\PersonnelController@showPrivacy')->name('personnel.showPrivacy');
-        Route::match(['PUT', 'PATCH'], '/user-panel/personnel/showPrivacy/{personnel}', 'User\PersonnelController@updatePrivacy')->name('personnel.updatePrivacy');
-    });
+Route::group(['middleware' => ['setlocale', 'verified', 'auth']], function() {
+    Route::resource('/user-panel/personnel', 'User\PersonnelController')->only([
+        'show', 'update',
+    ]);
+    Route::get('/user-panel/personnel/showPrivacy/{personnel}', 'User\PersonnelController@showPrivacy')->name('personnel.showPrivacy');
+    Route::match(['PUT', 'PATCH'], '/user-panel/personnel/showPrivacy/{personnel}', 'User\PersonnelController@updatePrivacy')->name('personnel.updatePrivacy');
+    Route::resource('/new-scholarship', 'User\OrderScholarshipController')->middleware('checkPersonalInformationFill');
 });
 
 // Change language

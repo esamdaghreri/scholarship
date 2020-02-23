@@ -58,7 +58,7 @@
         'national_number' => 'National Number',
         'save_number' => 'Save number',
         'release_date' => 'Release Date',
-        'expirty_date' => 'Expiry date',
+        'expiry_date' => 'Expiry date',
         'general_information' => 'General Information',
         'college_information' => 'College Information',
         'save' => 'Save',
@@ -69,4 +69,8 @@
         'college' => 'College',
         'updated_successfully' => 'Updated successfully',
         'privacy' => 'Privacy',
+        'qualification' => 'ََQualification',
+        'specialist' => 'Specialist',
+        'accept_all_terms_and_conditions' => 'Accept all terms and conditions',
+        'successfullyـregistered' => 'Successfully registered',
     ];

@@ -101,11 +101,11 @@
                         <div class="column">
                             <div class="label-side">
                                 <label>@lang('public.release_date')</label>
-                                <label>@lang('public.expirty_date')</label>
+                                <label>@lang('public.expiry_date')</label>
                             </div>
                             <div class="input-side">
-                                <input type="date" name="release_date" class="input-text @if($errors->has('release_date'))input-error @endif" value="{{date('Y-m-d', strtotime($user_information->release_date)) ?? \Illuminate\Support\Facades\Request::old('release_date')}}" required>
-                                <input type="date" name="expirty_date" class="input-text @if($errors->has('expirty_date'))input-error @endif" value="{{date('Y-m-d', strtotime($user_information->expirty_date)) ?? \Illuminate\Support\Facades\Request::old('expirty_date')}}" required>
+                                <input type="date" name="release_date" class="input-text @if($errors->has('release_date'))input-error @endif" value="{{date('Y-m-d', strtotime($user_information->release_date)) ?? \Illuminate\Support\Facades\Request::old('release_date')}}">
+                                <input type="date" name="expiry_date" class="input-text @if($errors->has('expiry_date'))input-error @endif" value="{{date('Y-m-d', strtotime($user_information->expiry_date)) ?? \Illuminate\Support\Facades\Request::old('expiry_date')}}">
                             </div>
                         </div>
                     </div>

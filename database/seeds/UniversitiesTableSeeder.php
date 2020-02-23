@@ -13,7 +13,6 @@ class UniversitiesTableSeeder extends Seeder
     {
         DB::table('universities')->insert([
             ['name_en' => 'Jazan University', 'name_ar' => 'جامعة جازان'],
-            ['name_en' => '', 'name_ar' => 'جامعة مالايا'],
             ['name_en' => 'Putra Malaysia University', 'name_ar' => 'جامعة بوترا ماليزيا'],
             ['name_en' => 'California Institute of Technology', 'name_ar' => 'معهد كاليفورنيا للتكنولوجيا'],
             ['name_en' => 'Stanford University', 'name_ar' => 'جامعة ستانفورد'],

@@ -66,7 +66,7 @@
         'national_number' => 'رقم الهوية',
         'save_number' => 'رقم الحفظ',
         'release_date' => 'تاريخ الإصدار',
-        'expirty_date' => 'تاريخ الإنتهاء',
+        'expiry_date' => 'تاريخ الإنتهاء',
         'general_information' => 'معلومات عامة',
         'college_information' => 'معلومات الكلية',
         'save' => 'حفظ',
@@ -77,4 +77,8 @@
         'college' => 'الكلية',
         'updated_successfully' => 'تم التحديث بنجاح',
         'privacy' => 'الخصوصية',
+        'qualification' => 'المؤهل العلمي',
+        'specialist' => 'التخصص',
+        'accept_all_terms_and_conditions' => 'قبول جميع الشروط والأحكام',
+        'successfullyـregistered' => 'تم التسجيل بنجاح',
     ];
