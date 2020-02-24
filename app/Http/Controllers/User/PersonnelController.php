@@ -85,7 +85,7 @@ class PersonnelController extends Controller
         $user->save_number = $request->save_number;
         $user->release_date = $request->release_date;
         $user->expiry_date = $request->expiry_date;
-        //TODO:save all qualification in qualification user table
+        $user->qualifications()->sync($request->highest_qualification);
         $user->highest_qualification = $request->highest_qualification;
         $user->gender_id = $request->gender;
         $user->graduation_country_id = $request->graduation_country;
