@@ -17,6 +17,7 @@ use App\Model\User\Specialist;
 class OrderScholarshipController extends Controller
 {
     public function index()
+    public function create()
     {
         $country_object = new Country;
         $university_object = new University;

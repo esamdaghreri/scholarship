@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="form-container new-scholarship flex center-center">
-        <form action="{{ route('new-scholarship.store')}}" method="POST" class="flex center-center flex-column">
+        <form action="{{ route('scholarship.store')}}" method="POST" class="flex center-center flex-column">
             <div class="form-sample flex flex-row">
                 @csrf
                 <div class="label-side flex flex-column">

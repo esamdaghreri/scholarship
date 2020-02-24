@@ -40,7 +40,7 @@
                 </div>
         </div>
         <div class="register-form flex">
-            <li><a href="{{route('new-scholarship.index')}}" class="btn btn-primary">@lang('public.register_in_scholarship')</a></li>
+            <li><a href="{{route('scholarship.create')}}" class="btn btn-primary">@lang('public.register_in_scholarship')</a></li>
         </div>
         @else
             <ul class="not-auth flex flex-row center-center">
