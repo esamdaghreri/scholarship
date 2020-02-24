@@ -25,6 +25,7 @@ Route::group(['middleware' => ['setlocale', 'verified', 'auth']], function() {
     Route::resource('/user-panel/personnel', 'User\PersonnelController')->only([
         'show', 'update',
     ]);
+    
     Route::get('/user-panel/personnel/showPrivacy/{personnel}', 'User\PersonnelController@showPrivacy')->name('personnel.showPrivacy');
     Route::match(['PUT', 'PATCH'], '/user-panel/personnel/showPrivacy/{personnel}', 'User\PersonnelController@updatePrivacy')->name('personnel.updatePrivacy');
 
