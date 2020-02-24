@@ -62,6 +62,9 @@
         'any_note_feel_free_to_let_us_know' => 'اي ملاحظة، لا تتردد في ابلاغنا',
         'username_or_email' => 'اسم المستخدم او البريد الالكتروني',
         'orders' => 'الطلبات',
+        'my_orders' => 'طلباتي',
+        'order_number' => 'رقم الطلب',
+        'order_status' => 'حالة الطلب',
         'profile' => 'الملف الشخصي',
         'national_number' => 'رقم الهوية',
         'save_number' => 'رقم الحفظ',
@@ -81,4 +84,6 @@
         'specialist' => 'التخصص',
         'accept_all_terms_and_conditions' => 'قبول جميع الشروط والأحكام',
         'successfullyـregistered' => 'تم التسجيل بنجاح',
+        'details' => 'التفاصيل',
+        'you_have_no_order' => 'لا يوجد لديك طلب',
     ];

@@ -7,16 +7,25 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App;
+use App\User;
 use App\Model\User\OrderScholarship;
 use App\Model\User\Country;
 use App\Model\User\University;
 use App\Model\User\College;
 use App\Model\User\Qualification;
 use App\Model\User\Specialist;
+use App\Model\User\Status;
 
 class OrderScholarshipController extends Controller
 {
     public function index()
+    {
+        $orders = User::findorfail(auth::id())->orderScholarships;
+        $status_object = new Status;
+        $statuses = $status_object->getStatuses(App::getlocale());
+        return view('user.orders.index', ['orders' => $orders, 'statuses' => $statuses]);
+    }
+
     public function create()
     {
         $country_object = new Country;
@@ -31,7 +40,7 @@ class OrderScholarshipController extends Controller
         $qualifications = $qualification_object->getQualifications(App::getlocale());
         $specialists = $specialist_object->getSpecialists(App::getlocale());
 
-        return view('user.orders.new_scholarship', ['countries' => $countries, 'universities' => $universities, 'colleges' => $colleges, 'qualifications' => $qualifications, 'specialists' => $specialists]);
+        return view('user.orders.create', ['countries' => $countries, 'universities' => $universities, 'colleges' => $colleges, 'qualifications' => $qualifications, 'specialists' => $specialists]);
     }
 
     public function store(Request $request)

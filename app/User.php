@@ -67,7 +67,10 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsTo('App\Model\User\College');
     }
-
+    public function orderScholarships()
+    {
+        return $this->hasMany('App\Model\User\OrderScholarship');
+    }
     public static function areFieldEmpty(){
         $user = User::where('id', Auth::id())->firstOrFail();
         if(is_null($user->first_name) || is_null($user->second_name) || is_null($user->third_name) || is_null($user->fourth_name) || is_null($user->phone) || is_null($user->telephone) || is_null($user->national_number) || is_null($user->save_number) || is_null($user->release_date) || is_null($user->expiry_date) || is_null($user->highest_qualification) || is_null($user->gender_id) || is_null($user->graduation_country_id) || is_null($user->graduation_university_id) || is_null($user->graduation_college_id))

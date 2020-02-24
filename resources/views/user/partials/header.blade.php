@@ -15,7 +15,7 @@
                                     <ul>
                                         <li><a href="{{route('personnel.show', Auth::id())}}"><i class="fas fa-user"></i>@lang('public.profile')</a></li>
                                         <li><a href="{{route('personnel.showPrivacy', Auth::id())}}"><i class="fas fa-key"></i>@lang('public.privacy')</a></li>
-                                        <li><a href="#"><i class="fas fa-briefcase"></i>@lang('public.orders')</a></li>
+                                        <li><a href="{{route('scholarship.index')}}"><i class="fas fa-briefcase"></i>@lang('public.orders')</a></li>
                                         <li onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><a href="#"><i class="fas fa-sign-out-alt"></i>@lang('public.logout')</a></li>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             @csrf

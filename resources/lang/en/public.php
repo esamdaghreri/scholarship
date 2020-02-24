@@ -54,6 +54,9 @@
         'any_note_feel_free_to_let_us_know' => 'Any note, feel free to let us know',
         'username_or_email' => 'username or E-mail',
         'orders' => 'Orders',
+        'my_orders' => 'My orders',
+        'order_number' => 'Order number',
+        'order_status' => 'Order status',
         'profile' => 'Profile',
         'national_number' => 'National Number',
         'save_number' => 'Save number',
@@ -73,4 +76,6 @@
         'specialist' => 'Specialist',
         'accept_all_terms_and_conditions' => 'Accept all terms and conditions',
         'successfullyـregistered' => 'Successfully registered',
+        'details' => 'Details',
+        'you_have_no_order' => 'You have no order',
     ];
