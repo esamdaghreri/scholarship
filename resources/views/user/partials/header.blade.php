@@ -27,7 +27,7 @@
                     </div>
                     <div class="left">
                         <ul class="flex">
-                            <li><a href="#"><i class="fas fa-home"></i></a></li>
+                            <li><a href="{{route('user.home')}}"><i class="fas fa-home"></i></a></li>
                             <li><a href="#"><i class="fas fa-bell"></i></a></li>
                             @if(App::isLocale('ar'))
                                 <li><a href="{{route('setLanguage', 'en')}}" class="locale">@lang('public.english')</a></li>

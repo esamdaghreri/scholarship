@@ -386,7 +386,8 @@ section{
                 width: 100%;
                 table{
                     width: 100%;
-                    border: 1px solid $primary-color;
+                    border-top: 1px solid $primary-color;
+                    border-bottom: 1px solid $primary-color;
                     tr{
                         width: 100%;
                         display: flex;
@@ -401,9 +402,8 @@ section{
                             justify-content: space-around;
                             align-items: center;
                             color: $primary-color-hover;
-                            &:nth-child(n+2):nth-child(-n+3){
-                                border-right: 1px solid $primary-color;
-                            }
+                            border-left: 1px solid $primary-color;
+                            border-right: 1px solid $primary-color;
                         }
                         &.first-row{
                             th{
@@ -453,7 +453,7 @@ header{
                 height: 10vh;
                 align-items: center;
                 img {
-                    height: 7vh;
+                    height: 10vh;
                     width: 150px;
                 }
             }
@@ -723,4 +723,10 @@ footer {
         }
     }
 }
+@media print{
+    header,footer,.footer-social-media,.footer-links,.footer-campany-name,.back-button{
+        display: none;
+    }
+}
+
 // End login system forms
