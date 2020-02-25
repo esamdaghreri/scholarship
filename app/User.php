@@ -40,6 +40,24 @@ class User extends Authenticatable implements MustVerifyEmail
 
     protected $table = "users";
 
+    // Mutator
+    public function getFirstNameAttribute($value)
+    {
+        return ucfirst($value);
+    }
+    public function getSecondNameAttribute($value)
+    {
+        return ucfirst($value);
+    }
+    public function getThirdNameAttribute($value)
+    {
+        return ucfirst($value);
+    }
+    public function getFourthNameAttribute($value)
+    {
+        return ucfirst($value);
+    }
+
    /**
      * Relations to get the (gender, qualifications ,country, university, college) associated with the user.
      */
