@@ -22,6 +22,7 @@ class CreateOrderScholarshipsTable extends Migration
             $table->unsignedSmallInteger('qualification_id');
             $table->unsignedSmallInteger('specialist_id');
             $table->unsignedSmallInteger('status_id')->default(3);
+            $table->unsignedSmallInteger('registeration_type_id');
             // $table->json('attachment');
             $table->unsignedBigInteger('created_by');
             $table->dateTime('created_at')->useCurrent();

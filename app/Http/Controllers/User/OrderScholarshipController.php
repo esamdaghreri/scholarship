@@ -34,13 +34,14 @@ class OrderScholarshipController extends Controller
         $qualification_object = new Qualification;
         $specialist_object = new Specialist;
 
+        $user = User::select('highest_qualification')->where('id' ,Auth::id())->first();
         $countries = $country_object->getCountries(App::getlocale());
         $universities = $university_object->getUniversities(App::getlocale());
         $colleges = $college_object->getColleges(App::getlocale());
         $qualifications = $qualification_object->getQualifications(App::getlocale());
         $specialists = $specialist_object->getSpecialists(App::getlocale());
 
-        return view('user.orders.create', ['countries' => $countries, 'universities' => $universities, 'colleges' => $colleges, 'qualifications' => $qualifications, 'specialists' => $specialists]);
+        return view('user.orders.create', ['countries' => $countries, 'universities' => $universities, 'colleges' => $colleges, 'qualifications' => $qualifications, 'specialists' => $specialists, 'user' => $user]);
     }
 
     public function store(Request $request)
@@ -70,6 +71,7 @@ class OrderScholarshipController extends Controller
         $register->college_id = $request->college;
         $register->qualification_id = $request->qualification;
         $register->specialist_id = $request->specialist;
+        $register->registeration_type_id = 1;
         $register->created_by = Auth::id();
         $register->created_at = now();
         $register->save();

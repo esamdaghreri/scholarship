@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(UniversitiesTableSeeder::class);
         $this->call(GendersTableSeeder::class);
         $this->call(QualificationsTableSeeder::class);
+        $this->call(RegisterationTypeTableSeeder::class);
     }
 }
