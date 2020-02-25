@@ -9,7 +9,7 @@ class RegisterationType extends Model
     protected $table = "registeration_types";
     
     // Get qualifications depend on local language .
-    public function getRegisterationType($languages_code){
+    public function getRegisterationTypes($languages_code){
         if($languages_code == 'ar'){
             return RegisterationType::select('id','name_ar')->get();
         }

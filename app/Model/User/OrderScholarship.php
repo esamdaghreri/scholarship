@@ -16,4 +16,44 @@ class OrderScholarship extends Model
     ];
 
     protected $table = 'order_scholarships';
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
+    public function country()
+    {
+        return $this->belongsTo('App\Model\User\Country');
+    }
+    
+    public function university()
+    {
+        return $this->belongsTo('App\Model\User\University');
+    }
+    
+    public function college()
+    {
+        return $this->belongsTo('App\Model\User\College');
+    }
+
+    public function qualification()
+    {
+        return $this->belongsTo('App\Model\User\Qualification');
+    }
+
+    public function specialist()
+    {
+        return $this->belongsTo('App\Model\User\Specialist');
+    }
+
+    public function status()
+    {
+        return $this->belongsTo('App\Model\User\Status');
+    }
+
+    public function registerationType()
+    {
+        return $this->belongsTo('App\Model\User\RegisterationType');
+    }
 }

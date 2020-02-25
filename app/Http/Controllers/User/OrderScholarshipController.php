@@ -15,6 +15,7 @@ use App\Model\User\College;
 use App\Model\User\Qualification;
 use App\Model\User\Specialist;
 use App\Model\User\Status;
+use App\Model\User\RegisterationType;
 
 class OrderScholarshipController extends Controller
 {
@@ -24,6 +25,12 @@ class OrderScholarshipController extends Controller
         $status_object = new Status;
         $statuses = $status_object->getStatuses(App::getlocale());
         return view('user.orders.index', ['orders' => $orders, 'statuses' => $statuses]);
+    }
+
+    public function show($id)
+    {
+        $order = OrderScholarship::where('id', $id)->where('user_id', Auth::id())->with(['user', 'country', 'university', 'college', 'qualification', 'specialist', 'status', 'registerationType'])->firstorfail();
+        return view('user.orders.show', ['order' => $order]);
     }
 
     public function create()

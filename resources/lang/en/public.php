@@ -20,6 +20,7 @@
         'offer' => 'offer',
         'panel' => 'control panel',
         'personnel_data' => 'personnel_data',
+        'name' => 'Name',
         'your_name' => 'Your Name',
         'username' => 'Username',
         'your_name' => 'Your name',
@@ -78,4 +79,5 @@
         'successfullyـregistered' => 'Successfully registered',
         'details' => 'Details',
         'you_have_no_order' => 'You have no order',
+        'contact_methods' => 'Contact Methods',
     ];

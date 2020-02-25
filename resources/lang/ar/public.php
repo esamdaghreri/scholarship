@@ -28,6 +28,7 @@
         'notes' => 'ملاحظات إضافية',
         'panel' => 'لوحة التحكم',
         'personnel_data' => 'البيانات الشخصية',
+        'name' => 'الإسم',
         'your_name' => 'اسمك',
         'username' => 'اسم المستخدم',
         'your_name' => 'إسمك',
@@ -86,4 +87,5 @@
         'successfullyـregistered' => 'تم التسجيل بنجاح',
         'details' => 'التفاصيل',
         'you_have_no_order' => 'لا يوجد لديك طلب',
+        'contact_methods' => 'وسائل التواصل',
     ];
