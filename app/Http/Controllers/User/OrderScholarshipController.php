@@ -21,10 +21,10 @@ class OrderScholarshipController extends Controller
 {
     public function index()
     {
-        $orders = User::findorfail(auth::id())->orderScholarships;
+        $orders = OrderScholarship::where('user_id', Auth::id())->with(['status', 'registerationType'])->get();
         $status_object = new Status;
         $statuses = $status_object->getStatuses(App::getlocale());
-        return view('user.orders.index', ['orders' => $orders, 'statuses' => $statuses]);
+        return view('user.orders.index', ['orders' => $orders]);
     }
 
     public function show($id)

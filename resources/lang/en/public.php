@@ -80,4 +80,5 @@
         'details' => 'Details',
         'you_have_no_order' => 'You have no order',
         'contact_methods' => 'Contact Methods',
+        'type' => 'Type',
     ];

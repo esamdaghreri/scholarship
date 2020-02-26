@@ -17,16 +17,14 @@
                         <tr class="first-row">
                             <th>#@lang('public.order_number')</th>
                             <th>@lang('public.order_status')</th>
+                            <th>@lang('public.type')</th>
                             <th>@lang('public.details')</th>
                         </tr>
                         @foreach ($orders as $order)
                             <tr>
                                 <td>{{$order->id}}</td>
-                                @foreach($statuses as $status)
-                                    @if($order->status_id == $status->id)
-                                        <td>{{App::getlocale() == "en" ? $status->name_en : $status->name_ar}}</td>
-                                    @endif
-                                @endforeach
+                                <td>{{App::getlocale() == "en" ? $order->status->name_en : $order->status->name_ar}}</td>
+                                <td>{{App::getlocale() == "en" ? $order->registerationType->name_en : $order->registerationType->name_ar}}</td>
                                 <td><a href="{{route('scholarship.show', $order->id)}}" class="btn btn-primary">@lang('public.details')</a></td>
                             </tr>
                         @endforeach

@@ -88,4 +88,5 @@
         'details' => 'التفاصيل',
         'you_have_no_order' => 'لا يوجد لديك طلب',
         'contact_methods' => 'وسائل التواصل',
+        'type' => 'النوع',
     ];
