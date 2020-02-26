@@ -81,4 +81,6 @@
         'you_have_no_order' => 'You have no order',
         'contact_methods' => 'Contact Methods',
         'type' => 'Type',
+        'extend_scholarship' => 'Extend scholarship',
+        'cancel_scholarship' => 'Cancel scholarship',
     ];

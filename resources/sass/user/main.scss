@@ -112,6 +112,14 @@ a{
         background-color: $white;
     }
 }
+
+.btn-cancel {
+    background-color: $error-color;
+    color: $white;
+    &:hover {
+        background-color: $error-color-hover;
+    }
+}
 // End defaut buttons
 
 // Start default input, label
@@ -446,6 +454,14 @@ section{
             }
         }
     }
+    .cancel-extends-buttons{
+        margin-top: 70px;
+        justify-content: space-between;
+        .btn{
+            margin: 0 40px;
+            width: 200px;
+        }
+    }
 }
 
 // Start Styling
@@ -741,7 +757,7 @@ footer {
     }
 }
 @media print{
-    header,footer,.footer-social-media,.footer-links,.footer-campany-name,.back-button{
+    header,footer,.footer-social-media,.footer-links,.footer-campany-name,.btn{
         display: none;
     }
     body{
