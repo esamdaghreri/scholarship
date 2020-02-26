@@ -400,8 +400,6 @@ section{
                         justify-content: space-around;
                         align-items: center;
                         color: $primary-color-hover;
-                        border-left: 1px solid $primary-color;
-                        border-right: 1px solid $primary-color;
                     }
                     &.first-row{
                         th{
@@ -419,16 +417,27 @@ section{
                         }
                     }
                 }
-                tr.details{
+            }
+            table.details{
+                border-top: 1px solid $gray;
+                border-bottom: 1px solid $gray;
+                tr{
                     th{
-                        color: $primary-color;
-                        background-color: $white;
-                        border-bottom: 1px solid $primary-color;
+                        color: $black;
+                        background-color: $gray;
+                        border-bottom: 1px solid $black;
                     }
                     td{
+                        color: $black;
                         background-color: $white;
-                        border-bottom: 1px solid $primary-color;
+                        border-bottom: 1px solid $black;
                     }
+                }
+                tr.contant-method{
+                   th{
+                       color: $black;
+                       background-color: $white;
+                   }
                 }
             }
             p{
