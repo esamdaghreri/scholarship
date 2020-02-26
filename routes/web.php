@@ -30,7 +30,7 @@ Route::group(['middleware' => ['setlocale', 'verified', 'auth']], function() {
     Route::match(['PUT', 'PATCH'], '/user-panel/personnel/showPrivacy/{personnel}', 'User\PersonnelController@updatePrivacy')->name('personnel.updatePrivacy');
 
     // ================ Route for user orders personnel page ==============
-    Route::resource('/scholarship', 'User\OrderScholarshipController')->middleware('checkPersonalInformationFill');
+    Route::resource('/scholarship', 'User\RegisterScholarshipController')->middleware('checkPersonalInformationFill');
 });
 
 // Change language

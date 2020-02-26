@@ -4,7 +4,7 @@ namespace App\Model\User;
 
 use Illuminate\Database\Eloquent\Model;
 
-class OrderScholarship extends Model
+class RegisterScholarship extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -15,7 +15,7 @@ class OrderScholarship extends Model
         'user_id', 'country_id', 'university_id', 'college_id', 'degree_id', 'university_order', 'specialist_id', 'attachment', 'created_by', 'created_at',
     ];
 
-    protected $table = 'order_scholarships';
+    protected $table = 'register_scholarships';
 
     public function user()
     {

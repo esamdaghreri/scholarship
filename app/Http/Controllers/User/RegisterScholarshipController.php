@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App;
 use App\User;
-use App\Model\User\OrderScholarship;
+use App\Model\User\RegisterScholarship;
 use App\Model\User\Country;
 use App\Model\User\University;
 use App\Model\User\College;
@@ -17,20 +17,20 @@ use App\Model\User\Specialist;
 use App\Model\User\Status;
 use App\Model\User\RegisterationType;
 
-class OrderScholarshipController extends Controller
+class RegisterScholarshipController extends Controller
 {
     public function index()
     {
-        $orders = OrderScholarship::where('user_id', Auth::id())->with(['status', 'registerationType'])->get();
+        $orders = RegisterScholarship::where('user_id', Auth::id())->with(['status', 'registerationType'])->get();
         $status_object = new Status;
         $statuses = $status_object->getStatuses(App::getlocale());
-        return view('user.orders.index', ['orders' => $orders]);
+        return view('user.scholarship.register.index', ['orders' => $orders]);
     }
 
     public function show($id)
     {
-        $order = OrderScholarship::where('id', $id)->where('user_id', Auth::id())->with(['user', 'country', 'university', 'college', 'qualification', 'specialist', 'status', 'registerationType'])->firstorfail();
-        return view('user.orders.show', ['order' => $order]);
+        $order = RegisterScholarship::where('id', $id)->where('user_id', Auth::id())->with(['user', 'country', 'university', 'college', 'qualification', 'specialist', 'status', 'registerationType'])->firstorfail();
+        return view('user.scholarship.register.show', ['order' => $order]);
     }
 
     public function create()
@@ -48,7 +48,7 @@ class OrderScholarshipController extends Controller
         $qualifications = $qualification_object->getQualifications(App::getlocale());
         $specialists = $specialist_object->getSpecialists(App::getlocale());
 
-        return view('user.orders.create', ['countries' => $countries, 'universities' => $universities, 'colleges' => $colleges, 'qualifications' => $qualifications, 'specialists' => $specialists, 'user' => $user]);
+        return view('user.scholarship.register.create', ['countries' => $countries, 'universities' => $universities, 'colleges' => $colleges, 'qualifications' => $qualifications, 'specialists' => $specialists, 'user' => $user]);
     }
 
     public function store(Request $request)
@@ -71,7 +71,7 @@ class OrderScholarshipController extends Controller
         if ($validator->fails())
             return redirect()->back()->withErrors($validator)->withInput();
 
-        $register = new OrderScholarship();
+        $register = new RegisterScholarship();
         $register->user_id = Auth::id();
         $register->country_id = $request->country;
         $register->university_id = $request->university;

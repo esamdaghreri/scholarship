@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOrderScholarshipsTable extends Migration
+class CreateRegisterScholarshipsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateOrderScholarshipsTable extends Migration
      */
     public function up()
     {
-        Schema::create('order_scholarships', function (Blueprint $table) {
+        Schema::create('register_scholarships', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedSmallInteger('country_id');
@@ -38,6 +38,6 @@ class CreateOrderScholarshipsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('order_scholarships');
+        Schema::dropIfExists('register_scholarships');
     }
 }
