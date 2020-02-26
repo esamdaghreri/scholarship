@@ -59,11 +59,11 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
    /**
-     * Relations to get the (gender, qualifications ,country, university, college) associated with the user.
+     * Relations to get the (gender ,country, university, college) associated with the user.
      */
-    public function qualifications()
+    public function qualification()
     {
-        return $this->belongsToMany('App\Model\User\Qualification');
+        return $this->belongsTo('App\Model\User\Qualification');
     }
 
     public function gender()
