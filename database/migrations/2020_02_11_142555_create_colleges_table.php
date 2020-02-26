@@ -17,7 +17,6 @@ class CreateCollegesTable extends Migration
             $table->tinyIncrements('id');
             $table->string('name_ar', 60);
             $table->string('name_en', 60);
-            $table->dateTime('created_at')->useCurrent();
         });
     }
 

@@ -83,4 +83,5 @@
         'type' => 'Type',
         'extend_scholarship' => 'Extend scholarship',
         'cancel_scholarship' => 'Cancel scholarship',
+        'birthdate' => 'Birthdate',
     ];

@@ -30,7 +30,7 @@ class PersonnelController extends Controller
         $university_object = new University;
         $college_object = new College;
         $qualification_object = new Qualification;
-        $user_information = User::where('id', $user_id)->with('qualifications')->firstOrFail();
+        $user_information = User::where('id', $user_id)->firstOrFail();
         $countries = $country_object->getCountries(App::getlocale());
         $universities = $university_object->getUniversities(App::getlocale());
         $colleges = $college_object->getColleges(App::getlocale());
@@ -55,6 +55,7 @@ class PersonnelController extends Controller
                 "second_name" => "required | min:2 | max:25",
                 "third_name" => "required | min:2 | max:25",
                 "fourth_name" => "required | min:2 | max:25",
+                "birthdate" => "required | date",
                 "phone" => 'required | min:5 | max:20 | unique:users,phone,'.$user_id,
                 "telephone" => 'required | min:5 | max:20',
                 "national_number" => 'required | min:5 | max:20 | unique:users,national_number,'.$user_id,
@@ -81,13 +82,13 @@ class PersonnelController extends Controller
         $user->second_name = $request->second_name;
         $user->third_name = $request->third_name;
         $user->fourth_name	 = $request->fourth_name;
+        $user->birthdate	 = $request->birthdate;
         $user->phone = $request->phone;
         $user->telephone = $request->telephone;
         $user->national_number = $request->national_number;
         $user->save_number = $request->save_number;
         $user->release_date = $request->release_date;
         $user->expiry_date = $request->expiry_date;
-        $user->qualifications()->sync($request->highest_qualification);
         $user->highest_qualification = $request->highest_qualification;
         $user->gender_id = $request->gender;
         $user->graduation_country_id = $request->graduation_country;

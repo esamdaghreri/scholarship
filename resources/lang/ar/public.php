@@ -91,4 +91,5 @@
         'type' => 'النوع',
         'extend_scholarship' => 'تمديد البعثة',
         'cancel_scholarship' => 'الغاء البعثة',
+        'birthdate' => 'تاريخ الميلاد',
     ];

@@ -17,7 +17,6 @@ class CreateUniversitiesTable extends Migration
             $table->tinyIncrements('id');
             $table->string('name_ar', 100);
             $table->string('name_en', 100);
-            $table->dateTime('created_at')->useCurrent();
         });
     }
 

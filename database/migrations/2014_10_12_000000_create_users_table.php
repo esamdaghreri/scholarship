@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('second_name', 25)->nullable();
             $table->string('third_name', 25)->nullable();
             $table->string('fourth_name', 25)->nullable();
+            $table->dateTime('birthdate')->nullable();
             $table->unsignedBigInteger('phone')->nullable();
             $table->unsignedBigInteger('telephone')->nullable();
             $table->unsignedBigInteger('national_number')->nullable();

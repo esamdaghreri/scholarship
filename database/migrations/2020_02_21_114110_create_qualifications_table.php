@@ -17,7 +17,6 @@ class CreateQualificationsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name_en', 25);
             $table->string('name_ar', 25);
-            $table->dateTime('created_at')->useCurrent();
         });
     }
 

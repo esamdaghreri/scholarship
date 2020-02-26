@@ -58,6 +58,14 @@
                                 </select>                            
                             </div>
                         </div>
+                        <div class="column">
+                            <div class="label-side">
+                                <label>@lang('public.birthdate')</label>
+                            </div>
+                            <div class="input-side">
+                                <input type="date" name="birthdate" class="input-text @if($errors->has('birthdate'))input-error @endif" value="{{date('Y-m-d', strtotime($user_information->birthdate)) ?? \Illuminate\Support\Facades\Request::old('birthdate')}}">
+                            </div>
+                        </div>
                     </div>
                 </div>
 

@@ -17,7 +17,6 @@ class CreateCountriesTable extends Migration
             $table->tinyIncrements('id');
             $table->string('name_ar', 70);
             $table->string('name_en', 70);
-            $table->dateTime('created_at')->useCurrent();
         });
     }
 
