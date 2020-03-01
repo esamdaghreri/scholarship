@@ -21,18 +21,24 @@ Route::group(['middleware' => 'setlocale'], function() {
 
 // ================ Route has middleware that users must be verifying email ==============
 Route::group(['middleware' => ['setlocale', 'verified', 'auth']], function() {
-    // ================ Route for user personnel information ==============
-    Route::get('/user-panel/personnel/showPersonnel/{personnel}', 'User\PersonnelController@showPersonnelData')->name('personnel.showPersonnelData');
-    Route::match(['PUT', 'PATCH'], '/user-panel/personnel/showPersonnel/{personnel}', 'User\PersonnelController@updatePersonnelData')->name('personnel.updatePersonnelData');
-    Route::get('/user-panel/personnel/showPrivacy/{personnel}', 'User\PersonnelController@showPrivacy')->name('personnel.showPrivacy');
-    Route::match(['PUT', 'PATCH'], '/user-panel/personnel/showPrivacy/{personnel}', 'User\PersonnelController@updatePrivacy')->name('personnel.updatePrivacy');
-    Route::get('/user-panel/personnel/orders/', 'User\PersonnelController@showOrders')->middleware('checkPersonalInformationFill')->name('personnel.showOrders');
-    
 
-    // ================ Route for user registeration of scholarship ==============
-    Route::resource('/scholarship/register', 'User\RegisterScholarshipController')->middleware('checkPersonalInformationFill');
-    // ================ Route for user cancel of scholarship =====================
-    Route::resource('/scholarship/cancel', 'User\CancelScholarshipController')->middleware('checkPersonalInformationFill');
+    // ================ Route for user personnel information ==============
+    Route::group(['prefix' => 'user-panel/personnel/'], function() {
+        Route::get('/showPersonnel', 'User\PersonnelController@showPersonnelData')->name('personnel.showPersonnelData');
+        Route::match(['PUT', 'PATCH'], '/showPersonnel/{personnel}', 'User\PersonnelController@updatePersonnelData')->name('personnel.updatePersonnelData');
+        Route::get('showPrivacy/{personnel}', 'User\PersonnelController@showPrivacy')->name('personnel.showPrivacy');
+        Route::match(['PUT', 'PATCH'], '/user-panel/personnel/showPrivacy/{personnel}', 'User\PersonnelController@updatePrivacy')->name('personnel.updatePrivacy');
+        Route::get('/orders', 'User\PersonnelController@showOrders')->middleware('checkPersonalInformationFill')->name('personnel.showOrders');
+    });
+
+    Route::group(['prefix' => 'scholarship/', 'middleware' => ['checkPersonalInformationFill']], function() {
+        // ================ Route for user registeration of scholarship ==============
+        Route::resource('/register', 'User\RegisterScholarshipController')->only(['show', 'create', 'store', 'update'])->middleware('checkPersonalInformationFill');
+        // ================ Route for user cancel of scholarship =====================
+        Route::get('/cancel/{id}', 'User\CancelScholarshipController@create')->middleware('checkPersonalInformationFill')->name('cancel.create');
+        Route::post('/cancel', 'User\CancelScholarshipController@store')->middleware('checkPersonalInformationFill')->name('cancel.store');
+    });
+
 });
 
 // Change language

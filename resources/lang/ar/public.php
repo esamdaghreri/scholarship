@@ -92,4 +92,7 @@
         'extend_scholarship' => 'تمديد البعثة',
         'cancel_scholarship' => 'الغاء البعثة',
         'birthdate' => 'تاريخ الميلاد',
+        'reason' => 'السبب',
+        'otherـreason' => 'سبب آخر',
+        'optional' => '`اختياري`',
     ];

@@ -84,4 +84,7 @@
         'extend_scholarship' => 'Extend scholarship',
         'cancel_scholarship' => 'Cancel scholarship',
         'birthdate' => 'Birthdate',
+        'reason' => 'Reason',
+        'otherـreason' => 'Other reason',
+        'optional' => 'Optional',
     ];

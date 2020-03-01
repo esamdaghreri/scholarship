@@ -756,6 +756,28 @@ footer {
         }
     }
 }
+
+// cancel scholarship page
+// path: views/users/scholarship/cancel/create
+.form-container.cancel-scholarship {
+    form{      
+        p{
+            color: $primary-color;
+            font-size: 15px;
+            margin-bottom: 30px;
+        }  
+        height: 500px;
+        .label-side{
+            .textarea-position{
+                height: 100px !important;
+            }
+        }
+        button{
+            width: 200px;
+            font-size: 15px;
+        }
+    }
+}
 @media print{
     header,footer,.footer-social-media,.footer-links,.footer-campany-name,.btn{
         display: none;
