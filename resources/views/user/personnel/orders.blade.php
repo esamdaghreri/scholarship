@@ -21,12 +21,14 @@
                             <th>@lang('public.details')</th>
                         </tr>
                         @foreach ($orders as $order)
-                            <tr>
-                                <td>{{$order->id}}</td>
-                                <td>{{App::getlocale() == "en" ? $order->status->name_en : $order->status->name_ar}}</td>
-                                <td>{{App::getlocale() == "en" ? $order->registerationType->name_en : $order->registerationType->name_ar}}</td>
-                                <td><a href="{{route('register.show', $order->id)}}" class="btn btn-primary">@lang('public.details')</a></td>
-                            </tr>
+                            @foreach ($order as $single_type)
+                                <tr>
+                                    <td>{{$single_type->id}}</td>
+                                    <td>{{App::getlocale() == "en" ? $single_type->status->name_en : $single_type->status->name_ar}}</td>
+                                    <td>{{App::getlocale() == "en" ? $single_type->registerationType->name_en : $single_type->registerationType->name_ar}}</td>
+                                    <td><a href="{{route('register.show', $single_type->id)}}" class="btn btn-primary">@lang('public.details')</a></td>
+                                </tr>
+                            @endforeach
                         @endforeach
                         @else
                             <p>@lang('public.you_have_no_order')</p>
