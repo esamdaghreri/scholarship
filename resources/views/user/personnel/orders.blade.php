@@ -25,7 +25,7 @@
                                 <td>{{$order->id}}</td>
                                 <td>{{App::getlocale() == "en" ? $order->status->name_en : $order->status->name_ar}}</td>
                                 <td>{{App::getlocale() == "en" ? $order->registerationType->name_en : $order->registerationType->name_ar}}</td>
-                                <td><a href="{{route('scholarship.show', $order->id)}}" class="btn btn-primary">@lang('public.details')</a></td>
+                                <td><a href="{{route('register.show', $order->id)}}" class="btn btn-primary">@lang('public.details')</a></td>
                             </tr>
                         @endforeach
                         @else

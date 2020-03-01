@@ -6,7 +6,7 @@
             <a href="{{route('user.home')}}" class="btn btn-primary">@lang('public.back')</a>
         </div>
         <div class="title-with-field flex flex-column">
-            <form action="{{route('personnel.update', Auth::id())}}" method="POST">
+            <form action="{{route('personnel.showPersonnelData', Auth::id())}}" method="POST">
                 @csrf
                 <input type="hidden" name="_method" value="PUT">
                 <div class="fields-section">

@@ -19,14 +19,7 @@ use App\Model\User\RegisterationType;
 
 class RegisterScholarshipController extends Controller
 {
-    public function index()
-    {
-        $orders = RegisterScholarship::where('user_id', Auth::id())->with(['status', 'registerationType'])->get();
-        $status_object = new Status;
-        $statuses = $status_object->getStatuses(App::getlocale());
-        return view('user.scholarship.register.index', ['orders' => $orders]);
-    }
-
+    
     public function show($id)
     {
         $order = RegisterScholarship::where('id', $id)->where('user_id', Auth::id())->with(['user', 'country', 'university', 'college', 'qualification', 'specialist', 'status', 'registerationType'])->firstorfail();

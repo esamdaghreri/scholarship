@@ -13,6 +13,8 @@ use App\Model\User\Country;
 use App\Model\User\University;
 use App\Model\User\College;
 use App\Model\User\Qualification;
+use App\Model\User\RegisterScholarship;
+use App\Model\User\Status;
 
 class PersonnelController extends Controller
 {
@@ -23,7 +25,7 @@ class PersonnelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function showPersonnelData($id)
     {
         $user_id = Auth::id();
         $country_object = new Country;
@@ -36,7 +38,7 @@ class PersonnelController extends Controller
         $colleges = $college_object->getColleges(App::getlocale());
         $qualifications = $qualification_object->getQualifications(App::getlocale());
 
-        return view('user.personnel.index', ['user_information' => $user_information, 'countries' => $countries, 'universities' => $universities, 'colleges' => $colleges, 'qualifications' => $qualifications]);
+        return view('user.personnel.personnel_data', ['user_information' => $user_information, 'countries' => $countries, 'universities' => $universities, 'colleges' => $colleges, 'qualifications' => $qualifications]);
     }
 
     /**
@@ -46,7 +48,7 @@ class PersonnelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updatePersonnelData(Request $request, $id)
     {
         $user_id = Auth::id();
         $validator = Validator::make(
@@ -141,5 +143,13 @@ class PersonnelController extends Controller
         $user->updated_at = now();
         $user->save();
         return redirect()->back()->with('success', trans('public.updated_successfully'));
+    }
+
+    public function showOrders()
+    {
+        $orders = RegisterScholarship::where('user_id', Auth::id())->with(['status', 'registerationType'])->get();
+        $status_object = new Status;
+        $statuses = $status_object->getStatuses(App::getlocale());
+        return view('user.personnel.orders', ['orders' => $orders]);
     }
 }
