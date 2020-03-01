@@ -8,14 +8,14 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\User\CancelScholarship;
 use App\Model\User\RegisterScholarship;
-use App\Model\User\ScholarshipReasons;
+use App\Model\User\ScholarshipReason;
 
 class CancelScholarshipController extends Controller
 {
     public function create($id)
     {
         $register_id = RegisterScholarship::select('id')->where('id', $id)->where('user_id', Auth::id())->firstorfail();
-        $scholarship_reasons = ScholarshipReasons::getCancelScholarshipReasons();
+        $scholarship_reasons = ScholarshipReason::getCancelScholarshipReasons();
         return view('user.scholarship.cancel.create', ['register_id' => $register_id, 'scholarship_reasons' => $scholarship_reasons]);
     }
 
@@ -40,7 +40,8 @@ class CancelScholarshipController extends Controller
 
         $cancel_scholarship = new CancelScholarship();
 
-        $cancel_scholarship->reason = $request->reason;
+        $cancel_scholarship->user_id = Auth::id();
+        $cancel_scholarship->reason_id = $request->reason;
         $cancel_scholarship->other_reason = $request->other_reason;
         $cancel_scholarship->register_scholarship_id = $request->register_id;
         $cancel_scholarship->status_id = 3;

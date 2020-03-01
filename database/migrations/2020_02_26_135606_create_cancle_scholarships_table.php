@@ -15,7 +15,8 @@ class CreateCancleScholarshipsTable extends Migration
     {
         Schema::create('cancle_scholarships', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('reason', 150);
+            $table->unsignedBigInteger('user_id');
+            $table->string('reason_id', 150);
             $table->string('other_reason', 200)->nullable();
             $table->unsignedSmallInteger('register_scholarship_id');
             $table->unsignedSmallInteger('status_id')->default(3);
