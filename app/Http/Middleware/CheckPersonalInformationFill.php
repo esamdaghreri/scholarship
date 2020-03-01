@@ -17,7 +17,7 @@ class CheckPersonalInformationFill
     public function handle($request, Closure $next)
     {
         if(User::areFieldEmpty()){
-            return redirect()->route('personnel.show', Auth::user()->id);
+            return redirect()->route('personnel.showPersonnelData', Auth::user()->id);
         }
         return $next($request);
     }

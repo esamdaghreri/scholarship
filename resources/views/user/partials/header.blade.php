@@ -13,7 +13,7 @@
                                 </a>
                                 <div class="dropdown">
                                     <ul>
-                                        <li><a href="{{route('personnel.showPersonnelData', Auth::id())}}"><i class="fas fa-user"></i>@lang('public.profile')</a></li>
+                                        <li><a href="{{route('personnel.showPersonnelData')}}"><i class="fas fa-user"></i>@lang('public.profile')</a></li>
                                         <li><a href="{{route('personnel.showPrivacy', Auth::id())}}"><i class="fas fa-key"></i>@lang('public.privacy')</a></li>
                                         <li><a href="{{route('personnel.showOrders')}}"><i class="fas fa-briefcase"></i>@lang('public.orders')</a></li>
                                         <li onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><a href="#"><i class="fas fa-sign-out-alt"></i>@lang('public.logout')</a></li>

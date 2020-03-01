@@ -25,7 +25,7 @@ class PersonnelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function showPersonnelData($id)
+    public function showPersonnelData()
     {
         $user_id = Auth::id();
         $country_object = new Country;

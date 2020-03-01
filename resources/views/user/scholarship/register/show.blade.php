@@ -56,7 +56,7 @@
         </div>
         <div class="cancel-extends-buttons flex">
             <a href="#" class="btn btn-primary">@lang('public.extend_scholarship')</a>
-            <a href="#" class="btn btn-cancel">@lang('public.cancel_scholarship')</a>
+            <a href="{{route('cancel.create', $order->id)}}" class="btn btn-cancel">@lang('public.cancel_scholarship')</a>
         </div>
     </div>
 @endsection
