@@ -38,8 +38,9 @@ class CancelScholarshipController extends Controller
         if ($validator->fails())
             return redirect()->back()->withErrors($validator)->withInput();
 
-            $register_scholarship_count = CancelScholarship::where('register_scholarship_id', $request->register_id)->where('user_id', Auth::id())->where('status_id', 3)->count();
-            if($register_scholarship_count == 0)
+        $cancel_scholarship_on_progress_count = CancelScholarship::where('register_scholarship_id', $request->register_id)->where('user_id', Auth::id())->where('status_id', 3)->count();
+        $cancel_scholarship_success_count = CancelScholarship::where('register_scholarship_id', $request->register_id)->where('user_id', Auth::id())->where('status_id', 1)->count();
+        if($cancel_scholarship_on_progress_count == 0 && $cancel_scholarship_success_count == 0)
         {
             $cancel_scholarship = new CancelScholarship();
             $cancel_scholarship->user_id = Auth::id();

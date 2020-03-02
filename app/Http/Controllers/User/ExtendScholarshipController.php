@@ -40,8 +40,9 @@ class ExtendScholarshipController extends Controller
         if ($validator->fails())
             return redirect()->back()->withErrors($validator)->withInput();
 
-            $extend_scholarship_count = ExtendScholarship::where('register_scholarship_id', $request->register_id)->where('user_id', Auth::id())->where('status_id', 3)->count();
-            if($extend_scholarship_count < 2)
+        $extend_scholarship_on_progress_count = ExtendScholarship::where('register_scholarship_id', $request->register_id)->where('user_id', Auth::id())->where('status_id', 3)->count();
+        $extend_scholarship_success_count = ExtendScholarship::where('register_scholarship_id', $request->register_id)->where('user_id', Auth::id())->where('status_id', 1)->count();
+        if($extend_scholarship_on_progress_count == 0 && $extend_scholarship_success_count < 2)
         {
             $extend_scholarship = new ExtendScholarship();
             $extend_scholarship->user_id = Auth::id();
@@ -57,7 +58,7 @@ class ExtendScholarshipController extends Controller
             return redirect()->route('personnel.showOrders')->with('success', trans('public.successfullyـregistered'));
         }
         else{
-            return redirect()->back()->with('danger', trans('public.you_are_already_order_for_extend_it'));
+            return redirect()->back()->with('danger', trans('public.you_are_already_order_for_extend_it_or_number_of_extend_'));
         }
     }
 
