@@ -32,12 +32,19 @@ Route::group(['middleware' => ['setlocale', 'verified', 'auth']], function() {
     });
 
     Route::group(['prefix' => 'scholarship/', 'middleware' => ['checkPersonalInformationFill']], function() {
+
         // ================ Route for user registeration of scholarship ==============
         Route::resource('/register', 'User\RegisterScholarshipController')->only(['show', 'create', 'store', 'update'])->middleware('checkPersonalInformationFill');
+
         // ================ Route for user cancel of scholarship =====================
         Route::get('/cancel/{id}', 'User\CancelScholarshipController@create')->middleware('checkPersonalInformationFill')->name('cancel.create');
         Route::post('/cancel', 'User\CancelScholarshipController@store')->middleware('checkPersonalInformationFill')->name('cancel.store');
         Route::get('/cancel/show/{id}', 'User\CancelScholarshipController@show')->middleware('checkPersonalInformationFill')->name('cancel.show');
+
+        // ================ Route for user cancel of scholarship =====================
+        Route::get('/extend/{id}', 'User\ExtendScholarshipController@create')->middleware('checkPersonalInformationFill')->name('extend.create');
+        Route::post('/extend', 'User\ExtendScholarshipController@store')->middleware('checkPersonalInformationFill')->name('extend.store');
+        Route::get('/extend/show/{id}', 'User\ExtendScholarshipController@show')->middleware('checkPersonalInformationFill')->name('extend.show');
     });
 
 });

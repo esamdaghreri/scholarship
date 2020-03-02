@@ -24,6 +24,8 @@
         'second_step_explanation' => 'ادخل جميع البيانات المطلوبة',
         'third_step' => 'أنتظر',
         'third_step_explanation' => 'انتظر قبولك',
+        'first_time' => 'المرة الاولى',
+        'second_time' => 'المرة الثانية',
         'email' => 'البريد الالكتروني',
         'notes' => 'ملاحظات إضافية',
         'panel' => 'لوحة التحكم',
@@ -98,5 +100,8 @@
         'there_is_no_other_reason' => 'لا يوجد سبب اخر',
         'information_about_the_scholarship' => 'معلومات عن البعثة',
         'information_about_cancel_scholarship' => 'معلومات عن الغاء البعثة',
+        'information_about_extend_scholarship' => 'معلومات عن تمديد البعثة',
         'you_are_already_order_for_cancel_it' => 'أنت بالفعل طلب لإلغاء ذلك',
+        'you_are_already_order_for_extend_it' => 'أنت بالفعل طلب لإلغاء ذلك',
+        'number_of_times_for_extend' => 'عدد مرات التمديد',
     ];

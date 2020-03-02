@@ -17,15 +17,20 @@ use App\Model\User\Specialist;
 use App\Model\User\Status;
 use App\Model\User\RegisterationType;
 use App\Model\User\CancelScholarship;
+use App\Model\User\ExtendScholarship;
 
 class RegisterScholarshipController extends Controller
 {
     
     public function show($id)
     {
-        $register_scholarship_count = CancelScholarship::where('register_scholarship_id', $id)->where('user_id', Auth::id())->where('status_id', 3)->count();
+        //TODO:Important to improve this queries.
+        $cancel_scholarship_on_progress_count = CancelScholarship::where('register_scholarship_id', $id)->where('user_id', Auth::id())->where('status_id', 3)->count();
+        $cancel_scholarship_success_count = CancelScholarship::where('register_scholarship_id', $id)->where('user_id', Auth::id())->where('status_id', 1)->count();
+        $extend_scholarship_on_progress_count = ExtendScholarship::where('register_scholarship_id', $id)->where('user_id', Auth::id())->where('status_id', 3)->count();
+        $extend_scholarship_success_count = ExtendScholarship::where('register_scholarship_id', $id)->where('user_id', Auth::id())->where('status_id', 1)->count();
         $order = RegisterScholarship::where('id', $id)->where('user_id', Auth::id())->with(['user', 'country', 'university', 'college', 'qualification', 'specialist', 'status', 'registerationType'])->firstorfail();
-        return view('user.scholarship.register.show', ['order' => $order, 'register_scholarship_count' => $register_scholarship_count]);
+        return view('user.scholarship.register.show', ['order' => $order, 'cancel_scholarship_on_progress_count' => $cancel_scholarship_on_progress_count, 'cancel_scholarship_success_count' => $cancel_scholarship_success_count, 'extend_scholarship_on_progress_count' => $extend_scholarship_on_progress_count, 'extend_scholarship_success_count' => $extend_scholarship_success_count]);
     }
 
     public function create()

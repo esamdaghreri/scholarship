@@ -15,6 +15,7 @@ use App\Model\User\College;
 use App\Model\User\Qualification;
 use App\Model\User\RegisterScholarship;
 use App\Model\User\CancelScholarship;
+use App\Model\User\ExtendScholarship;
 use App\Model\User\Status;
 
 class PersonnelController extends Controller
@@ -150,7 +151,8 @@ class PersonnelController extends Controller
     {
         $registers = RegisterScholarship::where('user_id', Auth::id())->with(['status', 'registerationType'])->orderBy('created_at', 'desc')->get();
         $cancels = CancelScholarship::where('user_id', Auth::id())->with(['scholarshipReason', 'registerScholarship', 'status', 'registerationType'])->orderBy('created_at', 'desc')->get();
-        $orders = [$cancels, $registers];
+        $extends = ExtendScholarship::where('user_id', Auth::id())->with(['scholarshipReason', 'registerScholarship', 'status', 'registerationType'])->orderBy('created_at', 'desc')->get();
+        $orders = [$extends, $cancels, $registers];
         return view('user.personnel.orders', ['orders' => $orders]);
     }
 }

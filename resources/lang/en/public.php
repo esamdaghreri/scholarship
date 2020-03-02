@@ -15,6 +15,8 @@
         'second_step_explanation' => 'Fill all information need',
         'third_step' => 'waiting',
         'third_step_explanation' => 'Waiting for your accept',
+        'first_time' => 'First time',
+        'second_time' => 'Second time',
         'email' => 'E-mail',
         'notes' => 'notes',
         'offer' => 'offer',
@@ -90,5 +92,8 @@
         'there_is_no_other_reason' => 'There is no other reason',
         'information_about_the_scholarship' => 'Information about the scholarship',
         'information_about_cancel_scholarship' => 'Information about cancel scholarship',
+        'information_about_extend_scholarship' => 'Information about extend scholarship',
         'you_are_already_order_for_cancel_it' => 'You are already order for cancel it',
+        'you_are_already_order_for_extend_it' => 'You are already order for extend it',
+        'number_of_times_for_extend' => 'Number of times for extend',
     ];

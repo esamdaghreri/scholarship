@@ -12,7 +12,7 @@
                     <hr class="bar">
                 </div>
                 <div class="table flex flex-column">
-                    @if(count($orders[0]) > 0 || count($orders[1]) > 0)
+                    @if(count($orders[0]) > 0 || count($orders[1]) > 0 || count($orders[2]) > 0)
                     <table>
                         <tr class="first-row">
                             <th>#@lang('public.order_number')</th>
@@ -28,6 +28,8 @@
                                     <td>{{App::getlocale() == "en" ? $single_type->registerationType->name_en : $single_type->registerationType->name_ar}}</td>
                                     @if($single_type->registeration_type_id == 1)
                                         <td><a href="{{route('register.show', $single_type->id)}}" class="btn btn-primary">@lang('public.details')</a></td>
+                                    @elseif($single_type->registeration_type_id == 2)
+                                        <td><a href="{{route('extend.show', $single_type->id)}}" class="btn btn-primary">@lang('public.details')</a></td>
                                     @elseif($single_type->registeration_type_id == 3)
                                         <td><a href="{{route('cancel.show', $single_type->id)}}" class="btn btn-primary">@lang('public.details')</a></td>
                                     @endif

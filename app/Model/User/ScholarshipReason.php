@@ -12,4 +12,9 @@ class ScholarshipReason extends Model
     public static function getCancelScholarshipReasons(){
         return ScholarshipReason::where('cancel', 1)->get();
     }
+
+    // Get scholarship reasons of cancel.
+    public static function getExtendScholarshipReasons(){
+        return ScholarshipReason::where('extend', 1)->get();
+    }
 }
