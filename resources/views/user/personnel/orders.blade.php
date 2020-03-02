@@ -12,7 +12,7 @@
                     <hr class="bar">
                 </div>
                 <div class="table flex flex-column">
-                    @if(count($orders) > 0)
+                    @if(count($orders[0]) > 0 || count($orders[1]) > 0)
                     <table>
                         <tr class="first-row">
                             <th>#@lang('public.order_number')</th>
