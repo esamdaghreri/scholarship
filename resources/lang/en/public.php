@@ -19,7 +19,7 @@
         'notes' => 'notes',
         'offer' => 'offer',
         'panel' => 'control panel',
-        'personnel_data' => 'personnel_data',
+        'personnel_data' => 'personnel data',
         'name' => 'Name',
         'your_name' => 'Your Name',
         'username' => 'Username',
@@ -87,4 +87,8 @@
         'reason' => 'Reason',
         'otherـreason' => 'Other reason',
         'optional' => 'Optional',
+        'there_is_no_other_reason' => 'There is no other reason',
+        'information_about_the_scholarship' => 'Information about the scholarship',
+        'information_about_cancel_scholarship' => 'Information about cancel scholarship',
+        'you_are_already_order_for_cancel_it' => 'You are already order for cancel it',
     ];

@@ -37,6 +37,7 @@ Route::group(['middleware' => ['setlocale', 'verified', 'auth']], function() {
         // ================ Route for user cancel of scholarship =====================
         Route::get('/cancel/{id}', 'User\CancelScholarshipController@create')->middleware('checkPersonalInformationFill')->name('cancel.create');
         Route::post('/cancel', 'User\CancelScholarshipController@store')->middleware('checkPersonalInformationFill')->name('cancel.store');
+        Route::get('/cancel/show/{id}', 'User\CancelScholarshipController@show')->middleware('checkPersonalInformationFill')->name('cancel.show');
     });
 
 });

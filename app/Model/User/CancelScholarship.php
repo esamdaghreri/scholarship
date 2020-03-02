@@ -7,7 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class CancelScholarship extends Model
 {
     protected $table = "cancle_scholarships";
-    
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
     public function registerScholarship()
     {
         return $this->belongsTo('App\Model\User\RegisterScholarship');

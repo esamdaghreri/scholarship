@@ -26,7 +26,11 @@
                                     <td>{{$single_type->id}}</td>
                                     <td>{{App::getlocale() == "en" ? $single_type->status->name_en : $single_type->status->name_ar}}</td>
                                     <td>{{App::getlocale() == "en" ? $single_type->registerationType->name_en : $single_type->registerationType->name_ar}}</td>
-                                    <td><a href="{{route('register.show', $single_type->id)}}" class="btn btn-primary">@lang('public.details')</a></td>
+                                    @if($single_type->registeration_type_id == 1)
+                                        <td><a href="{{route('register.show', $single_type->id)}}" class="btn btn-primary">@lang('public.details')</a></td>
+                                    @elseif($single_type->registeration_type_id == 3)
+                                        <td><a href="{{route('cancel.show', $single_type->id)}}" class="btn btn-primary">@lang('public.details')</a></td>
+                                    @endif
                                 </tr>
                             @endforeach
                         @endforeach

@@ -94,5 +94,9 @@
         'birthdate' => 'تاريخ الميلاد',
         'reason' => 'السبب',
         'otherـreason' => 'سبب آخر',
-        'optional' => '`اختياري`',
+        'optional' => 'اختياري',
+        'there_is_no_other_reason' => 'لا يوجد سبب اخر',
+        'information_about_the_scholarship' => 'معلومات عن البعثة',
+        'information_about_cancel_scholarship' => 'معلومات عن الغاء البعثة',
+        'you_are_already_order_for_cancel_it' => 'أنت بالفعل طلب لإلغاء ذلك',
     ];

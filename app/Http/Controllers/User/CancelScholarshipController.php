@@ -38,17 +38,29 @@ class CancelScholarshipController extends Controller
         if ($validator->fails())
             return redirect()->back()->withErrors($validator)->withInput();
 
-        $cancel_scholarship = new CancelScholarship();
+            $register_scholarship_count = CancelScholarship::where('register_scholarship_id', $request->register_id)->where('user_id', Auth::id())->where('status_id', 3)->count();
+            if($register_scholarship_count == 0)
+        {
+            $cancel_scholarship = new CancelScholarship();
+            $cancel_scholarship->user_id = Auth::id();
+            $cancel_scholarship->scholarship_reason_id = $request->reason;
+            $cancel_scholarship->other_reason = $request->other_reason;
+            $cancel_scholarship->register_scholarship_id = $request->register_id;
+            $cancel_scholarship->status_id = 3;
+            $cancel_scholarship->registeration_type_id = 3;
+            $cancel_scholarship->created_by = Auth::id();
+            $cancel_scholarship->created_at = now();
+            $cancel_scholarship->save();
+            return redirect()->route('personnel.showOrders')->with('success', trans('public.successfullyـregistered'));
+        }
+        else{
+            return redirect()->back()->with('danger', trans('public.you_are_already_order_for_cancel_it'));
+        }
+    }
 
-        $cancel_scholarship->user_id = Auth::id();
-        $cancel_scholarship->reason_id = $request->reason;
-        $cancel_scholarship->other_reason = $request->other_reason;
-        $cancel_scholarship->register_scholarship_id = $request->register_id;
-        $cancel_scholarship->status_id = 3;
-        $cancel_scholarship->registeration_type_id = 3;
-        $cancel_scholarship->created_by = Auth::id();
-        $cancel_scholarship->created_at = now();
-        $cancel_scholarship->save();
-        return redirect()->route('personnel.showOrders')->with('success', trans('public.successfullyـregistered'));
+    public function show($id)
+    {
+        $order = CancelScholarship::where('id', $id)->where('user_id', Auth::id())->with(['user', 'registerScholarship', 'scholarshipReason'])->firstorfail();
+        return view('user.scholarship.cancel.show', ['order' => $order]);
     }
 }

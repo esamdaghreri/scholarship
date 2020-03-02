@@ -16,14 +16,16 @@ use App\Model\User\Qualification;
 use App\Model\User\Specialist;
 use App\Model\User\Status;
 use App\Model\User\RegisterationType;
+use App\Model\User\CancelScholarship;
 
 class RegisterScholarshipController extends Controller
 {
     
     public function show($id)
     {
+        $register_scholarship_count = CancelScholarship::where('register_scholarship_id', $id)->where('user_id', Auth::id())->where('status_id', 3)->count();
         $order = RegisterScholarship::where('id', $id)->where('user_id', Auth::id())->with(['user', 'country', 'university', 'college', 'qualification', 'specialist', 'status', 'registerationType'])->firstorfail();
-        return view('user.scholarship.register.show', ['order' => $order]);
+        return view('user.scholarship.register.show', ['order' => $order, 'register_scholarship_count' => $register_scholarship_count]);
     }
 
     public function create()
