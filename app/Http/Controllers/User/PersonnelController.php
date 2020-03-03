@@ -47,11 +47,11 @@ class PersonnelController extends Controller
         $jobDescription_object = new JobDescription;
 
         $user_information = User::where('id', $user_id)->firstOrFail();
-        $countries = $country_object->getCountries(App::getlocale());
-        $universities = $university_object->getUniversities(App::getlocale());
-        $colleges = $college_object->getColleges(App::getlocale());
-        $qualifications = $qualification_object->getQualifications(App::getlocale());
-        $nationalities = $nationality_object->getNationalities(App::getlocale());
+        $countries = $country_object->getCountries();
+        $universities = $university_object->getUniversities();
+        $colleges = $college_object->getColleges();
+        $qualifications = $qualification_object->getQualifications();
+        $nationalities = $nationality_object->getNationalities();
         $departments = $department_object->getDepartments();
         $fellowships = $fellowship_object->getFellowships();
         $generalSpecializations = $generalSpecialization_object->getGeneralSpecializations();
