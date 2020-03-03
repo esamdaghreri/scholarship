@@ -163,7 +163,7 @@
 
                 <div class="fields-section">
                     <div class="header-title">
-                        <p>@lang('public.college_information')</p>
+                        <p>@lang('public.academicـinformation')</p>
                         <hr class="bar">
                     </div>
                     <div class="fields flex flex-row">
@@ -174,7 +174,7 @@
                             <div class="input-side">
                                 <select name="highest_qualification" class="input-text @if($errors->has('highest_qualification'))input-error @endif" required>
                                     @foreach ($qualifications as $qualification)
-                                        <option value="{{$qualification->id}}" {{$qualification->id == $user_information->highest_qualification ? "selected" : null}}>{{App::getlocale() == "en" ? $qualification->name_en : $qualification->name_ar}}</option>
+                                        <option value="{{$qualification->id}}" {{$qualification->id == $user_information->highest_qualification_id ? "selected" : null}}>{{App::getlocale() == "en" ? $qualification->name_en : $qualification->name_ar}}</option>
                                     @endforeach
                                 </select>                               
                             </div>
@@ -218,6 +218,68 @@
                                 <select name="graduation_college" class="input-text @if($errors->has('graduation_college'))input-error @endif" required>
                                     @foreach ($colleges as $college)
                                         <option value="{{$college->id}}" {{$college->id == $user_information->graduation_college_id	 ? "selected" : null}}>{{App::getlocale() == "en" ? $college->name_en : $college->name_ar}}</option>
+                                    @endforeach
+                                </select>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fields-section">
+                    <div class="header-title">
+                    </div>
+                    <div class="fields flex flex-row">
+                        <div class="column">
+                            <div class="label-side">
+                                <label>@lang('public.department')</label>
+                            </div>
+                            <div class="input-side">
+                                <select name="department" class="input-text @if($errors->has('department'))input-error @endif" required>
+                                    @foreach ($departments as $department)
+                                        <option value="{{$department->id}}" {{$department->id == $user_information->department_id ? "selected" : null}}>{{App::getlocale() == "en" ? $department->name_en : $department->name_ar}}</option>
+                                    @endforeach
+                                </select>                             
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="label-side">
+                                <label>@lang('public.jobـdescription')</label>
+                            </div>
+                            <div class="input-side">
+                                <select name="jobـdescription" class="input-text @if($errors->has('jobـdescription'))input-error @endif" required>
+                                    @foreach ($jobDescriptions as $job_description)
+                                        <option value="{{$job_description->id}}" {{$job_description->id == $user_information->job_description_id ? "selected" : null}}>{{App::getlocale() == "en" ? $job_description->name_en : $job_description->name_ar}}</option>
+                                    @endforeach
+                                </select>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fields-section">
+                    <div class="header-title">
+                    </div>
+                    <div class="fields flex flex-row">
+                        <div class="column">
+                            <div class="label-side">
+                                <label>@lang('public.generalـspecialization')</label>
+                            </div>
+                            <div class="input-side">
+                                <select name="generalـspecialization" class="input-text @if($errors->has('generalـspecialization'))input-error @endif" required>
+                                    @foreach ($generalSpecializations as $generalSpecialization)
+                                        <option value="{{$generalSpecialization->id}}" {{$generalSpecialization->id == $user_information->general_specialization_id ? "selected" : null}}>{{App::getlocale() == "en" ? $generalSpecialization->name_en : $generalSpecialization->name_ar}}</option>
+                                    @endforeach
+                                </select>                             
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="label-side">
+                                <label>@lang('public.fellowship')</label>
+                            </div>
+                            <div class="input-side">
+                                <select name="fellowship" class="input-text @if($errors->has('fellowship'))input-error @endif" required>
+                                    @foreach ($fellowships as $fellowship)
+                                        <option value="{{$fellowship->id}}" {{$fellowship->id == $user_information->fellowship->id	 ? "selected" : null}}>{{App::getlocale() == "en" ? $fellowship->name_en : $fellowship->name_ar}}</option>
                                     @endforeach
                                 </select>  
                             </div>

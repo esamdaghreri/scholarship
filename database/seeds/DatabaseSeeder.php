@@ -13,7 +13,6 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(CollegesTableSeeder::class);
         $this->call(RolesTableSeeder::class);
-        $this->call(SpecialistsTableSeeder::class);
         $this->call(StatusesTableSeeder::class);
         $this->call(UniversitiesTableSeeder::class);
         $this->call(GendersTableSeeder::class);
@@ -21,5 +20,9 @@ class DatabaseSeeder extends Seeder
         $this->call(RegisterationTypeTableSeeder::class);
         $this->call(ScholarshipReasonsSeeder::class);
         $this->call(NationalitiesTableSeeder::class);
+        $this->call(DepartmentsTableSeeder::class);
+        $this->call(FellowshipsTableSeeder::class);
+        $this->call(GeneralSpecializationsTableSeeder::class);
+        $this->call(JobDescriptionsTableSeeder::class);
     }
 }

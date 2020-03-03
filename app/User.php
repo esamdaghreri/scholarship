@@ -86,9 +86,29 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsTo('App\Model\User\College');
     }
 
-    public function Nationality()
+    public function nationality()
     {
         return $this->belongsTo('App\Model\User\Nationality');
+    }
+
+    public function department()
+    {
+        return $this->belongsTo('App\Model\User\Department');
+    }
+
+    public function fellowship()
+    {
+        return $this->belongsTo('App\Model\User\Fellowship');
+    }
+
+    public function generalSpecialization()
+    {
+        return $this->belongsTo('App\Model\User\GeneralSpecialization');
+    }
+
+    public function jobDescription()
+    {
+        return $this->belongsTo('App\Model\User\JobDescription');
     }
 
     public function orderScholarships()
@@ -97,7 +117,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
     public static function areFieldEmpty(){
         $user = User::where('id', Auth::id())->firstOrFail();
-        if(is_null($user->first_name) || is_null($user->second_name) || is_null($user->third_name) || is_null($user->fourth_name) || is_null($user->phone) || is_null($user->telephone) || is_null($user->national_number) || is_null($user->save_number) || is_null($user->release_date) || is_null($user->expiry_date) || is_null($user->highest_qualification) || is_null($user->gender_id) || is_null($user->graduation_country_id) || is_null($user->graduation_university_id) || is_null($user->graduation_college_id))
+        if(is_null($user->first_name) || is_null($user->second_name) || is_null($user->third_name) || is_null($user->fourth_name) || is_null($user->birthdate) || is_null($user->phone) || is_null($user->telephone) || is_null($user->national_number) || is_null($user->employee_number) || is_null($user->date_of_joining_the_university) || is_null($user->release_date) || is_null($user->expiry_date) || is_null($user->highest_qualification) || is_null($user->gender_id) || is_null($user->nationality_id)|| is_null($user->highest_qualification_id) || is_null($user->graduation_country_id) || is_null($user->graduation_university_id) || is_null($user->graduation_college_id))
         {
             return true;
         }

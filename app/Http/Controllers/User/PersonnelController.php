@@ -18,6 +18,11 @@ use App\Model\User\CancelScholarship;
 use App\Model\User\ExtendScholarship;
 use App\Model\User\Status;
 use App\Model\User\Nationality;
+use App\Model\User\Department;
+use App\Model\User\Fellowship;
+use App\Model\User\GeneralSpecialization;
+use App\Model\User\JobDescription;
+
 
 class PersonnelController extends Controller
 {
@@ -36,14 +41,37 @@ class PersonnelController extends Controller
         $college_object = new College;
         $qualification_object = new Qualification;
         $nationality_object = new Nationality;
+        $department_object = new Department;
+        $fellowship_object = new Fellowship;
+        $generalSpecialization_object = new GeneralSpecialization;
+        $jobDescription_object = new JobDescription;
+
         $user_information = User::where('id', $user_id)->firstOrFail();
         $countries = $country_object->getCountries(App::getlocale());
         $universities = $university_object->getUniversities(App::getlocale());
         $colleges = $college_object->getColleges(App::getlocale());
         $qualifications = $qualification_object->getQualifications(App::getlocale());
         $nationalities = $nationality_object->getNationalities(App::getlocale());
+        $departments = $department_object->getDepartments();
+        $fellowships = $fellowship_object->getFellowships();
+        $generalSpecializations = $generalSpecialization_object->getGeneralSpecializations();
+        $jobDescriptions = $jobDescription_object->getJobDescriptions();
 
-        return view('user.personnel.personnel_data', ['user_information' => $user_information, 'countries' => $countries, 'universities' => $universities, 'colleges' => $colleges, 'qualifications' => $qualifications, 'nationalities' => $nationalities]);
+        
+
+
+        return view('user.personnel.personnel_data', [
+            'user_information' => $user_information,
+            'countries' => $countries,
+            'universities' => $universities,
+            'colleges' => $colleges,
+            'qualifications' => $qualifications,
+            'nationalities' => $nationalities,
+            'departments' => $departments,
+            'fellowships' => $fellowships,
+            'generalSpecializations' => $generalSpecializations,
+            'jobDescriptions' => $jobDescriptions,
+            ]);
     }
 
     /**
@@ -74,6 +102,11 @@ class PersonnelController extends Controller
                 "graduation_country" => 'required | exists:countries,id',
                 "graduation_university" => 'required | exists:universities,id',
                 "graduation_college" => 'required | exists:colleges,id',
+                "department" => 'required | exists:departments,id',
+                "jobـdescription" => 'required | exists:job_descriptions,id',
+                "generalـspecialization" => 'required | exists:general_specializations,id',
+                "fellowship" => 'required | exists:fellowships,id',
+
             ]
         );
 
@@ -96,11 +129,15 @@ class PersonnelController extends Controller
         $user->nationality_id = $request->nationality;
         $user->employee_number = $request->employee_number;
         $user->date_of_joining_the_university = $request->date_of_joining_the_university;
-        $user->highest_qualification = $request->highest_qualification;
+        $user->highest_qualification_id = $request->highest_qualification;
         $user->gender_id = $request->gender;
         $user->graduation_country_id = $request->graduation_country;
         $user->graduation_university_id = $request->graduation_university;
         $user->graduation_college_id = $request->graduation_college;
+        $user->department_id = $request->department;
+        $user->job_description_id = $request->jobـdescription;
+        $user->general_specialization_id = $request->generalـspecialization;
+        $user->fellowship_id = $request->fellowship;
         $user->updated_by = $user_id;
         $user->updated_at = now();
         $user->save();
