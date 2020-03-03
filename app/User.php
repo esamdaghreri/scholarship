@@ -85,6 +85,12 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsTo('App\Model\User\College');
     }
+
+    public function Nationality()
+    {
+        return $this->belongsTo('App\Model\User\Nationality');
+    }
+
     public function orderScholarships()
     {
         return $this->hasMany('App\Model\User\OrderScholarship');

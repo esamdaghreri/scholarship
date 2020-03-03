@@ -17,6 +17,7 @@ use App\Model\User\RegisterScholarship;
 use App\Model\User\CancelScholarship;
 use App\Model\User\ExtendScholarship;
 use App\Model\User\Status;
+use App\Model\User\Nationality;
 
 class PersonnelController extends Controller
 {
@@ -34,13 +35,15 @@ class PersonnelController extends Controller
         $university_object = new University;
         $college_object = new College;
         $qualification_object = new Qualification;
+        $nationality_object = new Nationality;
         $user_information = User::where('id', $user_id)->firstOrFail();
         $countries = $country_object->getCountries(App::getlocale());
         $universities = $university_object->getUniversities(App::getlocale());
         $colleges = $college_object->getColleges(App::getlocale());
         $qualifications = $qualification_object->getQualifications(App::getlocale());
+        $nationalities = $nationality_object->getNationalities(App::getlocale());
 
-        return view('user.personnel.personnel_data', ['user_information' => $user_information, 'countries' => $countries, 'universities' => $universities, 'colleges' => $colleges, 'qualifications' => $qualifications]);
+        return view('user.personnel.personnel_data', ['user_information' => $user_information, 'countries' => $countries, 'universities' => $universities, 'colleges' => $colleges, 'qualifications' => $qualifications, 'nationalities' => $nationalities]);
     }
 
     /**
@@ -63,9 +66,9 @@ class PersonnelController extends Controller
                 "phone" => 'required | min:5 | max:20 | unique:users,phone,'.$user_id,
                 "telephone" => 'required | min:5 | max:20',
                 "national_number" => 'required | min:5 | max:20 | unique:users,national_number,'.$user_id,
-                "save_number" => 'required | min:3 | max:20',
-                "release_date" => 'required | date',
-                "expiry_date" => 'required | date',
+                "nationality" => 'required | exists:nationalities,id',
+                "employee_number" => "required | min:2 | max:25",
+                "date_of_joining_the_university" => "required | date",
                 "highest_qualification" => 'required | exists:qualifications,id',
                 "gender" => 'required | exists:genders,id',
                 "graduation_country" => 'required | exists:countries,id',
@@ -86,13 +89,13 @@ class PersonnelController extends Controller
         $user->second_name = $request->second_name;
         $user->third_name = $request->third_name;
         $user->fourth_name	 = $request->fourth_name;
-        $user->birthdate	 = $request->birthdate;
+        $user->birthdate = $request->birthdate;
         $user->phone = $request->phone;
         $user->telephone = $request->telephone;
         $user->national_number = $request->national_number;
-        $user->save_number = $request->save_number;
-        $user->release_date = $request->release_date;
-        $user->expiry_date = $request->expiry_date;
+        $user->nationality_id = $request->nationality;
+        $user->employee_number = $request->employee_number;
+        $user->date_of_joining_the_university = $request->date_of_joining_the_university;
         $user->highest_qualification = $request->highest_qualification;
         $user->gender_id = $request->gender;
         $user->graduation_country_id = $request->graduation_country;

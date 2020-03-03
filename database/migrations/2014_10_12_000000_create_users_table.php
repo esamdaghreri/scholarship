@@ -27,12 +27,12 @@ class CreateUsersTable extends Migration
             $table->unsignedBigInteger('phone')->nullable();
             $table->unsignedBigInteger('telephone')->nullable();
             $table->unsignedBigInteger('national_number')->nullable();
-            $table->unsignedBigInteger('save_number')->nullable();
-            $table->dateTime('release_date')->nullable();
-            $table->dateTime('expiry_date')->nullable();
+            $table->unsignedBigInteger('employee_number')->nullable();
+            $table->dateTime('date_of_joining_the_university')->nullable();
             $table->string('highest_qualification', 40)->nullable();
             $table->unsignedTinyInteger('gender_id')->nullable();
             $table->unsignedTinyInteger('role_id')->default('3');
+            $table->unsignedBigInteger('nationality_id')->nullable();
             $table->unsignedSmallInteger('graduation_country_id')->nullable();
             $table->unsignedSmallInteger('graduation_university_id')->nullable();
             $table->unsignedSmallInteger('graduation_college_id')->nullable();
