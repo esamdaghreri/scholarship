@@ -1,7 +1,7 @@
 <?php
 
     return [
-        'title' => 'Scholarship',
+        'title' => 'Department Stuff Database and Scholarship',
         'welcome' => 'welcome',
         'login' => 'Log in',
         'logout' => 'Logout',

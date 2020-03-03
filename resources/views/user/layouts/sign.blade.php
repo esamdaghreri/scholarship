@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="{{asset('assets/css/user/main.css')}}">
         <link rel="icon" href="favicon.ico"/>
-        <title>Scholarship</title>
+        <title>{{env('APP_NAME')}}</title>
     </head>
     <body>
         @include('user.partials.header-auth')
