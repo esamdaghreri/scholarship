@@ -13,7 +13,7 @@ use App\Model\User\Country;
 use App\Model\User\University;
 use App\Model\User\College;
 use App\Model\User\Qualification;
-use App\Model\User\Specialist;
+use App\Model\User\Fellowship;
 use App\Model\User\Status;
 use App\Model\User\RegisterationType;
 use App\Model\User\CancelScholarship;
@@ -39,16 +39,16 @@ class RegisterScholarshipController extends Controller
         $university_object = new University;
         $college_object = new College;
         $qualification_object = new Qualification;
-        $specialist_object = new Specialist;
+        $fellowship_object = new Fellowship;
 
-        $user = User::select('highest_qualification')->where('id' ,Auth::id())->first();
+        $user = User::select('highest_qualification_id')->where('id' ,Auth::id())->first();
         $countries = $country_object->getCountries(App::getlocale());
         $universities = $university_object->getUniversities(App::getlocale());
         $colleges = $college_object->getColleges(App::getlocale());
         $qualifications = $qualification_object->getQualifications(App::getlocale());
-        $specialists = $specialist_object->getSpecialists(App::getlocale());
+        $fellowships = $fellowship_object->getFellowships(App::getlocale());
 
-        return view('user.scholarship.register.create', ['countries' => $countries, 'universities' => $universities, 'colleges' => $colleges, 'qualifications' => $qualifications, 'specialists' => $specialists, 'user' => $user]);
+        return view('user.scholarship.register.create', ['countries' => $countries, 'universities' => $universities, 'colleges' => $colleges, 'qualifications' => $qualifications, 'fellowships' => $fellowships, 'user' => $user]);
     }
 
     public function store(Request $request)
@@ -59,7 +59,7 @@ class RegisterScholarshipController extends Controller
                 "university" => 'required | exists:universities,id',
                 "college" => 'required | exists:colleges,id',
                 "qualification" => 'required | exists:qualifications,id',
-                "specialist" => 'required | exists:specialists,id',
+                "fellowship" => 'required | exists:fellowships,id',
                 "terms_and_condition" => 'accepted',
             ]
         );
@@ -77,7 +77,7 @@ class RegisterScholarshipController extends Controller
         $register->university_id = $request->university;
         $register->college_id = $request->college;
         $register->qualification_id = $request->qualification;
-        $register->specialist_id = $request->specialist;
+        $register->fellowship_id = $request->fellowship;
         $register->registeration_type_id = 1;
         $register->created_by = Auth::id();
         $register->created_at = now();

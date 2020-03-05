@@ -12,6 +12,7 @@ class FellowshipsTableSeeder extends Seeder
     public function run()
     {
         DB::table('fellowships')->insert([
+            ['name_en' => 'None', 'name_ar' => 'لا يوجد'],
             ['name_en' => 'Data Sciene', 'name_ar' => 'علم البيانات'],
             ['name_en' => 'Security', 'name_ar' => 'الحماية'],
             ['name_en' => 'Software Engineering', 'name_ar' => 'هندسة البرمجيات'],

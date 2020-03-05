@@ -43,7 +43,7 @@ class PersonnelController extends Controller
         $nationality_object = new Nationality;
         $department_object = new Department;
         $fellowship_object = new Fellowship;
-        $generalSpecialization_object = new GeneralSpecialization;
+        $general_specialization_object = new GeneralSpecialization;
         $jobDescription_object = new JobDescription;
 
         $user_information = User::where('id', $user_id)->firstOrFail();
@@ -54,8 +54,8 @@ class PersonnelController extends Controller
         $nationalities = $nationality_object->getNationalities();
         $departments = $department_object->getDepartments();
         $fellowships = $fellowship_object->getFellowships();
-        $generalSpecializations = $generalSpecialization_object->getGeneralSpecializations();
-        $jobDescriptions = $jobDescription_object->getJobDescriptions();
+        $general_specializations = $general_specialization_object->getGeneralSpecializations();
+        $job_descriptions = $jobDescription_object->getJobDescriptions();
 
         
 
@@ -69,8 +69,8 @@ class PersonnelController extends Controller
             'nationalities' => $nationalities,
             'departments' => $departments,
             'fellowships' => $fellowships,
-            'generalSpecializations' => $generalSpecializations,
-            'jobDescriptions' => $jobDescriptions,
+            'general_specializations' => $general_specializations,
+            'job_descriptions' => $job_descriptions,
             ]);
     }
 
@@ -103,8 +103,8 @@ class PersonnelController extends Controller
                 "graduation_university" => 'required | exists:universities,id',
                 "graduation_college" => 'required | exists:colleges,id',
                 "department" => 'required | exists:departments,id',
-                "jobـdescription" => 'required | exists:job_descriptions,id',
-                "generalـspecialization" => 'required | exists:general_specializations,id',
+                "job_description" => 'required | exists:job_descriptions,id',
+                "general_specialization" => 'required | exists:general_specializations,id',
                 "fellowship" => 'required | exists:fellowships,id',
 
             ]
@@ -135,8 +135,8 @@ class PersonnelController extends Controller
         $user->graduation_university_id = $request->graduation_university;
         $user->graduation_college_id = $request->graduation_college;
         $user->department_id = $request->department;
-        $user->job_description_id = $request->jobـdescription;
-        $user->general_specialization_id = $request->generalـspecialization;
+        $user->job_description_id = $request->job_description;
+        $user->general_specialization_id = $request->general_specialization;
         $user->fellowship_id = $request->fellowship;
         $user->updated_by = $user_id;
         $user->updated_at = now();

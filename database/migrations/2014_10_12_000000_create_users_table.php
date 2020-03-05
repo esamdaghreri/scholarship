@@ -37,8 +37,8 @@ class CreateUsersTable extends Migration
             $table->unsignedSmallInteger('graduation_university_id')->nullable();
             $table->unsignedSmallInteger('graduation_college_id')->nullable();
             $table->unsignedSmallInteger('department_id')->nullable();
-            $table->unsignedSmallInteger('job_description_id')->nullable();
             $table->unsignedSmallInteger('general_specialization_id')->nullable();
+            $table->unsignedSmallInteger('job_description_id')->nullable();
             $table->unsignedSmallInteger('fellowship_id')->nullable();
             $table->unsignedBigInteger('created_by');
             $table->dateTime('created_at')->useCurrent();

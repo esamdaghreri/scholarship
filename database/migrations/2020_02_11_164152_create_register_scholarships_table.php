@@ -20,7 +20,7 @@ class CreateRegisterScholarshipsTable extends Migration
             $table->unsignedSmallInteger('university_id');
             $table->unsignedSmallInteger('college_id');
             $table->unsignedSmallInteger('qualification_id');
-            $table->unsignedSmallInteger('specialist_id');
+            $table->unsignedSmallInteger('fellowship_id');
             $table->unsignedSmallInteger('status_id')->default(3);
             $table->unsignedSmallInteger('registeration_type_id');
             // $table->json('attachment');

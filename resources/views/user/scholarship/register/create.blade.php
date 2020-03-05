@@ -30,14 +30,14 @@
                     </select>
                     <select name="qualification" class="input-text @if($errors->has('qualification'))input-error @endif" required>
                         @foreach ($qualifications as $qualification)
-                            @if($qualification->id <= $user->highest_qualification + 1)
+                            @if($qualification->id <= $user->highest_qualification_id + 1)
                                 <option value="{{$qualification->id}}">{{App::getlocale() == "en" ? $qualification->name_en : $qualification->name_ar}}</option>
                             @endif
                         @endforeach
                     </select>
-                    <select name="specialist" class="input-text @if($errors->has('specialist'))input-error @endif" required>
-                        @foreach ($specialists as $specialist)
-                            <option value="{{$specialist->id}}">{{App::getlocale() == "en" ? $specialist->name_en : $specialist->name_ar}}</option>
+                    <select name="fellowship" class="input-text @if($errors->has('fellowship'))input-error @endif" required>
+                        @foreach ($fellowships as $fellowship)
+                            <option value="{{$fellowship->id}}">{{App::getlocale() == "en" ? $fellowship->name_en : $fellowship->name_ar}}</option>
                         @endforeach
                     </select>
                 </div>

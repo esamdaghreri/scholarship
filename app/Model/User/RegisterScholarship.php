@@ -42,9 +42,9 @@ class RegisterScholarship extends Model
         return $this->belongsTo('App\Model\User\Qualification');
     }
 
-    public function specialist()
+    public function fellowship()
     {
-        return $this->belongsTo('App\Model\User\Specialist');
+        return $this->belongsTo('App\Model\User\fellowship');
     }
 
     public function status()

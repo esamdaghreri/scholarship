@@ -163,7 +163,7 @@
 
                 <div class="fields-section">
                     <div class="header-title">
-                        <p>@lang('public.academicـinformation')</p>
+                        <p>@lang('public.academic_information')</p>
                         <hr class="bar">
                     </div>
                     <div class="fields flex flex-row">
@@ -243,11 +243,11 @@
                         </div>
                         <div class="column">
                             <div class="label-side">
-                                <label>@lang('public.jobـdescription')</label>
+                                <label>@lang('public.job_description')</label>
                             </div>
                             <div class="input-side">
-                                <select name="jobـdescription" class="input-text @if($errors->has('jobـdescription'))input-error @endif" required>
-                                    @foreach ($jobDescriptions as $job_description)
+                                <select name="job_description" class="input-text @if($errors->has('job_description'))input-error @endif" required>
+                                    @foreach ($job_descriptions as $job_description)
                                         <option value="{{$job_description->id}}" {{$job_description->id == $user_information->job_description_id ? "selected" : null}}>{{App::getlocale() == "en" ? $job_description->name_en : $job_description->name_ar}}</option>
                                     @endforeach
                                 </select>  
@@ -262,12 +262,12 @@
                     <div class="fields flex flex-row">
                         <div class="column">
                             <div class="label-side">
-                                <label>@lang('public.generalـspecialization')</label>
+                                <label>@lang('public.general_specialization')</label>
                             </div>
                             <div class="input-side">
-                                <select name="generalـspecialization" class="input-text @if($errors->has('generalـspecialization'))input-error @endif" required>
-                                    @foreach ($generalSpecializations as $generalSpecialization)
-                                        <option value="{{$generalSpecialization->id}}" {{$generalSpecialization->id == $user_information->general_specialization_id ? "selected" : null}}>{{App::getlocale() == "en" ? $generalSpecialization->name_en : $generalSpecialization->name_ar}}</option>
+                                <select name="general_specialization" class="input-text @if($errors->has('general_specialization'))input-error @endif" required>
+                                    @foreach ($general_specializations as $general_specialization)
+                                        <option value="{{$general_specialization->id}}" {{$general_specialization->id == $user_information->general_specialization ? "selected" : null}}>{{App::getlocale() == "en" ? $general_specialization->name_en : $general_specialization->name_ar}}</option>
                                     @endforeach
                                 </select>                             
                             </div>
@@ -279,7 +279,7 @@
                             <div class="input-side">
                                 <select name="fellowship" class="input-text @if($errors->has('fellowship'))input-error @endif" required>
                                     @foreach ($fellowships as $fellowship)
-                                        <option value="{{$fellowship->id}}" {{$fellowship->id == $user_information->fellowship->id	 ? "selected" : null}}>{{App::getlocale() == "en" ? $fellowship->name_en : $fellowship->name_ar}}</option>
+                                        <option value="{{$fellowship->id}}" {{$fellowship->id == $user_information->fellowship_id ? "selected" : null}}>{{App::getlocale() == "en" ? $fellowship->name_en : $fellowship->name_ar}}</option>
                                     @endforeach
                                 </select>  
                             </div>
