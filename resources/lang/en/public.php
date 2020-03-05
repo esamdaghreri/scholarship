@@ -91,6 +91,7 @@
         'type' => 'Type',
         'extend_scholarship' => 'Extend scholarship',
         'cancel_scholarship' => 'Cancel scholarship',
+        'change_supervisor' => 'Change Supervisor',
         'birthdate' => 'Birthdate',
         'reason' => 'Reason',
         'otherـreason' => 'Other reason',
@@ -99,7 +100,9 @@
         'information_about_the_scholarship' => 'Information about the scholarship',
         'information_about_cancel_scholarship' => 'Information about cancel scholarship',
         'information_about_extend_scholarship' => 'Information about extend scholarship',
+        'information_about_change_supervisor_scholarship' => 'Information about change supervisor scholarship',
         'you_are_already_order_for_cancel_it' => 'You are already order for cancel it',
         'you_are_already_order_for_extend_it' => 'You are already order for extend it',
+        'you_are_already_order_for_changing_supervisor' => 'You are already order for changing supervisor',
         'number_of_times_for_extend' => 'Number of times for extend',
     ];

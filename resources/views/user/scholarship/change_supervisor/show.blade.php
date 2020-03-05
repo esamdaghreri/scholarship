@@ -18,35 +18,42 @@
                     <tr>
                         <th>@lang('public.name')</th>
                         <td>{{$order->user->first_name . ' ' . $order->user->second_name . ' ' . $order->user->third_name . ' ' . $order->user->fourth_name}}</td>
+                        <th>@lang('public.country')</th>
+                        <td>{{App::getlocale() == "en" ? $order->registerScholarship->country->name_en : $order->registerScholarship->country->name_ar}}</td>
+                    </tr>
+                    <tr>
                         <th>@lang('public.national__or_residence_number')</th>
                         <td>{{$order->user->national_number}}</td>
+                        <th>@lang('public.university')</th>
+                        <td>{{App::getlocale() == "en" ? $order->registerScholarship->university->name_en : $order->registerScholarship->university->name_ar}}</td>
                     </tr>
                     <tr class="contant-method">
                         <th>@lang('public.information_about_the_scholarship')</th>
                     </tr>
                     <tr>
                         <th>#@lang('public.order_number')</th>
-                        <td>{{$order->id}}</td>
-                        <th>@lang('public.country')</th>
-                        <td>{{App::getlocale() == "en" ? $order->country->name_en : $order->country->name_ar}}</td>
-                    </tr>
-                    <tr>                        
-                        <th>@lang('public.qualification')</th>
-                        <td>{{App::getlocale() == "en" ? $order->qualification->name_en : $order->qualification->name_ar}}</td>
-                        <th>@lang('public.university')</th>
-                        <td>{{App::getlocale() == "en" ? $order->university->name_en : $order->university->name_ar}}</td>
+                        <td>{{$order->registerScholarship->id}}</td>
+                        <th>@lang('public.college')</th>
+                        <td>{{App::getlocale() == "en" ? $order->registerScholarship->college->name_en : $order->registerScholarship->college->name_ar}}</td>
                     </tr>
                     <tr>
                         <th>@lang('public.order_status')</th>
                         <td>{{App::getlocale() == "en" ? $order->status->name_en : $order->status->name_ar}}</td>
-                        <th>@lang('public.college')</th>
-                        <td>{{App::getlocale() == "en" ? $order->college->name_en : $order->college->name_ar}}</td>
+                        <th>@lang('public.fellowship')</th>
+                        <td>{{App::getlocale() == "en" ? $order->registerScholarship->fellowship->name_en : $order->registerScholarship->fellowship->name_ar}}</td>
                     </tr>
                     <tr>
                         <th>@lang('public.created_at')</th>
                         <td>{{date('Y-m-d', strtotime($order->created_at))}}</td>
-                        <th>@lang('public.specialist')</th>
-                        <td>{{App::getlocale() == "en" ? $order->fellowship->name_en : $order->fellowship->name_ar}}</td>
+                        <th>@lang('public.qualification')</th>
+                        <td>{{App::getlocale() == "en" ? $order->registerScholarship->qualification->name_en : $order->registerScholarship->qualification->name_ar}}</td>
+                    </tr>
+                    <tr class="contant-method">
+                        <th>@lang('public.information_about_change_supervisor_scholarship')</th>
+                    </tr>
+                    <tr>
+                        <th>@lang('public.reason')</th>
+                        <td>{{$order->other_reason ? $order->other_reason  : trans('public.there_is_no_other_reason')}}</td>
                     </tr>
                     <tr class="contant-method">
                         <th>@lang('public.contact_methods')</th>
@@ -59,15 +66,6 @@
                     </tr>
                 </table>
             </div>
-        </div>
-        <div class="cancel-extends-buttons flex">
-            @if($extend_scholarship_on_progress_count == 0 && $cancel_scholarship_on_progress_count == 0 && $cancel_scholarship_success_count == 0 && $change_supervisor_scholarship_on_progress_count == 0 && $order->status->id == 1)
-                @if($extend_scholarship_success_count < 2)
-                    <a href="{{route('extend.create', $order->id)}}" class="btn btn-primary">@lang('public.extend_scholarship')</a>
-                @endif
-                <a href="{{route('cancel.create', $order->id)}}" class="btn btn-primary">@lang('public.cancel_scholarship')</a>
-                <a href="{{route('changeSupervisor.create', $order->id)}}" class="btn btn-primary">@lang('public.change_supervisor')</a>
-            @endif
         </div>
     </div>
 @endsection

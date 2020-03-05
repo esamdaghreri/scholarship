@@ -18,6 +18,7 @@ use App\Model\User\Status;
 use App\Model\User\RegisterationType;
 use App\Model\User\CancelScholarship;
 use App\Model\User\ExtendScholarship;
+use App\Model\User\ChangeSupervisorScholarship;
 
 class RegisterScholarshipController extends Controller
 {
@@ -29,8 +30,15 @@ class RegisterScholarshipController extends Controller
         $cancel_scholarship_success_count = CancelScholarship::where('register_scholarship_id', $id)->where('user_id', Auth::id())->where('status_id', 1)->count();
         $extend_scholarship_on_progress_count = ExtendScholarship::where('register_scholarship_id', $id)->where('user_id', Auth::id())->where('status_id', 3)->count();
         $extend_scholarship_success_count = ExtendScholarship::where('register_scholarship_id', $id)->where('user_id', Auth::id())->where('status_id', 1)->count();
-        $order = RegisterScholarship::where('id', $id)->where('user_id', Auth::id())->with(['user', 'country', 'university', 'college', 'qualification', 'specialist', 'status', 'registerationType'])->firstorfail();
-        return view('user.scholarship.register.show', ['order' => $order, 'cancel_scholarship_on_progress_count' => $cancel_scholarship_on_progress_count, 'cancel_scholarship_success_count' => $cancel_scholarship_success_count, 'extend_scholarship_on_progress_count' => $extend_scholarship_on_progress_count, 'extend_scholarship_success_count' => $extend_scholarship_success_count]);
+        $change_supervisor_scholarship_on_progress_count = ChangeSupervisorScholarship::where('register_scholarship_id', $id)->where('user_id', Auth::id())->where('status_id', 3)->count();
+        $order = RegisterScholarship::where('id', $id)->where('user_id', Auth::id())->with(['user', 'country', 'university', 'college', 'qualification', 'fellowship', 'status', 'registerationType'])->firstorfail();
+        return view('user.scholarship.register.show', ['order' => $order,
+         'cancel_scholarship_on_progress_count' => $cancel_scholarship_on_progress_count,
+         'cancel_scholarship_success_count' => $cancel_scholarship_success_count,
+         'extend_scholarship_on_progress_count' => $extend_scholarship_on_progress_count,
+         'extend_scholarship_success_count' => $extend_scholarship_success_count,
+         'change_supervisor_scholarship_on_progress_count' => $change_supervisor_scholarship_on_progress_count
+         ]);
     }
 
     public function create()

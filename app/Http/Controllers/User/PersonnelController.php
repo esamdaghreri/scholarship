@@ -16,6 +16,7 @@ use App\Model\User\Qualification;
 use App\Model\User\RegisterScholarship;
 use App\Model\User\CancelScholarship;
 use App\Model\User\ExtendScholarship;
+use App\Model\User\ChangeSupervisorScholarship;
 use App\Model\User\Status;
 use App\Model\User\Nationality;
 use App\Model\User\Department;
@@ -192,7 +193,8 @@ class PersonnelController extends Controller
         $registers = RegisterScholarship::where('user_id', Auth::id())->with(['status', 'registerationType'])->orderBy('created_at', 'desc')->get();
         $cancels = CancelScholarship::where('user_id', Auth::id())->with(['scholarshipReason', 'registerScholarship', 'status', 'registerationType'])->orderBy('created_at', 'desc')->get();
         $extends = ExtendScholarship::where('user_id', Auth::id())->with(['scholarshipReason', 'registerScholarship', 'status', 'registerationType'])->orderBy('created_at', 'desc')->get();
-        $orders = [$extends, $cancels, $registers];
+        $change_supervisors = ChangeSupervisorScholarship::where('user_id', Auth::id())->with(['registerScholarship', 'status', 'registerationType'])->orderBy('created_at', 'desc')->get();
+        $orders = [$registers, $change_supervisors, $extends, $cancels];
         return view('user.personnel.orders', ['orders' => $orders]);
     }
 }

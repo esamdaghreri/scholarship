@@ -32,6 +32,8 @@
                                         <td><a href="{{route('extend.show', $single_type->id)}}" class="btn btn-primary">@lang('public.details')</a></td>
                                     @elseif($single_type->registeration_type_id == 3)
                                         <td><a href="{{route('cancel.show', $single_type->id)}}" class="btn btn-primary">@lang('public.details')</a></td>
+                                    @elseif($single_type->registeration_type_id == 4)
+                                        <td><a href="{{route('changeSupervisor.show', $single_type->id)}}" class="btn btn-primary">@lang('public.details')</a></td>
                                     @endif
                                 </tr>
                             @endforeach

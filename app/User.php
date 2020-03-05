@@ -117,7 +117,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
     public static function areFieldEmpty(){
         $user = User::where('id', Auth::id())->firstOrFail();
-        if(is_null($user->first_name) || is_null($user->second_name) || is_null($user->third_name) || is_null($user->fourth_name) || is_null($user->birthdate) || is_null($user->phone) || is_null($user->telephone) || is_null($user->national_number) || is_null($user->employee_number) || is_null($user->date_of_joining_the_university) || is_null($user->release_date) || is_null($user->expiry_date) || is_null($user->highest_qualification) || is_null($user->gender_id) || is_null($user->nationality_id)|| is_null($user->highest_qualification_id) || is_null($user->graduation_country_id) || is_null($user->graduation_university_id) || is_null($user->graduation_college_id))
+        if(is_null($user->first_name) || is_null($user->second_name) || is_null($user->third_name) || is_null($user->fourth_name) || is_null($user->birthdate) || is_null($user->phone) || is_null($user->telephone) || is_null($user->national_number) || is_null($user->employee_number) || is_null($user->date_of_joining_the_university) || is_null($user->highest_qualification_id) || is_null($user->gender_id) || is_null($user->nationality_id)|| is_null($user->highest_qualification_id) || is_null($user->graduation_country_id) || is_null($user->graduation_university_id) || is_null($user->graduation_college_id) || is_null($user->department_id) || is_null($user->job_description_id) || is_null($user->general_specialization_id) || is_null($user->fellowship_id))
         {
             return true;
         }
