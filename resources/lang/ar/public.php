@@ -17,6 +17,7 @@
         'sign_up' => 'تسجيل',
         'register' => 'تسجيل',
         'register_in_scholarship' => 'التسجيل في البعثة',
+        'register_for_language_scholarship' => 'التسجيل للحصول على منحة اللغة',
         'search' => 'بحث',
         'first_step' => 'الطلب',
         'first_step_explanation' => 'أطلب بعثة',

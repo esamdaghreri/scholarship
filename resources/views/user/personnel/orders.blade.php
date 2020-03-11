@@ -12,7 +12,7 @@
                     <hr class="bar">
                 </div>
                 <div class="table flex flex-column">
-                    @if(count($orders[0]) > 0 || count($orders[1]) > 0 || count($orders[2]) > 0)
+                    @if(count($orders[0]) > 0 || count($orders[1]) > 0 || count($orders[2]) > 0 || count($orders[3]) > 0 || count($orders[4]) > 0)
                     <table>
                         <tr class="first-row">
                             <th>#@lang('public.order_number')</th>
@@ -34,6 +34,8 @@
                                         <td><a href="{{route('cancel.show', $single_type->id)}}" class="btn btn-primary">@lang('public.details')</a></td>
                                     @elseif($single_type->registeration_type_id == 4)
                                         <td><a href="{{route('changeSupervisor.show', $single_type->id)}}" class="btn btn-primary">@lang('public.details')</a></td>
+                                    @elseif($single_type->registeration_type_id == 6)
+                                        <td><a href="{{route('languageScholarship.show', $single_type->id)}}" class="btn btn-primary">@lang('public.details')</a></td>
                                     @endif
                                 </tr>
                             @endforeach

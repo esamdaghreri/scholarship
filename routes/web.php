@@ -50,6 +50,11 @@ Route::group(['middleware' => ['setlocale', 'verified', 'auth']], function() {
         Route::get('/change-supervisor/{id}', 'User\ChangeSupervisorScholarshipController@create')->middleware('checkPersonalInformationFill')->name('changeSupervisor.create');
         Route::post('/change-supervisor', 'User\ChangeSupervisorScholarshipController@store')->middleware('checkPersonalInformationFill')->name('changeSupervisor.store');
         Route::get('/change-supervisor/show/{id}', 'User\ChangeSupervisorScholarshipController@show')->middleware('checkPersonalInformationFill')->name('changeSupervisor.show');
+
+        // ================ Route for user for study language scholarship =====================
+        Route::get('/language-scholarship', 'User\LanguageScholarshipController@create')->middleware('checkPersonalInformationFill')->name('languageScholarship.create');
+        Route::post('/language-scholarship', 'User\LanguageScholarshipController@store')->middleware('checkPersonalInformationFill')->name('languageScholarship.store');
+        Route::get('/language-scholarship/show/{id}', 'User\LanguageScholarshipController@show')->middleware('checkPersonalInformationFill')->name('languageScholarship.show');
     });
 
 });

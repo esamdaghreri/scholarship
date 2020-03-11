@@ -17,6 +17,7 @@ class RegisterationTypeTableSeeder extends Seeder
             ['name_en' => 'Cancellation of the scholarship', 'name_ar' => 'إنهاء البعثة'],
             ['name_en' => 'Change supervisor of the scholarship', 'name_ar' => 'تغيير مشرف البعثة'],
             ['name_en' => 'Change specialist of the scholarship', 'name_ar' => 'تغيير التخصص البعثة'],
+            ['name_en' => 'Language Scholarship', 'name_ar' => 'بحثة لغة'],
         ]);
     }
 }

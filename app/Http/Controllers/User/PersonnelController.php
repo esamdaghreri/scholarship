@@ -17,6 +17,7 @@ use App\Model\User\RegisterScholarship;
 use App\Model\User\CancelScholarship;
 use App\Model\User\ExtendScholarship;
 use App\Model\User\ChangeSupervisorScholarship;
+use App\Model\User\LanguageScholarship;
 use App\Model\User\Status;
 use App\Model\User\Nationality;
 use App\Model\User\Department;
@@ -191,10 +192,11 @@ class PersonnelController extends Controller
     public function showOrders()
     {
         $registers = RegisterScholarship::where('user_id', Auth::id())->with(['status', 'registerationType'])->orderBy('created_at', 'desc')->get();
-        $cancels = CancelScholarship::where('user_id', Auth::id())->with(['scholarshipReason', 'registerScholarship', 'status', 'registerationType'])->orderBy('created_at', 'desc')->get();
-        $extends = ExtendScholarship::where('user_id', Auth::id())->with(['scholarshipReason', 'registerScholarship', 'status', 'registerationType'])->orderBy('created_at', 'desc')->get();
-        $change_supervisors = ChangeSupervisorScholarship::where('user_id', Auth::id())->with(['registerScholarship', 'status', 'registerationType'])->orderBy('created_at', 'desc')->get();
-        $orders = [$registers, $change_supervisors, $extends, $cancels];
+        $cancels = CancelScholarship::where('user_id', Auth::id())->with(['status', 'registerationType'])->orderBy('created_at', 'desc')->get();
+        $extends = ExtendScholarship::where('user_id', Auth::id())->with(['status', 'registerationType'])->orderBy('created_at', 'desc')->get();
+        $change_supervisors = ChangeSupervisorScholarship::where('user_id', Auth::id())->with(['status', 'registerationType'])->orderBy('created_at', 'desc')->get();
+        $language_scholarships = LanguageScholarship::where('user_id', Auth::id())->with(['status', 'registerationType'])->orderBy('created_at', 'desc')->get();
+        $orders = [$registers, $change_supervisors, $extends, $cancels, $language_scholarships];
         return view('user.personnel.orders', ['orders' => $orders]);
     }
 }

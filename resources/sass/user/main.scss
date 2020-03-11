@@ -491,15 +491,17 @@ header{
                 }
             }
         }
-        .register-form{
+        .register-buttons{
             height: 10vh;
-            max-width: 600px;
+            width: auto;
             justify-content: space-around;
             align-items: center;
             flex: 2;
             li{
                 a{
-                    width: 250px;
+                    width: auto;
+                    padding: 0 10px;
+                    font-size: 16px;
                 }
             }
         }
@@ -761,7 +763,7 @@ footer {
 
 // cancel scholarship page
 // path: views/users/scholarship/cancel/create
-.form-container.cancel-scholarship, .form-container.extend-scholarship, .change-supervisor-scholarship{
+.form-container.cancel-scholarship, .form-container.extend-scholarship, .change-supervisor-scholarship, .new-language-scholarship{
     form{      
         p{
             color: $primary-color;
