@@ -69,7 +69,7 @@
         'release_date' => 'Release Date',
         'expiry_date' => 'Expiry date',
         'general_information' => 'General Information',
-        'academicـinformation' => 'Academic Information',
+        'academic_information' => 'Academic Information',
         'save' => 'Save',
         'male' => 'Male',
         'female' => 'Female',

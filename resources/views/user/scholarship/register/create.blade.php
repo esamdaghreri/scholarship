@@ -3,6 +3,7 @@
 @section('content')
     <div class="form-container new-scholarship flex center-center">
         <form action="{{ route('register.store')}}" method="POST" class="flex center-center flex-column">
+            <input type="hidden" name="type" value="register_scholarship">
             <div class="form-sample flex flex-row">
                 @csrf
                 <div class="label-side flex flex-column">

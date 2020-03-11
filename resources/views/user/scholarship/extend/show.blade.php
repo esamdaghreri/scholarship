@@ -22,7 +22,7 @@
                         <td>{{App::getlocale() == "en" ? $order->registerScholarship->country->name_en : $order->registerScholarship->country->name_ar}}</td>
                     </tr>
                     <tr>
-                        <th>@lang('public.national_number')</th>
+                        <th>@lang('public.national__or_residence_number')</th>
                         <td>{{$order->user->national_number}}</td>
                         <th>@lang('public.university')</th>
                         <td>{{App::getlocale() == "en" ? $order->registerScholarship->university->name_en : $order->registerScholarship->university->name_ar}}</td>
@@ -36,18 +36,27 @@
                         <th>@lang('public.college')</th>
                         <td>{{App::getlocale() == "en" ? $order->registerScholarship->college->name_en : $order->registerScholarship->college->name_ar}}</td>
                     </tr>
-                    <tr>
-                        <th>@lang('public.order_status')</th>
-                        <td>{{App::getlocale() == "en" ? $order->status->name_en : $order->status->name_ar}}</td>
-                        <th>@lang('public.specialist')</th>
-                        <td>{{App::getlocale() == "en" ? $order->registerScholarship->specialist->name_en : $order->registerScholarship->specialist->name_ar}}</td>
-                    </tr>
-                    <tr>
-                        <th>@lang('public.created_at')</th>
-                        <td>{{date('Y-m-d', strtotime($order->created_at))}}</td>
-                        <th>@lang('public.qualification')</th>
-                        <td>{{App::getlocale() == "en" ? $order->registerScholarship->qualification->name_en : $order->registerScholarship->qualification->name_ar}}</td>
-                    </tr>
+                    @if($order->registerScholarship->registeration_type_id == 1)
+                        <tr>
+                            <th>@lang('public.order_status')</th>
+                            <td>{{App::getlocale() == "en" ? $order->status->name_en : $order->status->name_ar}}</td>
+                            <th>@lang('public.specialist')</th>
+                            <td>{{App::getlocale() == "en" ? $order->registerScholarship->specialist->name_en : $order->registerScholarship->specialist->name_ar}}</td>
+                        </tr>
+                        <tr>
+                            <th>@lang('public.created_at')</th>
+                            <td>{{date('Y-m-d', strtotime($order->created_at))}}</td>
+                            <th>@lang('public.qualification')</th>
+                            <td>{{App::getlocale() == "en" ? $order->registerScholarship->qualification->name_en : $order->registerScholarship->qualification->name_ar}}</td>
+                        </tr>
+                    @elseif($order->registerScholarship->registeration_type_id == 6)
+                        <tr>
+                            <th>@lang('public.created_at')</th>
+                            <td>{{date('Y-m-d', strtotime($order->created_at))}}</td>
+                            <th>@lang('public.order_status')</th>
+                            <td>{{App::getlocale() == "en" ? $order->status->name_en : $order->status->name_ar}}</td>
+                        </tr>
+                    @endif
                     <tr class="contant-method">
                         <th>@lang('public.information_about_extend_scholarship')</th>
                     </tr>
@@ -63,7 +72,7 @@
                     <tr>
                         <th>@lang('public.email')</th>
                         <td>{{$order->user->email}}</td>
-                        <th>@lang('public.phone_number')</th>
+                        <th>@lang('public.mobile_number')</th>
                         <td>{{$order->user->phone}}</td>
                     </tr>
                 </table>

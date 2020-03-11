@@ -36,18 +36,27 @@
                         <th>@lang('public.college')</th>
                         <td>{{App::getlocale() == "en" ? $order->registerScholarship->college->name_en : $order->registerScholarship->college->name_ar}}</td>
                     </tr>
-                    <tr>
-                        <th>@lang('public.order_status')</th>
-                        <td>{{App::getlocale() == "en" ? $order->status->name_en : $order->status->name_ar}}</td>
-                        <th>@lang('public.fellowship')</th>
-                        <td>{{App::getlocale() == "en" ? $order->registerScholarship->fellowship->name_en : $order->registerScholarship->fellowship->name_ar}}</td>
-                    </tr>
-                    <tr>
-                        <th>@lang('public.created_at')</th>
-                        <td>{{date('Y-m-d', strtotime($order->created_at))}}</td>
-                        <th>@lang('public.qualification')</th>
-                        <td>{{App::getlocale() == "en" ? $order->registerScholarship->qualification->name_en : $order->registerScholarship->qualification->name_ar}}</td>
-                    </tr>
+                    @if($order->registerScholarship->registeration_type_id == 1)
+                        <tr>
+                            <th>@lang('public.order_status')</th>
+                            <td>{{App::getlocale() == "en" ? $order->status->name_en : $order->status->name_ar}}</td>
+                            <th>@lang('public.specialist')</th>
+                            <td>{{App::getlocale() == "en" ? $order->registerScholarship->specialist->name_en : $order->registerScholarship->specialist->name_ar}}</td>
+                        </tr>
+                        <tr>
+                            <th>@lang('public.created_at')</th>
+                            <td>{{date('Y-m-d', strtotime($order->created_at))}}</td>
+                            <th>@lang('public.qualification')</th>
+                            <td>{{App::getlocale() == "en" ? $order->registerScholarship->qualification->name_en : $order->registerScholarship->qualification->name_ar}}</td>
+                        </tr>
+                    @elseif($order->registerScholarship->registeration_type_id == 6)
+                        <tr>
+                            <th>@lang('public.created_at')</th>
+                            <td>{{date('Y-m-d', strtotime($order->created_at))}}</td>
+                            <th>@lang('public.order_status')</th>
+                            <td>{{App::getlocale() == "en" ? $order->status->name_en : $order->status->name_ar}}</td>
+                        </tr>
+                    @endif
                     <tr class="contant-method">
                         <th>@lang('public.information_about_change_supervisor_scholarship')</th>
                     </tr>

@@ -61,16 +61,30 @@ class RegisterScholarshipController extends Controller
 
     public function store(Request $request)
     {
-        $validator = Validator::make(
-            $request->all(), [
-                "country" => 'required | exists:countries,id',
-                "university" => 'required | exists:universities,id',
-                "college" => 'required | exists:colleges,id',
-                "qualification" => 'required | exists:qualifications,id',
-                "fellowship" => 'required | exists:fellowships,id',
-                "terms_and_condition" => 'accepted',
-            ]
-        );
+        if($request->type == 'register_scholarship')
+        {
+            $validator = Validator::make(
+                $request->all(), [
+                    "country" => 'required | exists:countries,id',
+                    "university" => 'required | exists:universities,id',
+                    "college" => 'required | exists:colleges,id',
+                    "qualification" => 'required | exists:qualifications,id',
+                    "fellowship" => 'required | exists:fellowships,id',
+                    "terms_and_condition" => 'accepted',
+                ]
+            );
+        }
+        elseif($request->type == 'langugae_scholarship')
+        {
+            $validator = Validator::make(
+                $request->all(), [
+                    "country" => 'required | exists:countries,id',
+                    "university" => 'required | exists:universities,id',
+                    "college" => 'required | exists:colleges,id',
+                    "terms_and_condition" => 'accepted',
+                ]
+            );
+        }
 
         /**
          *  checks if there an error in validator above then return to same page with error messages
@@ -84,9 +98,16 @@ class RegisterScholarshipController extends Controller
         $register->country_id = $request->country;
         $register->university_id = $request->university;
         $register->college_id = $request->college;
-        $register->qualification_id = $request->qualification;
-        $register->fellowship_id = $request->fellowship;
-        $register->registeration_type_id = 1;
+        if($request->type == 'register_scholarship')
+        {
+            $register->qualification_id = $request->qualification;
+            $register->fellowship_id = $request->fellowship;
+            $register->registeration_type_id = 1;
+        }
+        elseif($request->type == 'langugae_scholarship')
+        {
+            $register->registeration_type_id = 6;
+        }
         $register->created_by = Auth::id();
         $register->created_at = now();
         $register->save();

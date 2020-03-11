@@ -2,7 +2,8 @@
 
 @section('content')
     <div class="form-container new-language-scholarship flex center-center">
-        <form action="{{ route('languageScholarship.store')}}" method="POST" class="flex center-center flex-column">
+        <form action="{{ route('register.store')}}" method="POST" class="flex center-center flex-column">
+            <input type="hidden" name="type" value="langugae_scholarship">
             <div class="form-sample flex flex-row">
                 @csrf
                 <div class="label-side flex flex-column">
