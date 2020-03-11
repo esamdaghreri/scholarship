@@ -54,7 +54,7 @@
                 </table>
             </div>
         </div>
-        <div class="cancel-extends-buttons flex">
+        <div class="operation-scholarship-buttons flex">
             @if($extend_scholarship_on_progress_count == 0 && $cancel_scholarship_on_progress_count == 0 && $cancel_scholarship_success_count == 0 && $change_supervisor_scholarship_on_progress_count == 0 && $order->status->id == 1)
                 @if($extend_scholarship_success_count < 2)
                     <a href="{{route('extend.create', $order->id)}}" class="btn btn-primary">@lang('public.extend_scholarship')</a>

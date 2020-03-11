@@ -24,6 +24,7 @@ use App\Model\User\Department;
 use App\Model\User\Fellowship;
 use App\Model\User\GeneralSpecialization;
 use App\Model\User\JobDescription;
+use App\Model\User\ChangeFellowshipScholarship;
 
 
 class PersonnelController extends Controller
@@ -195,8 +196,9 @@ class PersonnelController extends Controller
         $cancels = CancelScholarship::where('user_id', Auth::id())->with(['status', 'registerationType'])->orderBy('created_at', 'desc')->get();
         $extends = ExtendScholarship::where('user_id', Auth::id())->with(['status', 'registerationType'])->orderBy('created_at', 'desc')->get();
         $change_supervisors = ChangeSupervisorScholarship::where('user_id', Auth::id())->with(['status', 'registerationType'])->orderBy('created_at', 'desc')->get();
+        $change_fellowships = ChangeFellowshipScholarship::where('user_id', Auth::id())->with(['status', 'registerationType'])->orderBy('created_at', 'desc')->get();
         $language_scholarships = LanguageScholarship::where('user_id', Auth::id())->with(['status', 'registerationType'])->orderBy('created_at', 'desc')->get();
-        $orders = [$registers, $change_supervisors, $extends, $cancels, $language_scholarships];
+        $orders = [$change_fellowships, $registers, $change_supervisors, $extends, $cancels, $language_scholarships];
         return view('user.personnel.orders', ['orders' => $orders]);
     }
 }

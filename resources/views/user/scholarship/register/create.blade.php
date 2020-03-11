@@ -36,6 +36,7 @@
                             @endif
                         @endforeach
                     </select>
+                    <?php unset($fellowships[0]) ?>
                     <select name="fellowship" class="input-text @if($errors->has('fellowship'))input-error @endif" required>
                         @foreach ($fellowships as $fellowship)
                             <option value="{{$fellowship->id}}">{{App::getlocale() == "en" ? $fellowship->name_en : $fellowship->name_ar}}</option>
