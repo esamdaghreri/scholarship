@@ -20,6 +20,7 @@ use App\Model\User\CancelScholarship;
 use App\Model\User\ExtendScholarship;
 use App\Model\User\ChangeSupervisorScholarship;
 use App\Model\User\ChangeFellowshipScholarship;
+use App\Model\User\File;
 
 class RegisterScholarshipController extends Controller
 {
@@ -73,6 +74,7 @@ class RegisterScholarshipController extends Controller
                     "college" => 'required | exists:colleges,id',
                     "qualification" => 'required | exists:qualifications,id',
                     "fellowship" => 'required | exists:fellowships,id',
+                    "file.*" => 'required | mimes:pdf,jpeg,bmp,png,docx,doc | max:2000',
                     "terms_and_condition" => 'accepted',
                 ]
             );
@@ -84,6 +86,7 @@ class RegisterScholarshipController extends Controller
                     "country" => 'required | exists:countries,id',
                     "university" => 'required | exists:universities,id',
                     "college" => 'required | exists:colleges,id',
+                    "file.*" => 'required | mimes:pdf | max:2000',
                     "terms_and_condition" => 'accepted',
                 ]
             );
@@ -95,6 +98,10 @@ class RegisterScholarshipController extends Controller
          ***/
         if ($validator->fails())
             return redirect()->back()->withErrors($validator)->withInput();
+
+        // Define variable
+        $user_id = Auth::id();
+        $date = now();
 
         $register = new RegisterScholarship();
         $register->user_id = Auth::id();
@@ -111,9 +118,25 @@ class RegisterScholarshipController extends Controller
         {
             $register->registeration_type_id = 6;
         }
-        $register->created_by = Auth::id();
-        $register->created_at = now();
+        $register->created_by = $user_id;
+        $register->created_at = $date;
         $register->save();
-        return redirect()->route('user.home')->with('success', trans('public.successfullyـregistered'));
+        if($register->id != null){
+            foreach ($request->file as $file) {
+                $title = time() . $file->getClientOriginalName();
+                File::create([
+                    'title' => $title,
+                    'path' => $file->store('public/storage/attachments'),
+                    'register_scholarship_id' => $register->id,
+                    'user_id' =>$user_id,
+                    'created_by' => $user_id,
+                    'created_at' => $date
+                ]);
+            }
+            return redirect()->route('personnel.showOrders')->with('success', trans('public.successfullyـregistered'));
+        }
+        else{
+            return redirect()->back()->with('danger', trans('public.Registration_was_not_successful'));
+        }
     }
 }

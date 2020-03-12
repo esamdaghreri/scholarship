@@ -86,6 +86,7 @@
         'specialist' => 'Specialist',
         'accept_all_terms_and_conditions' => 'Accept all terms and conditions',
         'successfullyـregistered' => 'Successfully registered',
+        'Registration_was_not_successful' => 'Registration was not successful',
         'details' => 'Details',
         'you_have_no_order' => 'You have no order',
         'contact_methods' => 'Contact Methods',
@@ -111,4 +112,5 @@
         'number_of_times_for_extend' => 'Number of times for extend',
         'new_fellowship' => 'New Fellowship',
         'old_fellowship' => 'Old Fellowship',
+        'attachment' => 'Attachment',
     ];

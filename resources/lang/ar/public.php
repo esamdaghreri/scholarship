@@ -94,6 +94,7 @@
         'specialist' => 'التخصص',
         'accept_all_terms_and_conditions' => 'قبول جميع الشروط والأحكام',
         'successfullyـregistered' => 'تم التسجيل بنجاح',
+        'Registration_was_not_successful' => 'لم يتم التسجيل بنجاح',
         'details' => 'التفاصيل',
         'you_have_no_order' => 'لا يوجد لديك طلب',
         'contact_methods' => 'وسائل التواصل',
@@ -119,4 +120,5 @@
         'number_of_times_for_extend' => 'عدد مرات التمديد',
         'new_fellowship' => 'التخصص الجديد',
         'old_fellowship' => 'التخصص القديم',
+        'attachment' => 'المرفقات',
     ];
