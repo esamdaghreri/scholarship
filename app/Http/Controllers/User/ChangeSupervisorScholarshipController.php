@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\User\ChangeSupervisorScholarship;
 use App\Model\User\RegisterScholarship;
+use App\Model\User\File;
 
 class ChangeSupervisorScholarshipController extends Controller
 {
@@ -24,6 +25,8 @@ class ChangeSupervisorScholarshipController extends Controller
                 "reason" => 'required | min:5 | max:200',
                 "register_id" => 'required | exists:register_scholarships,id',
                 "user_id" => 'required | exists:users,id',
+                "file" => 'required',
+                "file.*" => 'mimes:pdf,jpeg,bmp,png,docx,doc | max:2000',
                 "terms_and_condition" => 'accepted',
             ]
         );
@@ -35,20 +38,39 @@ class ChangeSupervisorScholarshipController extends Controller
         if ($validator->fails())
             return redirect()->back()->withErrors($validator)->withInput();
 
+        $user_id = Auth::id();
+        $date = now();
+
         $change_supervisor_scholarship_on_progress_count = ChangeSupervisorScholarship::where('register_scholarship_id', $request->register_id)->where('user_id', Auth::id())->where('status_id', 3)->count();
         $change_supervisor_scholarship_success_count = ChangeSupervisorScholarship::where('register_scholarship_id', $request->register_id)->where('user_id', Auth::id())->where('status_id', 1)->count();
         if($change_supervisor_scholarship_on_progress_count == 0 && $change_supervisor_scholarship_success_count == 0)
         {
             $change_supervisor_scholarship = new ChangeSupervisorScholarship();
-            $change_supervisor_scholarship->user_id = Auth::id();
+            $change_supervisor_scholarship->user_id = $user_id;
             $change_supervisor_scholarship->reason = $request->reason;
             $change_supervisor_scholarship->register_scholarship_id = $request->register_id;
             $change_supervisor_scholarship->status_id = 3;
             $change_supervisor_scholarship->registeration_type_id = 4;
-            $change_supervisor_scholarship->created_by = Auth::id();
-            $change_supervisor_scholarship->created_at = now();
+            $change_supervisor_scholarship->created_by = $user_id;
+            $change_supervisor_scholarship->created_at = $date;
             $change_supervisor_scholarship->save();
-            return redirect()->route('personnel.showOrders')->with('success', trans('public.successfullyـregistered'));
+            if($change_supervisor_scholarship->id != null){
+                foreach ($request->file as $file) {
+                    $title = time() . $file->getClientOriginalName();
+                    File::create([
+                        'title' => $title,
+                        'path' => $file->store('public/storage/attachments'),
+                        'change_supervisor_scholarship_id' => $change_supervisor_scholarship->id,
+                        'user_id' =>$user_id,
+                        'created_by' => $user_id,
+                        'created_at' => $date
+                    ]);
+                }
+                return redirect()->route('personnel.showOrders')->with('success', trans('public.successfullyـregistered'));
+            }
+            else{
+                return redirect()->back()->with('danger', trans('public.Registration_was_not_successful'));
+            }
         }
         else{
             return redirect()->back()->with('danger', trans('public.you_are_already_order_for_changing_supervisor'));

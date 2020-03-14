@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="form-container change_fellowship flex center-center">
-        <form action="{{ route('changeFellowship.store')}}" method="POST" class="flex center-center flex-column">
+        <form action="{{ route('changeFellowship.store')}}" method="POST" class="flex center-center flex-column" enctype="multipart/form-data">
             <div class="form-sample flex flex-row">
                 @csrf
                 <div class="label-side flex flex-column">

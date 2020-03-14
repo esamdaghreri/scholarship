@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="form-container change-supervisor-scholarship flex center-center">
-        <form action="{{ route('changeSupervisor.store')}}" method="POST" class="flex center-center flex-column">
+        <form action="{{ route('changeSupervisor.store')}}" method="POST" class="flex center-center flex-column" enctype="multipart/form-data">
             <p>@lang('public.order_number'): {{$register_id->id}}</p>
             <div class="form-sample flex flex-row">
                 @csrf

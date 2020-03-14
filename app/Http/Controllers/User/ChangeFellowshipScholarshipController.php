@@ -12,6 +12,7 @@ use App\Model\User\ChangeFellowshipScholarship;
 use App\Model\User\RegisterScholarship;
 use App\Model\User\Fellowship;
 use App\Model\User\ScholarshipReason;
+use App\Model\User\File;
 
 class ChangeFellowshipScholarshipController extends Controller
 {
@@ -33,6 +34,8 @@ class ChangeFellowshipScholarshipController extends Controller
                 "other_reason" => ' min:5 | max:200',
                 "fellowship" => 'required | exists:fellowships,id',
                 "register_id" => 'required | exists:register_scholarships,id',
+                "file" => 'required',
+                "file.*" => 'mimes:pdf,jpeg,bmp,png,docx,doc | max:2000',
                 "terms_and_condition" => 'accepted',
             ]
         );
@@ -43,22 +46,42 @@ class ChangeFellowshipScholarshipController extends Controller
          ***/
         if ($validator->fails())
             return redirect()->back()->withErrors($validator)->withInput();
+        
+        // Define variable
+        $user_id = Auth::id();
+        $date = now();
 
         $change_fellowship_scholarship_on_progress_count = ChangeFellowshipScholarship::where('register_scholarship_id', $request->register_id)->where('user_id', Auth::id())->where('status_id', 3)->count();
         if($change_fellowship_scholarship_on_progress_count == 0)
         {
             $change_fellowship_scholarship = new ChangeFellowshipScholarship();
-            $change_fellowship_scholarship->user_id = Auth::id();
+            $change_fellowship_scholarship->user_id = $user_id;
             $change_fellowship_scholarship->scholarship_reason_id = $request->reason;
             $change_fellowship_scholarship->other_reason = $request->other_reason;
             $change_fellowship_scholarship->fellowship_id = $request->fellowship;
             $change_fellowship_scholarship->register_scholarship_id = $request->register_id;
             $change_fellowship_scholarship->status_id = 3;
             $change_fellowship_scholarship->registeration_type_id = 5;
-            $change_fellowship_scholarship->created_by = Auth::id();
-            $change_fellowship_scholarship->created_at = now();
+            $change_fellowship_scholarship->created_by = $user_id;
+            $change_fellowship_scholarship->created_at = $date;
             $change_fellowship_scholarship->save();
-            return redirect()->route('personnel.showOrders')->with('success', trans('public.successfullyـregistered'));
+            if($change_fellowship_scholarship->id != null){
+                foreach ($request->file as $file) {
+                    $title = time() . $file->getClientOriginalName();
+                    File::create([
+                        'title' => $title,
+                        'path' => $file->store('public/storage/attachments'),
+                        'change_fellowship_scholarship_id' => $change_fellowship_scholarship->id,
+                        'user_id' =>$user_id,
+                        'created_by' => $user_id,
+                        'created_at' => $date
+                    ]);
+                }
+                return redirect()->route('personnel.showOrders')->with('success', trans('public.successfullyـregistered'));
+            }
+            else{
+                return redirect()->back()->with('danger', trans('public.Registration_was_not_successful'));
+            }
         }
         else{
             return redirect()->back()->with('danger', trans('public.you_are_already_order_for_changing_fellowship'));
