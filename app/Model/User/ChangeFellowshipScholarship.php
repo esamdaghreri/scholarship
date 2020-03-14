@@ -47,4 +47,9 @@ class ChangeFellowshipScholarship extends Model
     {
         return $this->belongsTo('App\Model\User\RegisterScholarship');
     }
+
+    public function files()
+    {
+        return $this->hasMany('App\Model\User\File');
+    }
 }

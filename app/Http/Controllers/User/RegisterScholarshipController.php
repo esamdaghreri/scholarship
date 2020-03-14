@@ -74,7 +74,8 @@ class RegisterScholarshipController extends Controller
                     "college" => 'required | exists:colleges,id',
                     "qualification" => 'required | exists:qualifications,id',
                     "fellowship" => 'required | exists:fellowships,id',
-                    "file.*" => 'required | mimes:pdf,jpeg,bmp,png,docx,doc | max:2000',
+                    "file" => 'required',
+                    "file.*" => 'mimes:pdf,jpeg,bmp,png,docx,doc | max:2000',
                     "terms_and_condition" => 'accepted',
                 ]
             );
@@ -86,7 +87,8 @@ class RegisterScholarshipController extends Controller
                     "country" => 'required | exists:countries,id',
                     "university" => 'required | exists:universities,id',
                     "college" => 'required | exists:colleges,id',
-                    "file.*" => 'required | mimes:pdf | max:2000',
+                    "file" => 'required',
+                    "file.*" => 'mimes:pdf,jpeg,bmp,png,docx,doc | max:2000',
                     "terms_and_condition" => 'accepted',
                 ]
             );

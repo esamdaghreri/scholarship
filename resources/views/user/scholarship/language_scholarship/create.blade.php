@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="form-container new-language-scholarship flex center-center">
-        <form action="{{ route('register.store')}}" method="POST" class="flex center-center flex-column">
+        <form action="{{ route('register.store')}}" method="POST" class="flex center-center flex-column" enctype="multipart/form-data">
             <input type="hidden" name="type" value="langugae_scholarship">
             <div class="form-sample flex flex-row">
                 @csrf
@@ -10,6 +10,7 @@
                     <label>@lang('public.country')</label>
                     <label>@lang('public.university')</label>
                     <label>@lang('public.college')</label>
+                    <label>@lang('public.attachment')</label>
                 </div>
                 <div class="input-side flex flex-column">
                     <select name="country" class="input-text @if($errors->has('graduation_country'))input-error @endif" required>
@@ -27,6 +28,7 @@
                             <option value="{{$university->id}}">{{App::getlocale() == "en" ? $college->name_en : $college->name_ar}}</option>
                         @endforeach
                     </select>
+                    <input type=file name="file[]" class="input-file" multiple>
                 </div>
             </div>
             <div class="accept-terms">

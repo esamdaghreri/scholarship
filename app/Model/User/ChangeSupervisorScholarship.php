@@ -28,4 +28,9 @@ class ChangeSupervisorScholarship extends Model
     {
         return $this->belongsTo('App\Model\User\RegisterationType');
     }
+
+    public function files()
+    {
+        return $this->hasMany('App\Model\User\File');
+    }
 }
