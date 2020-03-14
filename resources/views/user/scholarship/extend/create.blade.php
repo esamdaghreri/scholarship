@@ -9,7 +9,7 @@
                 <div class="label-side flex flex-column">
                     <label>@lang('public.number_of_times_for_extend')</label>
                     <label>@lang('public.reason')</label>
-                    <label class="textarea-position flex al-items-center">@lang('public.otherـreason') (<small>@lang('public.optional'))</small></label>
+                    <label class="textarea-label flex al-items-center">@lang('public.otherـreason') (<small>@lang('public.optional'))</small></label>
                 </div>
                 <div class="input-side flex flex-column">
                     <select name="number_for_extend" class="input-text @if($errors->has('number_for_extend'))input-error @endif" required>

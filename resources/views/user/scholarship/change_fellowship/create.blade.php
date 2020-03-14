@@ -8,7 +8,8 @@
                 <div class="label-side flex flex-column">
                     <label>@lang('public.fellowship')</label>
                     <label>@lang('public.reason')</label>
-                    <label class="textarea-position flex al-items-center">@lang('public.otherـreason') (<small>@lang('public.optional'))</small></label>
+                    <label class="textarea-label flex al-items-center">@lang('public.otherـreason') (<small>@lang('public.optional'))</small></label>
+                    <label>@lang('public.attachment')</label>
                 </div>
                 <div class="input-side flex flex-column">
                     <?php unset($fellowships[0]) ?>
@@ -23,6 +24,7 @@
                         @endforeach
                     </select>
                     <textarea name="other_reason" class="input-textarea @if($errors->has('other_reason'))input-error @endif" value="{{$user_information->fourth_name ?? \Illuminate\Support\Facades\Request::old('other_reason')}}"></textarea>
+                    <input type=file name="file[]" class="input-file" multiple>
                     <input type="hidden" name="register_id" value="{{$register_id->id}}">
                 </div>
             </div>

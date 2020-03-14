@@ -783,7 +783,7 @@ footer {
 
 // cancel scholarship page
 // path: views/users/scholarship/cancel/create
-.form-container.cancel-scholarship, .form-container.extend-scholarship, .change-supervisor-scholarship, .new-language-scholarship{
+.cancel-scholarship, .extend-scholarship, .change-supervisor-scholarship, .new-language-scholarship, .change_fellowship{
     form{      
         p{
             color: $primary-color;
@@ -791,9 +791,13 @@ footer {
             margin-bottom: 30px;
         }  
         height: 500px;
-        .label-side{
-            .textarea-position{
-                height: 100px !important;
+        .form-sample{
+            .label-side{
+                .textarea-label{
+                    height: 100px !important;
+                    display: flex;
+                    align-items: center;
+                }
             }
         }
         button{

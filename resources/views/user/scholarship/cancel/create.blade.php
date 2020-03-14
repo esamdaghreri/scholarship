@@ -8,7 +8,7 @@
                 @csrf
                 <div class="label-side flex flex-column">
                     <label>@lang('public.reason')</label>
-                    <label class="textarea-position flex al-items-center">@lang('public.otherـreason') (<small>@lang('public.optional'))</small></label>
+                    <label class="textarea-label flex al-items-center">@lang('public.otherـreason') (<small>@lang('public.optional'))</small></label>
                 </div>
                 <div class="input-side flex flex-column">
                     <select name="reason" class="input-text @if($errors->has('reason'))input-error @endif" required>
