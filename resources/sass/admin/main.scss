@@ -21,6 +21,7 @@ $tertiary-color: #422C2E;
 $background-color: #FEEFE6;
 $border-color: #5D1049;
 $error-color: #E38C09;
+$error-color-hover: rgb(228, 153, 40);
 
 
 // Global Colors
@@ -56,6 +57,8 @@ $dark: #343a40;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    list-style: none;
+    text-decoration: none;
 }
 
 body{
@@ -63,10 +66,10 @@ body{
     padding: 0;
     width: 100%;
     font-weight: 300;
-    background-color: $white;
+    background-color: $light;
 }
 
-//Default
+// Default
 h1, h2, h3, h4, h5, h6, p, span, label, input, a {
     font-weight: 300;
     font-family: 'head_topic_regular', serif;
@@ -76,9 +79,9 @@ a{
     text-decoration: none;
 }
 
-//General
+// General
 
-//Buttons
+// Start defaut buttons
 .btn{
     width: 150px;
     height: 50px;
@@ -87,6 +90,7 @@ a{
     display: block;
     border-radius: 5px;
     font-weight: 300;
+    font-size: 20px;
     text-decoration: none;
     cursor: pointer;
     color: $white;
@@ -109,7 +113,77 @@ a{
     }
 }
 
-//Error style
+.btn-cancel {
+    background-color: $error-color;
+    color: $white;
+    &:hover {
+        background-color: $error-color-hover;
+    }
+}
+
+// End defaut buttons
+
+// Start default input, label
+.input-text{
+    width:200px;
+    height: 30px;
+    line-height: 30px;
+    margin: 1rem 0;
+    padding: 1rem 1rem;
+    color: $primary-color;
+    border: 1px solid $primary-color;
+    font-size: 12px;
+    outline: none;
+    &:focus{
+        box-shadow: 0 0 10px $primary-color-hover;
+        transition: 0.5s;
+    }
+}
+
+.input-file{
+    width:200px;
+    height: 30px;
+    line-height: 30px;
+    margin: 1rem 0;
+    color: $primary-color;
+    border: 1px solid $primary-color;
+    font-size: 12px;
+    outline: none;
+    &:focus{
+        box-shadow: 0 0 10px $primary-color-hover;
+        transition: 0.5s;
+    }
+}
+
+select.input-text{
+    padding: 0;
+}
+.input-textarea{
+    width:200px;
+    height: 100px;
+    margin: 1rem 0;
+    padding: 1rem 1rem;
+    font-size: 12px;
+    color: $primary-color;
+    border: 1px solid $primary-color;
+    resize: none;
+    outline: none;
+    &:focus{
+        box-shadow: 0 0 10px $primary-color-hover;
+        transition: 0.5s;
+    }
+}
+label{
+    height: 30px;
+    margin: 15px 0;
+    line-height: 2.99px;
+    padding: 1rem 1rem;
+    color: $primary-color;
+    font-size: 15px;
+}
+// End default input, label
+
+// Error style
 .error {
     color: $error-color;
 }
@@ -117,34 +191,348 @@ a{
     border: 1.2px solid $error-color;
 }
 
+// Start flex classes
+.flex{
+    display: flex;
+}
+.center-center{
+    justify-content: center;
+    align-items: center;
+}
+.center-top{
+    justify-content: center;
+    align-items: top;
+}
+.top-center{
+    justify-content: top;
+    align-items: center;
+}
+.top-top{
+    justify-content: top;
+    align-items: top;
+}
+.flex-column{
+    flex-direction: column;
+}
+.flex-row{
+    flex-direction: row;
+}
+.just-cont-center{
+    justify-content: center;
+}
+.just-cont-flex-start{
+    justify-content: flex-start;
+}
+.just-cont-flex-end{
+    justify-content: flex-end;
+}
+.al-items-center{
+    align-items: center;
+}
+.al-items-flex-start{
+    align-items: flex-start;
+}
+.al-items-flex-end{
+    align-items: flex-end;
+}
+// End flex classes
+
 // Default alert message
 .alert{
-    width: 70%;
-    min-height: 2rem;
-    margin-right: 20%;
-    font-size: 1rem;
-    line-height: 2rem;
-    display: flex;
-    justify-items: center;
+    width: 100%;
+    min-height: 80px;
+    position: relative;
+    font-size: 20px;
+    line-height: 20px;
+    ul{
+        padding: 10px;
+    }
+    li{
+        margin: 10px 0;
+    }
     &.success{
         background: $success;
         color: $white;
     }
     &.danger{
-        background: $danger;
+        background: $error-color;
         color: $white;
     }
 }
 
 
-// Defualt container
+// Default container
 .container{
     width: 100%;
-    height: 90vh; // 10vh for header height
-    display: flex;
-    justify-content: center;
-    justify-items: center;
+    height: 100%;
 }
 
+// Default section
+section{
+    width: 100%;
+    min-height: 500px;
+    padding: 10px;
+    background-color: $light;
+    border-bottom: 1px solid $primary-color;
+}
+
+// Default card style
+.card{
+    display: flex;
+    flex-wrap: wrap;
+    .card-container{
+        width: 300px;
+        height: 400px;
+        display: flex;
+        flex-direction: column;
+        background: #FFF;
+        border-radius: 6px;
+        border: 1px solid $primary-color;
+        margin: 3rem;
+        .upper-container{
+            flex: 1.5;
+            padding: 16px;
+            img{
+                width: 80%;
+                height: 100%;
+            }
+        }
+        .lower-container{
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            h2{
+                text-align: center;
+                margin-bottom: 5px;
+            }
+            p{
+                font-size: 1rem;
+                text-align: center;
+                margin-bottom: 0.5rem;
+            }
+        }
+    }
+}
+.form-container{
+    width: 100%;
+    height: 90vh;
+    background: url('/assets/images/hero_section.jpg');
+    background-position: top;
+    background-repeat: no-repeat;
+    form{        
+        width: 500px;
+        height: 600px;
+        background-color: $white;
+        opacity: 0.95;
+        border-radius: 40px;
+        .form-sample{
+            margin-bottom: 20px;
+        }
+        button{
+            margin: 20px 0;
+        }
+        a{
+            margin: 5px 0;
+            color: $primary-color;
+            font-size: 15px;
+            &:hover{
+                color: $primary-color-hover;
+            }
+        }
+    }
+}
+
+// Default title-field
+.wrapper{
+    width: 100%;
+    min-height: 90vh;
+    .back-button{
+        width: 90%;
+        margin: 50px 40px;
+    }
+    .title-with-field{
+        width: auto;
+        min-width: 60%;
+        .fields-section{
+            width: 100%;
+            .header-title{
+                margin: 20px 0;
+                p{ 
+                    font-size: 30px;
+                    color: $gray;
+                }
+                hr.bar{
+                    width: 250px;
+                    height: 1px;
+                    background-color: $primary-color;
+                }
+            }
+            .fields{
+                width: 100%;
+                justify-content: space-between;
+                .column{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-around;
+                    align-items: center;
+                    .label-side, .input-side{
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: flex-start;
+                        width: 250px;
+                    }
+                }
+            }
+        }
+        .button{
+            margin: 40px 0;
+        }
+    }
+
+    // For table
+    .title-with-table{
+        width: auto;
+        min-width: 60%;
+        .tables-section{
+            width: 100%;
+            .header-title{
+                margin: 20px 0;
+                p{ 
+                    font-size: 30px;
+                    color: $gray;
+                }
+                hr.bar{
+                    width: 250px;
+                    height: 1px;
+                    background-color: $primary-color;
+                }
+            }
+            table{
+                width: 100%;
+                border-top: 1px solid $primary-color;
+                border-bottom: 1px solid $primary-color;
+                tr{
+                    width: 100%;
+                    display: flex;
+                    &:nth-child(odd) {
+                        color: $primary-color;
+                        background-color: $white;
+                    }
+                    th,td{
+                        width: 100%;
+                        height: 50px;
+                        display: flex;
+                        justify-content: space-around;
+                        align-items: center;
+                        color: $primary-color-hover;
+                    }
+                    &.first-row{
+                        th{
+                            color: $primary-color;
+                            background-color: $white;
+                            border-bottom: 1px solid $primary-color;
+                        }
+                    }
+                    td{
+                        a.btn.btn-primary{
+                            width: 100px;
+                            height: 40px;
+                            line-height: 40px;
+                            font-size: 15px;
+                        }
+                    }
+                }
+            }
+            table.details{
+                border-top: 1px solid $gray;
+                border-bottom: 1px solid $gray;
+                tr{
+                    th{
+                        color: $black;
+                        background-color: $gray;
+                        border-bottom: 1px solid $black;
+                    }
+                    td{
+                        color: $black;
+                        background-color: $white;
+                        border-bottom: 1px solid $black;
+                    }
+                }
+                tr.contant-method{
+                   th{
+                       color: $black;
+                       background-color: $white;
+                   }
+                }
+            }
+            p{
+                color: $primary-color;
+                font-size: 40px;
+            }
+        }
+    }
+    .operation-scholarship-buttons{
+        margin: 50px;
+        justify-content: space-between;
+        .btn{
+            margin: 0 40px;
+            width: 200px;
+        }
+    }
+}
 
 // Start Styling
+
+// Start dashboard header
+// Path: admin.partials.dashboard-header
+.dashboard-div{
+    header.admin-dashboard{
+        width: 10%;
+        height: 90vh;
+        margin: 0;
+        background-color: $gray-dark;
+        nav{
+            ul{
+                height: 10vh;
+                li {
+                    list-style: none;
+                    a {
+                        height: 7vh;
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-start;
+                        text-decoration: none;
+                        font-size: 0.9rem;
+                        color: $white;
+                        &:hover {
+                            border-bottom: 1px solid $gray;
+                        }
+                        i{
+                            margin: 0 15px;
+                            color: $white;
+                            &:hover{
+                                color: $gray;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+// End dashboard header
+
+
+@media print{
+    header,footer,.footer-social-media,.footer-links,.footer-campany-name,.btn{
+        display: none;
+    }
+    body{
+        font-size: 10px;
+    }
+}
+
+// End login system forms
