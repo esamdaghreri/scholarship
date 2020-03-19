@@ -27,5 +27,12 @@
                 $('html').attr('dir', 'ltr');
             </script>
         @endif
+        <script>
+            $(document).ready(function(){
+                $(".right ul li").click(function(){ 
+                    $(this).toggleClass("active");
+                });
+            });
+        </script>
     </body>
 </html>

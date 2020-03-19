@@ -40,6 +40,8 @@ class CreateUsersTable extends Migration
             $table->unsignedSmallInteger('general_specialization_id')->nullable();
             $table->unsignedSmallInteger('job_description_id')->nullable();
             $table->unsignedSmallInteger('fellowship_id')->nullable();
+            $table->boolean('is_banned')->default(false);
+            $table->string('banned_reason')->nullable();
             $table->unsignedBigInteger('created_by');
             $table->dateTime('created_at')->useCurrent();
             $table->unsignedBigInteger('updated_by')->nullable();

@@ -42,10 +42,10 @@
                                 </tr>
                             @endforeach
                         @endforeach
-                        @else
-                            <p>@lang('public.you_have_no_order')</p>
-                        @endif
                     </table>
+                    @else
+                        <p>@lang('public.you_have_no_order')</p>
+                    @endif
                 </div>
             </div>
         </div>

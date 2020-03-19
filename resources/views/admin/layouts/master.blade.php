@@ -10,7 +10,7 @@
         <script src="https://kit.fontawesome.com/abc82d1ac7.js" crossorigin="anonymous"></script>
     </head>
     <body>
-        @include('user.partials.header')
+        @include('admin.partials.header')
         <div class="container">
             @include('user.error.message')
             <div class="dashboard-div flex flex-row">
@@ -21,6 +21,7 @@
         </div>
         {{-- script --}}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
         @yield('script')
         @if(App::getLocale() === 'ar')
             <script>
@@ -31,5 +32,12 @@
                 $('html').attr('dir', 'ltr');
             </script>
         @endif
+        <script>
+            $(document).ready(function(){
+                $(".right ul li").click(function(){ 
+                    $(this).toggleClass("active");
+                });
+            });
+        </script>
     </body>
 </html>

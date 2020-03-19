@@ -61,9 +61,34 @@ class User extends Authenticatable implements MustVerifyEmail
    /**
      * Relations to get the (gender ,country, university, college) associated with the user.
      */
+    public function role()
+    {
+        return $this->belongsTo('App\Model\Admin\Role');
+    }
+
     public function qualification()
     {
         return $this->belongsTo('App\Model\User\Qualification');
+    }
+
+    public function highestQualification()
+    {
+        return $this->belongsTo('App\Model\User\Qualification', 'highest_qualification_id');
+    }
+
+    public function graduationCountry()
+    {
+        return $this->belongsTo('App\Model\User\Country', 'graduation_country_id');
+    }
+
+    public function graduationUniversity()
+    {
+        return $this->belongsTo('App\Model\User\University', 'graduation_university_id');
+    }
+
+    public function graduationCollege()
+    {
+        return $this->belongsTo('App\Model\User\College', 'graduation_college_id');
     }
 
     public function gender()
@@ -78,7 +103,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function university()
     {
-        return $this->belongsTo('App\Model\User\Uender');
+        return $this->belongsTo('App\Model\User\gender');
     }
 
     public function college()
@@ -133,6 +158,26 @@ class User extends Authenticatable implements MustVerifyEmail
         {
             $user = User::select('role_id')->where('id', Auth::id())->firstOrFail();
             if($user->role_id == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;    
+            }
+        }
+    }
+    
+    public static function isBanned()
+    {
+        if (!Auth::check())
+        {
+            return redirect('login');
+        }
+        else 
+        {
+            $user = User::select('is_banned')->where('id', Auth::id())->firstOrFail();
+            if($user->is_banned == 1)
             {
                 return true;
             }

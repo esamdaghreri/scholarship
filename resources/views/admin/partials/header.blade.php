@@ -38,11 +38,7 @@
                         </ul>
                     </div>
                 </div>
-        </div>
-        <div class="register-buttons flex">
-            <li><a href="{{route('register.create')}}" class="btn btn-primary">@lang('public.register_in_scholarship')</a></li>
-            <li><a href="{{route('languageScholarship.create')}}" class="btn btn-primary">@lang('public.register_for_language_scholarship')</a></li>
-        </div>
+            </div>
         @else
             <ul class="not-auth flex flex-row center-center">
                 <li><a href="{{route('login')}}" class="btn btn-primary">@lang('public.login')</a></li>

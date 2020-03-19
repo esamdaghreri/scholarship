@@ -12,15 +12,14 @@
 */
 // When enter to main link of website, redirect to default language
 
-Route::group(['middleware' => 'setlocale'], function() {
+Route::group(['middleware'], function() {
     // Authentication routes
     Auth::routes(['verify' => true]);
     Route::get('/', 'User\HomeController@index')->name('user.home');
 });
 
-
 // ================ Route has middleware that users must be verifying email ==============
-Route::group(['middleware' => ['setlocale', 'verified', 'auth']], function() {
+Route::group(['middleware' => ['verified', 'auth']], function() {
 
     // ================ Route for user personnel information ==============
     Route::group(['prefix' => 'user-panel/personnel/'], function() {
@@ -31,6 +30,7 @@ Route::group(['middleware' => ['setlocale', 'verified', 'auth']], function() {
         Route::get('/orders', 'User\PersonnelController@showOrders')->middleware('checkPersonalInformationFill')->name('personnel.showOrders');
     });
 
+    // User routes
     Route::group(['prefix' => 'scholarship/', 'middleware' => ['checkPersonalInformationFill']], function() {
 
         // ================ Route for user registeration of scholarship ==============
@@ -62,6 +62,24 @@ Route::group(['middleware' => ['setlocale', 'verified', 'auth']], function() {
         
     });
 
+    // Admin routes
+    Route::group(['prefix' => 'admin/dashboard', 'middleware' => ['checkPersonalInformationFill', 'admin']], function() {
+        Route::get('/', 'Admin\AdminDashboardController@index')->name('admin.index');
+
+        // ================ Route for admin user dashboard =====================
+        Route::resource('/users', 'Admin\AdminUsersController')->except([
+            'create',
+            'destroy'
+        ])->names([
+            'index' => 'admin.user.index',
+            'store' => 'admin.user.store',
+            'show' => 'admin.user.show',
+            'edit' => 'admin.user.edit',
+            'update' => 'admin.user.update',
+        ]);
+        Route::post('/users/banned', 'Admin\AdminUsersController@banned')->name('admin.user.banned');
+        
+    });
 });
 
 // Change language
