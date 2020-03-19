@@ -126,4 +126,5 @@
         'are_you_sure_to_unbanned_him' => 'Are you sure to unbanned him?',
         'yes' => 'Yes',
         'cancel' => 'Cancel',
+        'dashboard' => 'Dashboard',
     ];

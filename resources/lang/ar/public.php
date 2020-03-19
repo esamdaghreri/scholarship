@@ -134,4 +134,5 @@
         'are_you_sure_to_unbanned_him' => 'هل أنت متأكد من الغاء حظره؟',
         'yes' => 'نعم',
         'cancel' => 'إلغاء',
+        'dashboard' => 'لوحة التحكم',
     ];

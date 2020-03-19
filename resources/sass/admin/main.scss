@@ -607,6 +607,7 @@ section{
 // Start dashboard header
 // Path: admin.partials.dashboard-header
 .dashboard-div{
+    min-height: 90vh;
     header.admin-dashboard{
         width: 10%;
         height: auto;

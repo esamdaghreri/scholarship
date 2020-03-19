@@ -13,6 +13,9 @@
                                 </a>
                                 <div class="dropdown">
                                     <ul>
+                                        @if(auth::user()->role_id == 1)
+                                            <li><a href="{{route('admin.index')}}"><i class="fas fa-user-cog"></i>@lang('public.dashboard')</a></li>
+                                        @endif
                                         <li><a href="{{route('personnel.showPersonnelData')}}"><i class="fas fa-user"></i>@lang('public.profile')</a></li>
                                         <li><a href="{{route('personnel.showPrivacy', Auth::id())}}"><i class="fas fa-key"></i>@lang('public.privacy')</a></li>
                                         <li><a href="{{route('personnel.showOrders')}}"><i class="fas fa-briefcase"></i>@lang('public.orders')</a></li>
