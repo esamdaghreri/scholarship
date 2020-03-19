@@ -78,7 +78,7 @@
         'release_date' => 'تاريخ الإصدار',
         'expiry_date' => 'تاريخ الإنتهاء',
         'general_information' => 'معلومات عامة',
-        'academicـinformation' => 'معلومات أكاديمية',
+        'academic_information' => 'معلومات أكاديمية',
         'save' => 'حفظ',
         'male' => 'ذكر',
         'female' => 'انثى',
@@ -135,4 +135,6 @@
         'yes' => 'نعم',
         'cancel' => 'إلغاء',
         'dashboard' => 'لوحة التحكم',
+        'requests' => 'الطلبات',
+        'reports' => 'التقارير',
     ];

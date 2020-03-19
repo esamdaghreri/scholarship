@@ -127,4 +127,6 @@
         'yes' => 'Yes',
         'cancel' => 'Cancel',
         'dashboard' => 'Dashboard',
+        'requests' => 'Requests',
+        'reports' => 'Reports',
     ];
