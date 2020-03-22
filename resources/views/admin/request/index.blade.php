@@ -30,19 +30,18 @@
                                             <td>{{App::getlocale() == "en" ? $single_type->registerationType->name_en : $single_type->registerationType->name_ar}}</td>
                                             <td>{{$single_type->created_at}}</td>
                                             @if($single_type->registeration_type_id == 1)
-                                                <td><a href="{{route('admin.register.show', $single_type->id)}}"><i class="fas fa-eye"></i></a></td> 
+                                                <td><a href="{{route('admin.registerScholarship.show', $single_type->id)}}"><i class="fas fa-eye"></i></a></td> 
                                             @elseif($single_type->registeration_type_id == 2)
-                                                <td><a href="{{route('admin.extend.show', $single_type->id)}}"><i class="fas fa-eye"></i></a></td> 
+                                                <td><a href="{{route('admin.extendScholarship.show', $single_type->id)}}"><i class="fas fa-eye"></i></a></td> 
                                             @elseif($single_type->registeration_type_id == 3)
-                                                <td><a href="{{route('admin.cancel.show', $single_type->id)}}"><i class="fas fa-eye"></i></a></td> 
+                                                <td><a href="{{route('admin.cancelScholarship.show', $single_type->id)}}"><i class="fas fa-eye"></i></a></td> 
                                             @elseif($single_type->registeration_type_id == 4)
-                                                <td><a href="{{route('admin.changeSupervisor.show', $single_type->id)}}"><i class="fas fa-eye"></i></a></td> 
+                                                <td><a href="{{route('admin.changeSupervisorScholarship.show', $single_type->id)}}"><i class="fas fa-eye"></i></a></td> 
                                             @elseif($single_type->registeration_type_id == 5)
-                                            <td><a href="{{route('admin.changeFellowship.show', $single_type->id)}}"><i class="fas fa-eye"></i></a></td> 
+                                                <td><a href="{{route('admin.changeFellowshipScholarship.show', $single_type->id)}}"><i class="fas fa-eye"></i></a></td> 
                                             @elseif($single_type->registeration_type_id == 6)
                                                 <td><a href="{{route('admin.languageScholarship.show', $single_type->id)}}"><i class="fas fa-eye"></i></a></td> 
                                             @endif
-                                            <td><a href="{{route('admin.request.show', $single_type->id)}}"><i class="fas fa-eye"></i></a></td> 
                                         </tr>
                                     @endforeach
                                 @endforeach

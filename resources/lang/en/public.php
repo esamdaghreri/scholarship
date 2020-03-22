@@ -132,4 +132,11 @@
         'request_time' => 'Request time',
         'requests' => 'Requests',
         'reports' => 'ٌReports',
+        'approve' => 'Approve',
+        'reject' => 'Reject',
+        'are_you_sure_to_approve_it' => 'Are you sure to approve it',
+        'are_you_sure_to_reject_it' => 'Are you sure to reject it',
+        'sorry_this_request_already_approved' => 'Sorry, this request already approved',
+        'sorry_this_request_already_rejected' => 'Sorry, this request already rejected',
+        'reject_reason' => 'Reject reason',
     ];

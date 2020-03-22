@@ -12,7 +12,7 @@ class RegisterScholarship extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'country_id', 'university_id', 'college_id', 'qualification_id', 'fellowship_id', 'registeration_type_id', 'created_by', 'created_at',
+        'user_id', 'country_id', 'university_id', 'college_id', 'qualification_id', 'fellowship_id', 'registeration_type_id', 'created_by', 'created_at', 'updated_by', 'updated_at',
     ];
 
     protected $table = 'register_scholarships';

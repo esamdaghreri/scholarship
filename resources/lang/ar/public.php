@@ -140,4 +140,11 @@
         'request_time' => 'وقت الطلب',
         'requests' => 'الطلبات',
         'reports' => 'التقارير',
+        'approve' => 'موافقة',
+        'reject' => 'رفض',
+        'are_you_sure_to_approve_it' => 'هل أنت متأكد من الموافقة عليها؟',
+        'are_you_sure_to_reject_it' => 'هل أنت متأكد من رفضه',
+        'sorry_this_request_already_approved' => 'عذرا ، تمت الموافقة على هذا الطلب بالفعل',
+        'sorry_this_request_already_rejected' => 'عذرا ، تم رفض هذا الطلب بالفعل',
+        'reject_reason' => 'سبب الرفض',
     ];
