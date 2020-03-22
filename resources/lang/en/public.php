@@ -104,6 +104,7 @@
         'optional' => 'Optional',
         'there_is_no_other_reason' => 'There is no other reason',
         'information_about_the_scholarship' => 'Information about the scholarship',
+        'information_about_the_language_scholarship' => 'Information about the language scholarship',
         'information_about_cancel_scholarship' => 'Information about cancel scholarship',
         'information_about_extend_scholarship' => 'Information about extend scholarship',
         'information_about_change_supervisor_scholarship' => 'Information about change supervisor scholarship',

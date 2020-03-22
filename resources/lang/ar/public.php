@@ -112,6 +112,7 @@
         'optional' => 'اختياري',
         'there_is_no_other_reason' => 'لا يوجد سبب اخر',
         'information_about_the_scholarship' => 'معلومات عن البعثة',
+        'information_about_the_language_scholarship' => 'معلومات عن دراسة لغة',
         'information_about_cancel_scholarship' => 'معلومات عن الغاء البعثة',
         'information_about_extend_scholarship' => 'معلومات عن تمديد البعثة',
         'information_about_change_supervisor_scholarship' => 'معلومات عن تغيير مشرف البعثة',

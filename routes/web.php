@@ -113,6 +113,12 @@ Route::group(['middleware' => ['verified', 'auth']], function() {
         Route::post('/changefellowship/scholarship/approve', 'Admin\AdminChangeFellowshipController@approve')->name('admin.changeFellowshipScholarship.approve');
         Route::post('/changefellowship/scholarship/reject', 'Admin\AdminChangeFellowshipController@reject')->name('admin.changeFellowshipScholarship.reject');
 
+        // ================ Route for admin language scholarship dashboard =====================
+        Route::get('/language/scholarship/{id}', 'Admin\AdminLanguageScholarshipController@show')->name('admin.languageScholarship.show');
+        Route::get('/language/scholarship/{id}/edit', 'Admin\AdminLanguageScholarshipController@edit')->name('admin.languageScholarship.edit');
+        Route::post('/language/scholarship/approve', 'Admin\AdminLanguageScholarshipController@approve')->name('admin.languageScholarship.approve');
+        Route::post('/language/scholarship/reject', 'Admin\AdminLanguageScholarshipController@reject')->name('admin.languageScholarship.reject');
+
     });
 });
 
