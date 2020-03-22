@@ -91,7 +91,7 @@
                     <tr>
                         <th>@lang('public.created_at')</th>
                         <td>{{$request->registerScholarship->created_at}}</td>
-                        <th>@lang('public.specialist')</th>
+                        <th>@lang('public.fellowship')</th>
                         <td>{{App::getlocale() == "en" ? $request->registerScholarship->fellowship->name_en : $request->registerScholarship->fellowship->name_ar}}</td>
                     </tr>
                     <tr>
@@ -121,7 +121,7 @@
             </div>
         </div>
         <div class="operation-scholarship-buttons flex">
-            @if($request->registerScholarship->status_id == 1)<button id="{{$request->id}}"  class="btn btn-primary open-approve-modal">@lang('public.approve')</button> @endif
+            @if($request->registerScholarship->status_id == 1 && $request->status_id != 1)<button id="{{$request->id}}"  class="btn btn-primary open-approve-modal">@lang('public.approve')</button> @endif
             @if($request->status_id != 2)<button id="{{$request->id}}"  class="btn btn-cancel open-reject-modal">@lang('public.reject')</button> @endif
         </div>
     </div>

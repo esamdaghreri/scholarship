@@ -19,6 +19,7 @@ class CreateChangeSupervisorScholarshipsTable extends Migration
             $table->string('reason', 300)->nullable();
             $table->unsignedSmallInteger('register_scholarship_id');
             $table->unsignedSmallInteger('status_id')->default(3);
+            $table->string('reject_reason')->nullable();
             $table->unsignedSmallInteger('registeration_type_id');
             $table->unsignedBigInteger('created_by');
             $table->dateTime('created_at')->useCurrent();

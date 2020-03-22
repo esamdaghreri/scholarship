@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Model\User\ChangeSupervisorScholarship;
 use App\Model\User\RegisterScholarship;
 use App\Model\User\File;
+use App\Model\User\File as FileTable;
 
 class ChangeSupervisorScholarshipController extends Controller
 {
@@ -57,14 +58,15 @@ class ChangeSupervisorScholarshipController extends Controller
             if($change_supervisor_scholarship->id != null){
                 foreach ($request->file as $file) {
                     $title = time() . $file->getClientOriginalName();
-                    File::create([
+                    $file->storeAs('/public/attachments', $title);
+                    FileTable::create([
+                        'path' => $title,
                         'title' => $title,
-                        'path' => $file->store('public/storage/attachments'),
                         'change_supervisor_scholarship_id' => $change_supervisor_scholarship->id,
                         'user_id' =>$user_id,
                         'created_by' => $user_id,
                         'created_at' => $date
-                    ]);
+                        ]);
                 }
                 return redirect()->route('personnel.showOrders')->with('success', trans('public.successfullyـregistered'));
             }

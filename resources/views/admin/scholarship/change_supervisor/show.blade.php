@@ -101,13 +101,11 @@
                         <td>{{$request->updated_at}}</td>
                     </tr>
                     <tr class="contant-method">
-                        <th>@lang('public.information_about_cancel_scholarship')</th>
+                        <th>@lang('public.information_about_change_supervisor_scholarship')</th>
                     </tr>
                     <tr>
                         <th>@lang('public.reason')</th>
-                        <td>{{App::getlocale() == "en" ? $request->scholarshipReason->name_en : $request->scholarshipReason->name_ar}}</td>
-                        <th>@lang('public.otherـreason')</th>
-                        <td>{{$request->other_reason ? $request->other_reason  : trans('public.there_is_no_other_reason')}}</td>
+                        <td>{{$request->reason ? $request->reason  : trans('public.there_is_no_other_reason')}}</td>
                         <th>@lang('public.order_status')</th>
                         <td>{{App::getlocale() == "en" ? $request->status->name_en : $request->status->name_ar}}</td>
                     </tr>
@@ -117,6 +115,14 @@
                             <td>{{$request->reject_reason}}</td>
                         </tr>
                     @endif
+                    <tr class="contant-method">
+                        <th>@lang('public.attachment')</th>
+                    </tr>
+                    @foreach ($urls as $url)
+                        <tr>
+                            <td><a href="http://localhost:5555/storage/attachments/{{$url->title}}" target="_blank">{{$url->title}}</a></td>
+                        </tr>
+                    @endforeach
                 </table>
             </div>
         </div>
@@ -188,7 +194,7 @@
                 e.preventDefault();
                 $.ajax({
                     type: "POST",
-                    url:"/admin/dashboard/cancel/scholarship/approve",
+                    url:"/admin/dashboard/changesupervisor/scholarship/approve",
                     data: {
                         _token: "{{ csrf_token() }}",
                         request_id:  request_id,
@@ -216,7 +222,7 @@
                 reject_reason = $('textarea#reject-message').val();
                 $.ajax({
                     type: "POST",
-                    url:"/admin/dashboard/cancel/scholarship/reject",
+                    url:"/admin/dashboard/changesupervisor/scholarship/reject",
                     data: {
                         _token: "{{ csrf_token() }}",
                         request_id:  request_id,

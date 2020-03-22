@@ -91,7 +91,7 @@
                     <tr>
                         <th>@lang('public.created_at')</th>
                         <td>{{date('Y-m-d', strtotime($request->created_at))}}</td>
-                        <th>@lang('public.specialist')</th>
+                        <th>@lang('public.fellowship')</th>
                         <td>{{App::getlocale() == "en" ? $request->fellowship->name_en : $request->fellowship->name_ar}}</td>
                     </tr>
                     <tr>

@@ -11,7 +11,7 @@
                     <label>@lang('public.university')</label>
                     <label>@lang('public.college')</label>
                     <label>@lang('public.qualification')</label>
-                    <label>@lang('public.specialist')</label>
+                    <label>@lang('public.fellowship')</label>
                     <label>@lang('public.attachment')</label>
                 </div>
                 <div class="input-side flex flex-column">
