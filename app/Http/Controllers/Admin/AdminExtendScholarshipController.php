@@ -7,23 +7,21 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Model\User\RegisterScholarship;
+use App\Model\User\ExtendScholarship;
 use App\Model\User\File;
 
-
-class AdminRegisterScholarshipController extends Controller
+class AdminExtendScholarshipController extends Controller
 {
     public function show($id)
     {
-        $request = RegisterScholarship::where('id', $id)->with(['user', 'country', 'university', 'college', 'qualification', 'fellowship', 'status', 'registerationType'])->firstorfail();
-        $urls = File::where('register_scholarship_id', $id)->get();
-        return view('admin.scholarship.register.show', ['request' => $request, 'urls' => $urls]);
+        $request = ExtendScholarship::where('id', $id)->with(['user', 'registerScholarship', 'scholarshipReason'])->firstorfail();
+        return view('admin.scholarship.extend.show', ['request' => $request]);
     }
 
     public function approve(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            "request_id" => "required | exists:register_scholarships,id",
+            "request_id" => "required | exists:extend_scholarships,id",
         ]);
         /**
          *  checks if there an error in validator above then return to same page with error messages
@@ -32,8 +30,8 @@ class AdminRegisterScholarshipController extends Controller
         if ($validator->fails())
             return response()->json(['errors'=>$validator->errors()->all()]);
         
-        $order = RegisterScholarship::where('id', $request->get('request_id'))->firstOrFail();
-        if($order->status->id != 1)
+        $order = ExtendScholarship::where('id', $request->get('request_id'))->with('registerScholarship')->firstOrFail();
+        if($order->status->id != 1 && $order->registerScholarship->status_id == 1)
         {
             $order->status_id = 1;
             $order->reject_reason = null;
@@ -51,7 +49,7 @@ class AdminRegisterScholarshipController extends Controller
     public function reject(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            "request_id" => "required | exists:register_scholarships,id",
+            "request_id" => "required | exists:extend_scholarships,id",
             "reason" => "required | min:3 | max:400",
         ]);
         /**
@@ -61,8 +59,8 @@ class AdminRegisterScholarshipController extends Controller
         if ($validator->fails())
             return response()->json(['errors'=>$validator->errors()->all()]);
         
-        $order = RegisterScholarship::where('id', $request->get('request_id'))->firstOrFail();
-        if($order->status->id != 2)
+        $order = ExtendScholarship::where('id', $request->get('request_id'))->firstOrFail();
+        if($order->status->id != 2 && $order->registerScholarship->status_id == 1)
         {
             $order->status_id = 2;
             $order->reject_reason = $request->get('reason');

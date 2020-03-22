@@ -89,6 +89,12 @@ Route::group(['middleware' => ['verified', 'auth']], function() {
         Route::post('/register/scholarship/approve', 'Admin\AdminRegisterScholarshipController@approve')->name('admin.registerScholarship.approve');
         Route::post('/register/scholarship/reject', 'Admin\AdminRegisterScholarshipController@reject')->name('admin.registerScholarship.reject');
 
+        // ================ Route for admin extend scholarship dashboard =====================
+        Route::get('/extend/scholarship/{id}', 'Admin\AdminExtendScholarshipController@show')->name('admin.extendScholarship.show');
+        Route::get('/extend/scholarship/{id}/edit', 'Admin\AdminExtendScholarshipController@edit')->name('admin.extendScholarship.edit');
+        Route::post('/extend/scholarship/approve', 'Admin\AdminExtendScholarshipController@approve')->name('admin.extendScholarship.approve');
+        Route::post('/extend/scholarship/reject', 'Admin\AdminExtendScholarshipController@reject')->name('admin.extendScholarship.reject');
+
     });
 });
 
