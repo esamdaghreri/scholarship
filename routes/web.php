@@ -78,6 +78,10 @@ Route::group(['middleware' => ['verified', 'auth']], function() {
             'update' => 'admin.user.update',
         ]);
         Route::post('/users/banned', 'Admin\AdminUsersController@banned')->name('admin.user.banned');
+
+
+        // ================ Route for admin request dashboard =====================
+        Route::get('/requests', 'Admin\AdminRequestsController@index')->name('admin.request.index');
         
     });
 });

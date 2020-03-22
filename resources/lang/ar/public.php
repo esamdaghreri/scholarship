@@ -135,6 +135,9 @@
         'yes' => 'نعم',
         'cancel' => 'إلغاء',
         'dashboard' => 'لوحة التحكم',
+        'no_users_available' => 'لا يوجد مستخدمين',
+        'no_requests_available' => 'لا يوجد طلبات',
+        'request_time' => 'وقت الطلب',
         'requests' => 'الطلبات',
         'reports' => 'التقارير',
     ];

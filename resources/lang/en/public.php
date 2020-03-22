@@ -127,6 +127,9 @@
         'yes' => 'Yes',
         'cancel' => 'Cancel',
         'dashboard' => 'Dashboard',
+        'no_users_available' => 'No users available',
+        'no_requests_available' => 'No requests available',
+        'request_time' => 'Request time',
         'requests' => 'Requests',
-        'reports' => 'Reports',
+        'reports' => 'ٌReports',
     ];

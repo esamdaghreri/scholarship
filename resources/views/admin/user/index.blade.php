@@ -1,9 +1,6 @@
 @extends('admin.layouts.master')
 @section('content')
     <div class="wrapper flex flex-column just-cont-flex-start al-items-center user-dashboard">
-        <div class="back-button flex flex-column just-cont-flex-start">
-            <a href="{{route('user.home')}}" class="btn btn-primary">@lang('public.back')</a>
-        </div>
         <div class="title-with-table flex flex-column">
             <div class="tables-section">
                 <div class="header-title flex flex-row">
@@ -56,7 +53,7 @@
                                 </tbody>
                         </table>
                     @else
-                        <p>No users available</p>
+                        <p>@lang('public.no_users_available')</p>
                     @endif
                 </div>
             </div>
