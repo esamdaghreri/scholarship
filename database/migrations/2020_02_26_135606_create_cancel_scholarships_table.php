@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCancleScholarshipsTable extends Migration
+class CreateCancelScholarshipsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreateCancleScholarshipsTable extends Migration
      */
     public function up()
     {
-        Schema::create('cancle_scholarships', function (Blueprint $table) {
+        Schema::create('cancel_scholarships', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->string('other_reason', 200)->nullable();
             $table->unsignedSmallInteger('scholarship_reason_id');
             $table->unsignedSmallInteger('register_scholarship_id');
             $table->unsignedSmallInteger('status_id')->default(3);
+            $table->string('reject_reason')->nullable();
             $table->unsignedSmallInteger('registeration_type_id');
             $table->unsignedBigInteger('created_by');
             $table->dateTime('created_at')->useCurrent();
@@ -35,6 +36,6 @@ class CreateCancleScholarshipsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cancle_scholarships');
+        Schema::dropIfExists('cancel_scholarships');
     }
 }

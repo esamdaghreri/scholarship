@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class CancelScholarship extends Model
 {
-    protected $table = "cancle_scholarships";
+    protected $table = "cancel_scholarships";
 
     public function user()
     {

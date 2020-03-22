@@ -95,6 +95,12 @@ Route::group(['middleware' => ['verified', 'auth']], function() {
         Route::post('/extend/scholarship/approve', 'Admin\AdminExtendScholarshipController@approve')->name('admin.extendScholarship.approve');
         Route::post('/extend/scholarship/reject', 'Admin\AdminExtendScholarshipController@reject')->name('admin.extendScholarship.reject');
 
+        // ================ Route for admin cancel scholarship dashboard =====================
+        Route::get('/cancel/scholarship/{id}', 'Admin\AdminCancelScholarhipController@show')->name('admin.cancelScholarship.show');
+        Route::get('/cancel/scholarship/{id}/edit', 'Admin\AdminCancelScholarhipController@edit')->name('admin.cancelScholarship.edit');
+        Route::post('/cancel/scholarship/approve', 'Admin\AdminCancelScholarhipController@approve')->name('admin.cancelScholarship.approve');
+        Route::post('/cancel/scholarship/reject', 'Admin\AdminCancelScholarhipController@reject')->name('admin.cancelScholarship.reject');
+
     });
 });
 
