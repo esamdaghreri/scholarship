@@ -148,4 +148,12 @@
         'sorry_this_request_already_approved' => 'عذرا ، تمت الموافقة على هذا الطلب بالفعل',
         'sorry_this_request_already_rejected' => 'عذرا ، تم رفض هذا الطلب بالفعل',
         'reject_reason' => 'سبب الرفض',
+        'total_requests' => 'مجموع الطلبات',
+        'cancel_requests' => 'طلبات الالغاء',
+        'extend_requests' => 'طلبات التمديد',
+        'change_supervisor_requests' => 'طلبات تغيير المشرف',
+        'change_fellowship_requests' => 'طلبات تغيير التخصص',
+        'register_scholarship_requests' => 'طلبات التسجيل في البعثة',
+        'language_scholarship_requests' => 'طلبات التسحيل في دراسة لغة',
+        'dashboard' => 'لوحة التحكم',
     ];

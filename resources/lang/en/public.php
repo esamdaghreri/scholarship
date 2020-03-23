@@ -140,4 +140,12 @@
         'sorry_this_request_already_approved' => 'Sorry, this request already approved',
         'sorry_this_request_already_rejected' => 'Sorry, this request already rejected',
         'reject_reason' => 'Reject reason',
+        'total_requests' => 'Total requests',
+        'cancel_requests' => 'Cancel requests',
+        'extend_requests' => 'Extend requests',
+        'change_supervisor_requests' => 'Change supervisor requests',
+        'change_fellowship_requests' => 'Change fellowship requests',
+        'register_scholarship_requests' => 'Register scholarship requests',
+        'language_scholarship_requests' => 'Language scholarship requests',
+        'dashboard' => 'Dashboard',
     ];

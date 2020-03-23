@@ -13,8 +13,8 @@
 }
 
 // Colors
-$primary-color: #6200EE;
-$primary-color-hover: #6250EE;
+$primary-color: #4d36ff;
+$primary-color-hover: #6b58f8;
 $secondary-color: #B00020;
 $secondary-color-hover: #D42646;
 $tertiary-color: #422C2E;
@@ -696,6 +696,50 @@ section{
                             }
                         }
                     }
+                }
+            }
+        }
+    }
+}
+
+.dashboard{
+    width: 100%;
+    .card{
+        .card-container{
+            width: 250px;
+            height: 150px;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+            .left{
+                display: flex;
+                justify-content: center;
+                align-items: center; 
+                flex: 1.5;
+                background-color: $primary-color;
+                color: $white;
+            }
+            .right{
+                flex: 2;
+                background-color: $white;
+                display: flex;
+                flex-direction: column;
+                .upper-container,.lower-container{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 0;
+                    flex: 1;
+                    p{
+                        font-size: 15px;
+                        color: $primary-color;
+                    }
+                    p.number{
+                        font-size: 25px;
+                    }
+                }
+                .upper-container{
+                    border-bottom: 1px solid $primary-color;
                 }
             }
         }
