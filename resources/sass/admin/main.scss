@@ -733,9 +733,11 @@ section{
                     p{
                         font-size: 15px;
                         color: $primary-color;
+                        font-weight: bold;
                     }
                     p.number{
                         font-size: 25px;
+                        font-weight: bold;
                     }
                 }
                 .upper-container{
@@ -746,7 +748,62 @@ section{
     }
 }
 
+// Start report Dashboard
+.wrapper.report-dashboard{
+    width: 100%;
+    min-width: 60%;
+    .search-section{
+        width: 90%;
+        justify-content: center;
+        align-items: flex-start;
+        .header-title{
+            margin: 20px 0;
+            p{ 
+                font-size: 30px;
+                color: $gray;
+            }
+            hr.bar{
+                width: 250px;
+                height: 1px;
+                background-color: $primary-color;
+            }
+        }
+        .fields{
+            form{
+                .input-field{
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: row;
+                }
 
+                .date-field{
+                    justify-content: space-between;
+                    align-items: center;
+                    input{
+                        
+                    }
+                    .date-types{
+                        align-items: flex-start;
+                    }
+                }
+
+                .or{
+                    margin: 0 40px;
+                    color: $black;
+                }
+
+                button{
+                    margin-top: 20px;
+                }
+            }
+        }
+    }
+    p.no-result{
+        color: $primary-color;
+        font-size: 40px;
+        margin-top: 30px;
+    }
+}
 @media print{
     header,footer,.footer-social-media,.footer-links,.footer-campany-name,.btn{
         display: none;

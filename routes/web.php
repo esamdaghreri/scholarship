@@ -119,6 +119,9 @@ Route::group(['middleware' => ['verified', 'auth']], function() {
         Route::post('/language/scholarship/approve', 'Admin\AdminLanguageScholarshipController@approve')->name('admin.languageScholarship.approve');
         Route::post('/language/scholarship/reject', 'Admin\AdminLanguageScholarshipController@reject')->name('admin.languageScholarship.reject');
 
+        // ================ Route for admin reports dashboard =====================
+        Route::get('/report', 'Admin\AdminReportsController@index')->name('admin.report.index');
+
     });
 });
 
