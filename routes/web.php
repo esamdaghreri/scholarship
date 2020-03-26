@@ -121,6 +121,8 @@ Route::group(['middleware' => ['verified', 'auth']], function() {
 
         // ================ Route for admin reports dashboard =====================
         Route::get('/report', 'Admin\AdminReportsController@index')->name('admin.report.index');
+        Route::get('/report/seach', 'Admin\AdminReportsController@search')->name('admin.report.search');
+        Route::get('/report/{id}', 'Admin\AdminReportsController@show')->name('admin.report.show');
 
     });
 });

@@ -136,10 +136,31 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsTo('App\Model\User\JobDescription');
     }
 
-    public function orderScholarships()
+    public function registerScholarships()
     {
-        return $this->hasMany('App\Model\User\OrderScholarship');
+        return $this->hasMany('App\Model\User\RegisterScholarship');
     }
+
+    public function cancelscholarships()
+    {
+        return $this->hasMany('App\Model\User\CancelScholarship');
+    }
+
+    public function changeFellowshipScholarships()
+    {
+        return $this->hasMany('App\Model\User\ChangeFellowshipScholarship');
+    }
+
+    public function changeSupervisorScholarships()
+    {
+        return $this->hasMany('App\Model\User\ChangeSupervisorScholarship');
+    }
+
+    public function extendScholarships()
+    {
+        return $this->hasMany('App\Model\User\ExtendScholarship');
+    }
+    
     public static function areFieldEmpty()
     {
         $user = User::where('id', Auth::id())->firstOrFail();
