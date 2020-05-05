@@ -162,7 +162,7 @@
                             @endif
                         </table>
                     @else
-                    <p>@lang('public.he_has_no_requests')</p>
+                    <p>@lang('public.does_not_have_a_request')</p>
                     @endif
                 </div>
             </div>

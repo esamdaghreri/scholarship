@@ -35,9 +35,15 @@
                                     <tr>
                                         <td>{{$counter}}</td>
                                         <td>{{$user->email}}</td>
-                                        <td>{{$user->national_number}}</td>
-                                        <td>{{App::getlocale() == "en" ? $user->gender->name_en : $user->gender->name_ar}}</td>
-                                        <td>{{App::getlocale() == "en" ? $user->nationality->name_en : $user->nationality->name_ar}}</td>
+                                        @if(is_null($user->national_number) || is_null($user->gender) || is_null($user->nationality))
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        @else
+                                            <td>{{$user->national_number}}</td>
+                                            <td>{{App::getlocale() == "en" ? $user->gender->name_en : $user->gender->name_ar}}</td>
+                                            <td>{{App::getlocale() == "en" ? $user->nationality->name_en : $user->nationality->name_ar}}</td>
+                                        @endif
                                         @if(is_null($user->email_verified_at))
                                             <td>@lang('auth.not_verified')</td>
                                         @else
@@ -50,7 +56,7 @@
                                         $counter += 1;
                                     @endphp
                                 @endforeach
-                                </tbody>
+                            </tbody>
                         </table>
                     @else
                         <p>@lang('public.no_users_available')</p>

@@ -17,6 +17,7 @@
                         <tr class="first-row">
                             <th>#@lang('public.order_number')</th>
                             <th>@lang('public.order_status')</th>
+                            <th>@lang('public.reason')</th>
                             <th>@lang('public.type')</th>
                             <th>@lang('public.details')</th>
                         </tr>
@@ -25,6 +26,11 @@
                                 <tr>
                                     <td>{{$single_type->id}}</td>
                                     <td>{{App::getlocale() == "en" ? $single_type->status->name_en : $single_type->status->name_ar}}</td>
+                                    @if($single_type->status->id == 2)
+                                        <td>{{$single_type->reject_reason}}</td>
+                                    @else
+                                        <td></td>
+                                    @endif
                                     <td>{{App::getlocale() == "en" ? $single_type->registerationType->name_en : $single_type->registerationType->name_ar}}</td>
                                     @if($single_type->registeration_type_id == 1)
                                         <td><a href="{{route('register.show', $single_type->id)}}" class="btn btn-primary">@lang('public.details')</a></td>
