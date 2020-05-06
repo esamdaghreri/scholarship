@@ -13,6 +13,11 @@ use App\Model\User\File;
 
 class AdminRegisterScholarshipController extends Controller
 {
+    public function index(){
+        $requests = RegisterScholarship::with(['status', 'registerationType'])->orderBy('created_at', 'desc')->paginate(20);
+        return view('admin.request.register', ['requests' => $requests]);
+    }
+
     public function show($id)
     {
         $request = RegisterScholarship::where('id', $id)->with(['user', 'country', 'university', 'college', 'qualification', 'fellowship', 'status', 'registerationType'])->firstorfail();
