@@ -12,6 +12,11 @@ use App\Model\User\File;
 
 class AdminExtendScholarshipController extends Controller
 {
+    public function index(){
+        $requests = ExtendScholarship::with(['status', 'registerationType'])->orderBy('created_at', 'desc')->paginate(20);
+        return view('admin.request.extend', ['requests' => $requests]);
+    }
+
     public function show($id)
     {
         $request = ExtendScholarship::where('id', $id)->with(['user', 'registerScholarship', 'scholarshipReason'])->firstorfail();
