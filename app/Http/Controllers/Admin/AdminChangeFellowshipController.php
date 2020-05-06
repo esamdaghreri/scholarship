@@ -12,6 +12,11 @@ use App\Model\User\File;
 
 class AdminChangeFellowshipController extends Controller
 {
+    public function index(){
+        $requests = ChangeFellowshipScholarship::with(['status', 'registerationType'])->orderBy('created_at', 'desc')->paginate(20);
+        return view('admin.request.fellowship', ['requests' => $requests]);
+    }
+
     public function show($id)
     {
         $request = ChangeFellowshipScholarship::where('id', $id)->with(['user', 'fellowship', 'status', 'registerationType', 'registerScholarship'])->firstorfail();

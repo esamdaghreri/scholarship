@@ -84,6 +84,7 @@ Route::group(['middleware' => ['verified', 'auth']], function() {
         Route::get('/requests/language', 'Admin\AdminCancelScholarhipController@index')->name('admin.request.language');
         Route::get('/requests/cancel', 'Admin\AdminCancelScholarhipController@index')->name('admin.request.cancel');
         Route::get('/requests/extend', 'Admin\AdminExtendScholarshipController@index')->name('admin.request.extend');
+        Route::get('/requests/change-fellowship', 'Admin\AdminChangeFellowshipController@index')->name('admin.request.change_fellowship');
 
         // ================ Route for admin register scholarship dashboard =====================
         Route::get('/register/scholarship/{id}', 'Admin\AdminRegisterScholarshipController@show')->name('admin.registerScholarship.show');
