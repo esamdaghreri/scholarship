@@ -6,7 +6,9 @@
             <a href="{{route('admin.user.index')}}" class="btn btn-primary">@lang('public.back')</a>
         </div>
         <div class="title-with-field flex flex-column">
+            @include('user.error.message')
             <form action="{{route('admin.user.update', $user->id)}}" method="POST">
+                @include('user.error.alert-form-message')
                 @csrf
                 <input type="hidden" name="_method" value="PUT">
                 <div class="fields-section">

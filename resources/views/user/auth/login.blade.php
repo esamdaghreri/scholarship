@@ -3,6 +3,7 @@
 @section('content')
     <div class="form-container login flex center-center">
         <form method="POST" action="{{ route('login')}}" class="flex center-center flex-column">
+            @include('user.error.alert-form-message')
             <div class="form-sample flex flex-row">
                 @csrf
                 <div class="label-side flex flex-column">

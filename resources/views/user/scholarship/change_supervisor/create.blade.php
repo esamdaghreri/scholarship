@@ -1,8 +1,9 @@
-@extends('user.layouts.master')
+@extends('user.layouts.form')
 
 @section('content')
     <div class="form-container change-supervisor-scholarship flex center-center">
         <form action="{{ route('changeSupervisor.store')}}" method="POST" class="flex center-center flex-column" enctype="multipart/form-data">
+            @include('user.error.alert-form-message')
             <p>@lang('public.order_number'): {{$register_id->id}}</p>
             <div class="form-sample flex flex-row">
                 @csrf

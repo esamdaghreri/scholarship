@@ -245,18 +245,21 @@ label{
     line-height: 20px;
     ul{
         padding: 10px;
+        li{
+            margin: 10px 0;
+        }
     }
-    li{
-        margin: 10px 0;
+    ul.danger{
+        li{
+            color: $error-color;
+        }
     }
-    &.success{
-        background: $success;
-        color: $white;
-    }
-    &.danger{
-        background: $error-color;
-        color: $white;
-    }
+}
+.alert.success{
+    color: $success;
+}
+.alert.danger{
+    color: $error-color;
 }
 
 
@@ -322,7 +325,7 @@ section{
     background-repeat: no-repeat;
     form{        
         width: 500px;
-        height: 600px;
+        min-height: 600px;
         background-color: $white;
         opacity: 0.95;
         border-radius: 40px;
@@ -717,12 +720,12 @@ footer {
 // Path: user.auth.login
 .form-container.login{
     form{        
-        height: 400px;
+        min-height: 400px;
     }
 }
 .form-container.email{
     form{        
-        height: 250px;
+        min-height: 250px;
         border-radius: 5px;
     }
 }

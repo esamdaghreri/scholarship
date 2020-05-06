@@ -1,8 +1,9 @@
-@extends('user.layouts.master')
+@extends('user.layouts.form')
 
 @section('content')
     <div class="form-container new-scholarship flex center-center">
         <form action="{{ route('register.store')}}" method="POST" class="flex center-center flex-column" enctype="multipart/form-data">
+            @include('user.error.alert-form-message')
             <input type="hidden" name="type" value="register_scholarship">
             <div class="form-sample flex flex-row">
                 @csrf
@@ -43,7 +44,7 @@
                             <option value="{{$fellowship->id}}">{{App::getlocale() == "en" ? $fellowship->name_en : $fellowship->name_ar}}</option>
                         @endforeach
                     </select>
-                    <input type=file name="file[]" class="input-file" multiple>
+                    <input type=file name="file[]" class="input-file @if($errors->has('file'))input-error @endif" multiple>
                 </div>
             </div>
             <div class="accept-terms">

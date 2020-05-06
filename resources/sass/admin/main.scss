@@ -246,18 +246,21 @@ label{
     line-height: 20px;
     ul{
         padding: 10px;
+        li{
+            margin: 10px 0;
+        }
     }
-    li{
-        margin: 10px 0;
+    ul.danger{
+        li{
+            color: $error-color;
+        }
     }
-    &.success{
-        background: $success;
-        color: $white;
-    }
-    &.danger{
-        background: $error-color;
-        color: $white;
-    }
+}
+.alert.success{
+    color: $success;
+}
+.alert.danger{
+    color: $error-color;
 }
 
 
