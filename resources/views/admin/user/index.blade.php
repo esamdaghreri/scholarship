@@ -64,6 +64,7 @@
                 </div>
             </div>
         </div>
+        {{ $users->links() }}
     </div>
      {{-- Start by default hidden --}}
      <div id="add-modal" class="modal">

@@ -572,6 +572,39 @@ section{
         color: white;
     }
   }
+
+  ul.pagination {
+    display: flex;
+    flex-direction: row;
+    margin: 25px 0;
+    li.page-item {
+        display: flex;
+        justify-content: center;
+        width: 50px;
+        font-size: 12px;
+        font-weight: bold;
+        a {
+            display: flex;
+            justify-content: center;
+            color: $black;
+            width: 50px;
+            text-decoration: none;
+            transition: background-color .3s;
+            &:hover {
+                background-color: $primary-color-hover;
+            }
+        }
+        border: 1px solid #ddd;
+    }
+    li.disabled {
+        color: #ddd;
+    }
+    li.active {
+        background-color: $primary-color;
+        color: white;
+    }
+}
+
 //End global Modal
 
 #add-modal {
@@ -785,9 +818,6 @@ section{
                 .date-field{
                     justify-content: space-between;
                     align-items: center;
-                    input{
-                        
-                    }
                     .date-types{
                         align-items: flex-start;
                     }

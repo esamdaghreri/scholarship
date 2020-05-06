@@ -29,7 +29,7 @@ class AdminUsersController extends Controller
      */
     public function index()
     {
-        $users = User::with(['gender', 'nationality'])->get();
+        $users = User::with(['gender', 'nationality'])->paginate(20);
         $nationalities = Nationality::all();
         $roles = Role::all();
         return view('admin.user.index', ['users' => $users, 'nationalities' => $nationalities, 'roles' => $roles]);
