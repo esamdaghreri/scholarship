@@ -12,6 +12,11 @@ use App\Model\User\File;
 
 class AdminChangeSupervisorController extends Controller
 {
+    public function index(){
+        $requests = ChangeSupervisorScholarship::with(['status', 'registerationType'])->orderBy('created_at', 'desc')->paginate(20);
+        return view('admin.request.supervisor', ['requests' => $requests]);
+    }
+
     public function show($id)
     {
         $request = ChangeSupervisorScholarship::where('id', $id)->with(['user', 'registerScholarship'])->firstorfail();

@@ -12,6 +12,11 @@ use App\Model\User\File;
 
 class AdminLanguageScholarshipController extends Controller
 {
+    public function index(){
+        $requests = RegisterScholarship::with(['status', 'registerationType'])->orderBy('created_at', 'desc')->paginate(20);
+        return view('admin.request.language', ['requests' => $requests]);
+    }
+
     public function show($id)
     {
         $request = RegisterScholarship::where('id', $id)->with(['user', 'country', 'university', 'college', 'qualification', 'fellowship', 'status', 'registerationType'])->firstorfail();
