@@ -168,4 +168,6 @@
         'no_results' => 'لا يوجد نتائج',
         'all' => 'الكل',
         'does_not_have_a_request' => 'لا يوجد لديه طلبات',
+        'language' => 'دراسة لغة',
+        'extend' => 'تمديد',
     ];

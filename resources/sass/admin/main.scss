@@ -648,7 +648,8 @@ section{
 .dashboard-div{
     min-height: 90vh;
     header.admin-dashboard{
-        width: 10%;
+        width: 250px;
+        min-width: 200px;
         height: auto;
         margin: 0;
         background-color: $gray-dark;
@@ -675,6 +676,24 @@ section{
                             &:hover{
                                 color: $gray;
                             }
+                        }
+                    }
+                }
+                li.dropdown{
+                    height: auto;
+                    ul{
+                        height: auto;
+                        display: none;
+                        li{
+                            a{
+                                font-size: 13px;
+                            }
+                            padding-left: 20px;
+                        }
+                    }
+                    &.active{
+                        ul{
+                            display: block;
                         }
                     }
                 }

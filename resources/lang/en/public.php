@@ -160,4 +160,6 @@
         'no_results' => 'No Results',
         'all' => 'All',
         'does_not_have_a_request' => 'Does not have a request',
+        'language' => 'Language',
+        'extend' => 'Extend',
     ];
