@@ -12,6 +12,11 @@ use App\Model\User\File;
 
 class AdminCancelScholarhipController extends Controller
 {
+    public function index(){
+        $requests = CancelScholarship::with(['status', 'registerationType'])->orderBy('created_at', 'desc')->paginate(20);
+        return view('admin.request.cancel', ['requests' => $requests]);
+    }
+
     public function show($id)
     {
         $request = CancelScholarship::where('id', $id)->with(['user', 'registerScholarship', 'scholarshipReason'])->firstorfail();

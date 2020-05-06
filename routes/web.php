@@ -81,7 +81,7 @@ Route::group(['middleware' => ['verified', 'auth']], function() {
 
 
         // ================ Route for admin request dashboard =====================
-        Route::get('/requests', 'Admin\AdminRequestsController@index')->name('admin.request.index');
+        Route::get('/requests/cancel', 'Admin\AdminCancelScholarhipController@index')->name('admin.request.cancel');
 
         // ================ Route for admin register scholarship dashboard =====================
         Route::get('/register/scholarship/{id}', 'Admin\AdminRegisterScholarshipController@show')->name('admin.registerScholarship.show');

@@ -3,7 +3,7 @@
 @section('content')
     <div class="wrapper flex flex-column just-cont-flex-start al-items-center">
         <div class="back-button flex flex-column just-cont-flex-start">
-            <a href="{{route('admin.request.index')}}" class="btn btn-primary">@lang('public.back')</a>
+            <a href="{{route('admin.index')}}" class="btn btn-primary">@lang('public.back')</a>
         </div>
         <div class="title-with-table flex flex-column">
             <div class="tables-section">
