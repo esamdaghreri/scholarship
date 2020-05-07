@@ -6,6 +6,7 @@
             <a href="{{route('user.home')}}" class="btn btn-primary">@lang('public.back')</a>
         </div>
         <div class="title-with-table flex flex-column">
+            @include('user.error.message')
             <div class="tables-section">
                 <div class="header-title">
                     <p>@lang('public.my_orders')</p>
