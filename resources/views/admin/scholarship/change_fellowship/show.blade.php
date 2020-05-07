@@ -135,7 +135,7 @@
         </div>
         <div class="operation-scholarship-buttons flex">
             @if($request->registerScholarship->status_id == 1 && $request->status_id != 1)<button id="{{$request->id}}"  class="btn btn-primary open-approve-modal">@lang('public.approve')</button> @endif
-            @if($request->status_id != 2)<button id="{{$request->id}}"  class="btn btn-cancel open-reject-modal">@lang('public.reject')</button> @endif
+            @if($request->registerScholarship->status_id == 1 && $request->status_id != 2)<button id="{{$request->id}}"  class="btn btn-cancel open-reject-modal">@lang('public.reject')</button> @endif
         </div>
     </div>
     {{-- Start default hidden --}}

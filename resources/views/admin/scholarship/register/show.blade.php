@@ -77,8 +77,10 @@
                         <td>{{App::getlocale() == "en" ? $request->country->name_en : $request->country->name_ar}}</td>
                     </tr>
                     <tr>                        
-                        <th>@lang('public.qualification')</th>
-                        <td>{{App::getlocale() == "en" ? $request->qualification->name_en : $request->qualification->name_ar}}</td>
+                        @if($request->registeration_type_id == 1)
+                            <th>@lang('public.qualification')</th>
+                            <td>{{App::getlocale() == "en" ? $request->qualification->name_en : $request->qualification->name_ar}}</td>
+                        @endif
                         <th>@lang('public.university')</th>
                         <td>{{App::getlocale() == "en" ? $request->university->name_en : $request->university->name_ar}}</td>
                     </tr>
@@ -91,8 +93,10 @@
                     <tr>
                         <th>@lang('public.created_at')</th>
                         <td>{{date('Y-m-d', strtotime($request->created_at))}}</td>
-                        <th>@lang('public.fellowship')</th>
-                        <td>{{App::getlocale() == "en" ? $request->fellowship->name_en : $request->fellowship->name_ar}}</td>
+                        @if($request->registeration_type_id == 1)
+                            <th>@lang('public.fellowship')</th>
+                            <td>{{App::getlocale() == "en" ? $request->fellowship->name_en : $request->fellowship->name_ar}}</td>
+                        @endif
                     </tr>
                     <tr>
                         <th>@lang('public.updated_by')</th>
