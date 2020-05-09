@@ -23,12 +23,12 @@ class CreateUsersTable extends Migration
             $table->string('second_name', 25)->nullable();
             $table->string('third_name', 25)->nullable();
             $table->string('fourth_name', 25)->nullable();
-            $table->dateTime('birthdate')->nullable();
+            $table->date('birthdate')->nullable();
             $table->unsignedBigInteger('phone')->nullable();
             $table->unsignedBigInteger('telephone')->nullable();
             $table->unsignedBigInteger('national_number')->nullable();
             $table->unsignedBigInteger('employee_number')->nullable();
-            $table->dateTime('date_of_joining_the_university')->nullable();
+            $table->date('date_of_joining_the_university')->nullable();
             $table->unsignedTinyInteger('role_id')->default('3');
             $table->unsignedTinyInteger('gender_id')->nullable();
             $table->unsignedBigInteger('nationality_id')->nullable();
