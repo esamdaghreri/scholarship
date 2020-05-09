@@ -162,4 +162,5 @@
         'does_not_have_a_request' => 'Does not have a request',
         'language' => 'Language',
         'extend' => 'Extend',
+        'type-of-registeration' => 'Type of registeration',
     ];

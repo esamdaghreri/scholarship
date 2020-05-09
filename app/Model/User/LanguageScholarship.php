@@ -3,6 +3,8 @@
 namespace App\Model\User;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
+use App\User;
 
 class LanguageScholarship extends Model
 {
@@ -11,6 +13,22 @@ class LanguageScholarship extends Model
     ];
 
     protected $table = 'language_scholarships';
+
+    public function getUsers(){
+        return DB::table('register_scholarships')->join('users', 'users.id', '=', 'register_scholarships.user_id')->where('register_scholarships.registeration_type_id', '=', 6)->paginate(15);   
+    }
+
+    public function getUsersWithSpecificDeptm($deptm){
+        return DB::table('register_scholarships')->join('users', 'users.id', '=', 'register_scholarships.user_id')->where('register_scholarships.registeration_type_id', '=', 6)->where('users.department_id', '=', $deptm)->paginate(15);   
+    }
+
+    public function getUsersWithDate($from_date, $to_date){
+        return DB::table('register_scholarships')->join('users', 'users.id', '=', 'register_scholarships.user_id')->where('register_scholarships.registeration_type_id', '=', 6)->whereBetween('users.birthdate', [$from_date, $to_date])->paginate(15);   
+    }
+    
+    public function getUsersWithSpecificDeptmAndDate($deptm, $from_date, $to_date){
+        return DB::table('register_scholarships')->join('users', 'users.id', '=', 'register_scholarships.user_id')->where('register_scholarships.registeration_type_id', '=', 6)->where('users.department_id', '=', $deptm)->whereBetween('users.birthdate', [$from_date, $to_date])->paginate(15);   
+    }
 
     public function user()
     {

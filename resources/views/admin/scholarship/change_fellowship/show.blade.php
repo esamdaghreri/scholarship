@@ -76,9 +76,11 @@
                         <th>@lang('public.country')</th>
                         <td>{{App::getlocale() == "en" ? $request->registerScholarship->country->name_en : $request->registerScholarship->country->name_ar}}</td>
                     </tr>
-                    <tr>                        
-                        <th>@lang('public.qualification')</th>
-                        <td>{{App::getlocale() == "en" ? $request->registerScholarship->qualification->name_en : $request->registerScholarship->qualification->name_ar}}</td>
+                    <tr>        
+                        @if($request->registerScholarship->registeration_type_id == 1)
+                            <th>@lang('public.qualification')</th>
+                            <td>{{App::getlocale() == "en" ? $request->registerScholarship->qualification->name_en : $request->registerScholarship->qualification->name_ar}}</td>
+                        @endif
                         <th>@lang('public.university')</th>
                         <td>{{App::getlocale() == "en" ? $request->registerScholarship->university->name_en : $request->registerScholarship->university->name_ar}}</td>
                     </tr>
@@ -91,8 +93,10 @@
                     <tr>
                         <th>@lang('public.created_at')</th>
                         <td>{{$request->registerScholarship->created_at}}</td>
-                        <th>@lang('public.fellowship')</th>
-                        <td>{{App::getlocale() == "en" ? $request->registerScholarship->fellowship->name_en : $request->registerScholarship->fellowship->name_ar}}</td>
+                        @if($request->registerScholarship->registeration_type_id == 1)
+                            <th>@lang('public.fellowship')</th>
+                            <td>{{App::getlocale() == "en" ? $request->registerScholarship->fellowship->name_en : $request->registerScholarship->fellowship->name_ar}}</td>
+                        @endif
                     </tr>
                     <tr>
                         <th>@lang('public.updated_by')</th>

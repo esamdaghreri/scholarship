@@ -5,31 +5,41 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 use App\Model\User\Department;
 use App\Model\User\RegisterScholarship;
+use App\Model\User\CancelScholarship;
+use App\Model\User\ChangeFellowshipScholarship;
+use App\Model\User\ChangeSupervisorScholarship;
+use App\Model\User\ExtendScholarship;
+use App\Model\User\RegisterationType;
 use App\User;
 
 class AdminReportsController extends Controller
 {
     public function index(){
         $department_object = new Department;
+        $registeration_type_object = new RegisterationType;
         $departments = $department_object->getDepartments();
-        return view('admin.report.index', ['departments' => $departments]);
+        $registeration_type = $registeration_type_object->getRegisterationTypes();
+        return view('admin.report.index', ['departments' => $departments, 'registeration_type' => $registeration_type]);
     }
 
     public function search(Request $request){
+        $users;
         $users_id = [];
         $date_type = $request->date_type;
         $from_date = $request->from_date;
         $to_date = $request->to_date;
-        $department = $request->department;
-
-
+        $deptm = $request->department;
+        $registeration = $request->registeration;
         $validator = Validator::make(
             $request->all(), [
+                "date_type" => 'required_with:from_date|required_with:to_date',
                 "from_date" => 'required_with:date_type',
                 "to_date" => 'required_with:date_type',
                 "department" => 'required',
+                "registeration" => 'required',
             ]
         );
 
@@ -40,53 +50,68 @@ class AdminReportsController extends Controller
         if ($validator->fails())
             return redirect()->back()->withErrors($validator)->withInput();
 
-        if ((!empty($from_date) && !empty($to_date)) && !empty($date_type)) {
-            if($date_type == 'born')
-            {
-                if($department != 'all'){
-                    $users = User::select('id')->whereDate('birthdate', '>=' , $from_date)->whereDate('birthdate', '<=', $to_date)->where('department_id', $department)->get();
+        if (!empty($date_type)) {
+            if($date_type == 'born'){
+                if($registeration == 'all' && $deptm == 'all'){
+                    $users = User::whereBetween('birthdate', [$from_date.' '.'00:00:00', $to_date.' '.'23:59:59'])->paginate(15);
                 }
-                if($department == 'all'){
-                    $users = User::select('id')->whereDate('birthdate', '>=' , $from_date)->whereDate('birthdate', '<=', $to_date)->get();
+                if($registeration != 'all' && $deptm == 'all'){
+                    $table = "App\Model\User\\".$registeration;
+                    $registeration_object = new $table;
+                    $users = $registeration_object->getUsersWithDate($from_date, $to_date);
                 }
-                foreach($users as $user){
-                    array_push($users_id, $user->id);
+                if($registeration == 'all' && $deptm != 'all'){
+                    $users = User::where('department_id', '=', $deptm)->paginate(15);   
                 }
-            }
-            if($date_type == 'request'){
-                if($department != 'all'){
-                    $users = User::select('id')->where('department_id', $department)->get();
+                if($registeration != 'all' && $deptm != 'all'){
+                    $table = "App\Model\User\\".$registeration;
+                    $registeration_object = new $table;
+                    $users = $registeration_object->getUsersWithSpecificDeptmAndDate($deptm, $from_date, $to_date);
                 }
-                if($department == 'all'){
-                    $users = User::select('id')->get();
+            }elseif($date_type == 'request'){
+                if($registeration == 'all' && $deptm == 'all'){
+                    $user_object = new User;
+                    $users = $user_object->getUsers($from_date, $to_date);
                 }
-                if(!empty($users)){
-                    if($from_date != null && $to_date != null){
-                        foreach($users as $user){
-                            $users_has_scholarship = RegisterScholarship::select('user_id')->whereDate('created_at', '>=' , $from_date)->whereDate('created_at', '<=', $to_date)->where('user_id', $user->id)->first();
-                            if(!is_null($users_has_scholarship)){
-                                array_push($users_id, $users_has_scholarship->user_id);
-                            }
-                        }
-                    }
+                if($registeration != 'all' && $deptm == 'all'){
+                    $table = "App\Model\User\\".$registeration;
+                    $registeration_object = new $table;
+                    $users = $registeration_object->getUsersWithDate($from_date, $to_date);
+                }
+                if($registeration == 'all' && $deptm != 'all'){
+                    $users = User::where('department_id', '=', $deptm)->paginate(15);   
+                }
+                if($registeration != 'all' && $deptm != 'all'){
+                    $table = "App\Model\User\\".$registeration;
+                    $registeration_object = new $table;
+                    $users = $registeration_object->getUsersWithSpecificDeptmAndDate($deptm, $from_date, $to_date);
                 }
             }
         }
         else{
-            if($department != 'all'){
-                $users = User::select('id')->where('department_id', $department)->get();
+            if($registeration == 'all' && $deptm == 'all'){
+                $users = User::paginate(15);
             }
-            if($department == 'all'){
-                $users = User::select('id')->get();
+            if($registeration != 'all' && $deptm == 'all'){
+                $table = "App\Model\User\\".$registeration;
+                $registeration_object = new $table;
+                $users = $registeration_object->getUsers();
             }
-            foreach($users as $user){
-                array_push($users_id, $user->id);
+            if($registeration == 'all' && $deptm != 'all'){
+                $users = User::where('department_id', '=', $deptm)->paginate(15);   
+            }
+            if($registeration != 'all' && $deptm != 'all'){
+                $table = "App\Model\User\\".$registeration;
+                $registeration_object = new $table;
+                $users = $registeration_object->getUsersWithSpecificDeptm($deptm);
             }
         }
         $department_object = new Department;
+        $registeration_type_object = new RegisterationType;
         $departments = $department_object->getDepartments();
-        $users = User::find($users_id);
-        return view('admin.report.index', ['departments' => $departments, 'users' => $users]);
+        $registeration_type = $registeration_type_object->getRegisterationTypes();
+        // $users = User::find($users_id);
+        return view('admin.report.index', ['departments' => $departments, 'registeration_type' => $registeration_type, 'users' => $users, 'date_type' => $date_type, 'from_date' => $from_date, 'to_date' => $to_date, 'registeration' => $registeration, 'deptm' => $deptm]);
     }
 
     public function show($id){
