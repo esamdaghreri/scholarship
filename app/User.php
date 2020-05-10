@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Model\User\RegisterScholarship;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -210,40 +211,35 @@ class User extends Authenticatable implements MustVerifyEmail
         }
     }
 
-    public static function getUsers($from_date, $to_date){
+    public static function getUsersWithDateRqeust($from_date, $to_date, $deptm){
         $users_id = [];
-        $users = DB::table('users')->select('users.id')->join('register_scholarships', 'users.id', '=', 'register_scholarships.user_id')->whereBetween('register_scholarships.created_at', [$from_date.' '.'00:00:00', $to_date.' '.'23:59:59'])->get();
-        foreach($users as $user){
-            if(!in_array($user, $users_id, true)){
-                array_push($users_id, $user->id);
-            }
+        $registers = DB::table('register_scholarships')->select('user_id')->join('users', 'register_scholarships.user_id', '=', 'users.id')->whereBetween('register_scholarships.created_at', [$from_date.' '.'00:00:00', $to_date.' '.'23:59:59'])->get();
+        foreach($registers as $register){
+            array_push($users_id, $register->user_id);
         }
-        $users = DB::table('users')->select('users.id')->join('cancel_scholarships', 'users.id', '=', 'cancel_scholarships.user_id')->whereBetween('cancel_scholarships.created_at', [$from_date.' '.'00:00:00', $to_date.' '.'23:59:59'])->get();
-        foreach($users as $user){
-            if(!in_array($user, $users_id, true)){
-                array_push($users_id, $user->id);
-            }
+        $registers = DB::table('cancel_scholarships')->select('user_id')->join('users', 'cancel_scholarships.user_id', '=', 'users.id')->whereBetween('cancel_scholarships.created_at', [$from_date.' '.'00:00:00', $to_date.' '.'23:59:59'])->get();
+        foreach($registers as $register){
+            array_push($users_id, $register->user_id);
         }
-        $users = DB::table('users')->select('users.id')->join('change_fellowship_scholarships', 'users.id', '=', 'change_fellowship_scholarships.user_id')->whereBetween('change_fellowship_scholarships.created_at', [$from_date.' '.'00:00:00', $to_date.' '.'23:59:59'])->get();
-        foreach($users as $user){
-            if(!in_array($user, $users_id, true)){
-                array_push($users_id, $user->id);
-            }
+        $registers = DB::table('change_fellowship_scholarships')->select('user_id')->join('users', 'change_fellowship_scholarships.user_id', '=', 'users.id')->whereBetween('change_fellowship_scholarships.created_at', [$from_date.' '.'00:00:00', $to_date.' '.'23:59:59'])->get();
+        foreach($registers as $register){
+            array_push($users_id, $register->user_id);
         }
-        $users = DB::table('users')->select('users.id')->join('change_supervisor_scholarships', 'users.id', '=', 'change_supervisor_scholarships.user_id')->whereBetween('change_supervisor_scholarships.created_at', [$from_date.' '.'00:00:00', $to_date.' '.'23:59:59'])->get();
-        foreach($users as $user){
-            if(!in_array($user, $users_id, true)){
-                array_push($users_id, $user->id);
-            }
+        $registers = DB::table('change_supervisor_scholarships')->select('user_id')->join('users', 'change_supervisor_scholarships.user_id', '=', 'users.id')->whereBetween('change_supervisor_scholarships.created_at', [$from_date.' '.'00:00:00', $to_date.' '.'23:59:59'])->get();
+        foreach($registers as $register){
+            array_push($users_id, $register->user_id);
         }
-        $users = DB::table('users')->select('users.id')->join('extend_scholarships', 'users.id', '=', 'extend_scholarships.user_id')->whereBetween('extend_scholarships.created_at', [$from_date.' '.'00:00:00', $to_date.' '.'23:59:59'])->get();
-        foreach($users as $user){
-            if(!in_array($user, $users_id, true)){
-                array_push($users_id, $user->id);
-            }
+        $registers = DB::table('extend_scholarships')->select('user_id')->join('users', 'extend_scholarships.user_id', '=', 'users.id')->whereBetween('extend_scholarships.created_at', [$from_date.' '.'00:00:00', $to_date.' '.'23:59:59'])->get();
+        foreach($registers as $register){
+            array_push($users_id, $register->user_id);
         }
-        if(!empty($users)){
-            return User::whereIn('id', $users_id)->paginate(15);
+        if(!empty($users_id)){
+            $users_id = array_unique($users_id);
+            if($deptm == 'all'){
+                return User::whereIn('id', $users_id)->paginate(15);
+            }else{
+                return User::whereIn('id', $users_id)->where('department_id', $deptm)->paginate(15);
+            }
         }else{
            return [];
         }

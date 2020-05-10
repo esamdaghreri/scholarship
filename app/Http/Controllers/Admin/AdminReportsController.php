@@ -55,36 +55,37 @@ class AdminReportsController extends Controller
                 if($registeration == 'all' && $deptm == 'all'){
                     $users = User::whereBetween('birthdate', [$from_date.' '.'00:00:00', $to_date.' '.'23:59:59'])->paginate(15);
                 }
-                if($registeration != 'all' && $deptm == 'all'){
-                    $table = "App\Model\User\\".$registeration;
-                    $registeration_object = new $table;
+                elseif($registeration != 'all' && $deptm == 'all'){
+                    $model = "App\Model\User\\".$registeration;
+                    $registeration_object = new $model;
                     $users = $registeration_object->getUsersWithDate($from_date, $to_date);
                 }
-                if($registeration == 'all' && $deptm != 'all'){
-                    $users = User::where('department_id', '=', $deptm)->paginate(15);   
+                elseif($registeration == 'all' && $deptm != 'all'){
+                    $users = User::whereBetween('birthdate', [$from_date.' '.'00:00:00', $to_date.' '.'23:59:59'])->where('department_id', '=', $deptm)->paginate(15);   
                 }
-                if($registeration != 'all' && $deptm != 'all'){
-                    $table = "App\Model\User\\".$registeration;
-                    $registeration_object = new $table;
+                elseif($registeration != 'all' && $deptm != 'all'){
+                    $model = "App\Model\User\\".$registeration;
+                    $registeration_object = new $model;
                     $users = $registeration_object->getUsersWithSpecificDeptmAndDate($deptm, $from_date, $to_date);
                 }
             }elseif($date_type == 'request'){
                 if($registeration == 'all' && $deptm == 'all'){
                     $user_object = new User;
-                    $users = $user_object->getUsers($from_date, $to_date);
+                    $users = $user_object->getUsersWithDateRqeust($from_date, $to_date, $deptm);
                 }
-                if($registeration != 'all' && $deptm == 'all'){
-                    $table = "App\Model\User\\".$registeration;
-                    $registeration_object = new $table;
-                    $users = $registeration_object->getUsersWithDate($from_date, $to_date);
+                elseif($registeration != 'all' && $deptm == 'all'){
+                    $model = "App\Model\User\\".$registeration;
+                    $registeration_object = new $model;
+                    $users = $registeration_object->getUsersReqeustDateAndType($from_date, $to_date, $deptm);
                 }
-                if($registeration == 'all' && $deptm != 'all'){
-                    $users = User::where('department_id', '=', $deptm)->paginate(15);   
+                elseif($registeration == 'all' && $deptm != 'all'){
+                    $user_object = new User;
+                    $users = $user_object->getUsersWithDateRqeust($from_date, $to_date, $deptm);
                 }
-                if($registeration != 'all' && $deptm != 'all'){
-                    $table = "App\Model\User\\".$registeration;
-                    $registeration_object = new $table;
-                    $users = $registeration_object->getUsersWithSpecificDeptmAndDate($deptm, $from_date, $to_date);
+                elseif($registeration != 'all' && $deptm != 'all'){
+                    $model = "App\Model\User\\".$registeration;
+                    $registeration_object = new $model;
+                    $users = $registeration_object->getUsersReqeustDateAndType($from_date, $to_date, $deptm);
                 }
             }
         }
@@ -92,17 +93,17 @@ class AdminReportsController extends Controller
             if($registeration == 'all' && $deptm == 'all'){
                 $users = User::paginate(15);
             }
-            if($registeration != 'all' && $deptm == 'all'){
-                $table = "App\Model\User\\".$registeration;
-                $registeration_object = new $table;
+            elseif($registeration != 'all' && $deptm == 'all'){
+                $model = "App\Model\User\\".$registeration;
+                $registeration_object = new $model;
                 $users = $registeration_object->getUsers();
             }
-            if($registeration == 'all' && $deptm != 'all'){
+            elseif($registeration == 'all' && $deptm != 'all'){
                 $users = User::where('department_id', '=', $deptm)->paginate(15);   
             }
-            if($registeration != 'all' && $deptm != 'all'){
-                $table = "App\Model\User\\".$registeration;
-                $registeration_object = new $table;
+            elseif($registeration != 'all' && $deptm != 'all'){
+                $model = "App\Model\User\\".$registeration;
+                $registeration_object = new $model;
                 $users = $registeration_object->getUsersWithSpecificDeptm($deptm);
             }
         }
@@ -110,7 +111,6 @@ class AdminReportsController extends Controller
         $registeration_type_object = new RegisterationType;
         $departments = $department_object->getDepartments();
         $registeration_type = $registeration_type_object->getRegisterationTypes();
-        // $users = User::find($users_id);
         return view('admin.report.index', ['departments' => $departments, 'registeration_type' => $registeration_type, 'users' => $users, 'date_type' => $date_type, 'from_date' => $from_date, 'to_date' => $to_date, 'registeration' => $registeration, 'deptm' => $deptm]);
     }
 
