@@ -3,6 +3,7 @@
 @section('content')
     <div class="form-container flex center-center reset">
         <form method="POST" action="{{ route('password.update')}}" class="flex center-center flex-column">
+            @include('user.error.alert-form-message')
             @csrf
             <input type="hidden" name="token" value="{{ $token }}">  
             <div class="form-sample flex flex-row">

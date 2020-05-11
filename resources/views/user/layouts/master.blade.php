@@ -11,7 +11,6 @@
     <body>
         @include('user.partials.header')
         <div class="container">
-            @include('user.error.message')
             @yield('content')
         </div>
         @include('user.partials.footer')
@@ -27,5 +26,12 @@
                 $('html').attr('dir', 'ltr');
             </script>
         @endif
+        <script>
+            $(document).ready(function(){
+                $(".right ul li").click(function(){ 
+                    $(this).toggleClass("active");
+                });
+            });
+        </script>
     </body>
 </html>

@@ -129,9 +129,46 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'email' => [
+            'required' => 'The email field is required',
+            'email' => 'Insert a valid email',
+            'unique' => 'Email already exist',
         ],
+        'username' => [
+            'required' => 'The username field is required',
+            'min' => 'Username must contain at least 4 characher',
+            'max' => 'Username must contain at most 26 characher',
+            'unique' => 'Username must be unique',
+        ],
+        'password' => [
+            'required' => 'The password field is required',
+            'min' => 'Password must contain at least 8 characher',
+            'max' => 'Password must contain at most 26 characher',
+            'confirmed' => 'Password and re-password not match',
+            'regex' => 'Password must contain capital and small characher, numbers and contain 8-26 characher',
+        ],
+        'role' => [
+            'required' => 'The role field is required',
+            'exists' => 'Role id not exits',
+        ],
+        'gender' => [
+            'required' => 'The gender is required',
+            'exists' => 'Gender id not exits',
+        ],
+        'reason' => [
+            'required' => 'The reason field is required.',
+        ],
+        'user_id' => [
+            'required' => 'The user id is required',
+            'exists' => 'User id not exits',
+        ],
+        'file' => [
+            'required' => 'Please upload all required files',
+        ],
+        'file.*' => [
+            'max' => 'File size :input must less than 2mb',
+            'mimes' => 'File type must be as: pdf,jpeg,bmp,png,docx,doc'
+        ]
     ],
 
     /*

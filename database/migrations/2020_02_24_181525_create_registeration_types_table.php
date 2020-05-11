@@ -17,6 +17,8 @@ class CreateRegisterationTypesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name_en', 200);
             $table->string('name_ar', 200);
+            $table->string('table_name', 80);
+            $table->string('model_name', 80);
         });
     }
 

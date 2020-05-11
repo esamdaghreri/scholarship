@@ -1,8 +1,9 @@
-@extends('user.layouts.master')
+@extends('user.layouts.form')
 
 @section('content')
     <div class="form-container change_fellowship flex center-center">
         <form action="{{ route('changeFellowship.store')}}" method="POST" class="flex center-center flex-column" enctype="multipart/form-data">
+            @include('user.error.alert-form-message')
             <div class="form-sample flex flex-row">
                 @csrf
                 <div class="label-side flex flex-column">

@@ -45,7 +45,7 @@
                     <tr>
                         <th>@lang('public.created_at')</th>
                         <td>{{date('Y-m-d', strtotime($order->created_at))}}</td>
-                        <th>@lang('public.specialist')</th>
+                        <th>@lang('public.fellowship')</th>
                         <td>{{App::getlocale() == "en" ? $order->fellowship->name_en : $order->fellowship->name_ar}}</td>
                     </tr>
                     <tr class="contant-method">

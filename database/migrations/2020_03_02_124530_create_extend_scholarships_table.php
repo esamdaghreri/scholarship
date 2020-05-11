@@ -21,6 +21,7 @@ class CreateExtendScholarshipsTable extends Migration
             $table->unsignedSmallInteger('scholarship_reason_id');
             $table->unsignedSmallInteger('register_scholarship_id');
             $table->unsignedSmallInteger('status_id')->default(3);
+            $table->string('reject_reason')->nullable();
             $table->unsignedSmallInteger('registeration_type_id');
             $table->unsignedBigInteger('created_by');
             $table->dateTime('created_at')->useCurrent();

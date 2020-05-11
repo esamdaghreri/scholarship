@@ -12,7 +12,7 @@ use App\Model\User\ChangeFellowshipScholarship;
 use App\Model\User\RegisterScholarship;
 use App\Model\User\Fellowship;
 use App\Model\User\ScholarshipReason;
-use App\Model\User\File;
+use App\Model\User\File as FileTable;
 
 class ChangeFellowshipScholarshipController extends Controller
 {
@@ -68,14 +68,15 @@ class ChangeFellowshipScholarshipController extends Controller
             if($change_fellowship_scholarship->id != null){
                 foreach ($request->file as $file) {
                     $title = time() . $file->getClientOriginalName();
-                    File::create([
+                    $file->storeAs('/public/attachments', $title);
+                    FileTable::create([
+                        'path' => $title,
                         'title' => $title,
-                        'path' => $file->store('public/storage/attachments'),
                         'change_fellowship_scholarship_id' => $change_fellowship_scholarship->id,
                         'user_id' =>$user_id,
                         'created_by' => $user_id,
                         'created_at' => $date
-                    ]);
+                        ]);
                 }
                 return redirect()->route('personnel.showOrders')->with('success', trans('public.successfullyـregistered'));
             }

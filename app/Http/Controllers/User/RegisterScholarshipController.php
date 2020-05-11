@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
 use App;
 use App\User;
 use App\Model\User\RegisterScholarship;
@@ -20,7 +22,7 @@ use App\Model\User\CancelScholarship;
 use App\Model\User\ExtendScholarship;
 use App\Model\User\ChangeSupervisorScholarship;
 use App\Model\User\ChangeFellowshipScholarship;
-use App\Model\User\File;
+use App\Model\User\File as FileTable;
 
 class RegisterScholarshipController extends Controller
 {
@@ -126,16 +128,17 @@ class RegisterScholarshipController extends Controller
         if($register->id != null){
             foreach ($request->file as $file) {
                 $title = time() . $file->getClientOriginalName();
-                File::create([
+                $file->storeAs('/public/attachments', $title);
+                FileTable::create([
+                    'path' => $title,
                     'title' => $title,
-                    'path' => $file->store('public/storage/attachments'),
                     'register_scholarship_id' => $register->id,
                     'user_id' =>$user_id,
                     'created_by' => $user_id,
                     'created_at' => $date
-                ]);
-            }
-            return redirect()->route('personnel.showOrders')->with('success', trans('public.successfullyـregistered'));
+                    ]);
+                }
+                return redirect()->route('personnel.showOrders')->with('success', trans('public.successfullyـregistered'));
         }
         else{
             return redirect()->back()->with('danger', trans('public.Registration_was_not_successful'));

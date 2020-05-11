@@ -24,5 +24,12 @@ class DatabaseSeeder extends Seeder
         $this->call(FellowshipsTableSeeder::class);
         $this->call(GeneralSpecializationsTableSeeder::class);
         $this->call(JobDescriptionsTableSeeder::class);
+        $this->call(UsersTableSeeder::class);
+        $this->call(RegisterScholarshipTableSeeder::class);
+        $this->call(CancelScholarshipTableSeeder::class);
+        $this->call(ExtendScholarshipTableSeeder::class);
+        $this->call(ChangeFellowshipScholarshipTableSeeder::class);
+        $this->call(ChangeSupervisorScholarshipTableSeeder::class);
+        $this->call(LanguageScholarshipTableSeeder::class);
     }
 }

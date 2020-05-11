@@ -12,15 +12,14 @@
 */
 // When enter to main link of website, redirect to default language
 
-Route::group(['middleware' => 'setlocale'], function() {
+Route::group(['middleware'], function() {
     // Authentication routes
     Auth::routes(['verify' => true]);
     Route::get('/', 'User\HomeController@index')->name('user.home');
 });
 
-
 // ================ Route has middleware that users must be verifying email ==============
-Route::group(['middleware' => ['setlocale', 'verified', 'auth']], function() {
+Route::group(['middleware' => ['verified', 'auth']], function() {
 
     // ================ Route for user personnel information ==============
     Route::group(['prefix' => 'user-panel/personnel/'], function() {
@@ -31,6 +30,7 @@ Route::group(['middleware' => ['setlocale', 'verified', 'auth']], function() {
         Route::get('/orders', 'User\PersonnelController@showOrders')->middleware('checkPersonalInformationFill')->name('personnel.showOrders');
     });
 
+    // User routes
     Route::group(['prefix' => 'scholarship/', 'middleware' => ['checkPersonalInformationFill']], function() {
 
         // ================ Route for user registeration of scholarship ==============
@@ -62,6 +62,74 @@ Route::group(['middleware' => ['setlocale', 'verified', 'auth']], function() {
         
     });
 
+    // Admin routes
+    Route::group(['prefix' => 'admin/dashboard', 'middleware' => ['checkPersonalInformationFill', 'admin']], function() {
+        Route::get('/', 'Admin\AdminDashboardController@index')->name('admin.index');
+
+        // ================ Route for admin user dashboard =====================
+        Route::resource('/users', 'Admin\AdminUsersController')->except([
+            'create',
+            'destroy'
+        ])->names([
+            'index' => 'admin.user.index',
+            'store' => 'admin.user.store',
+            'show' => 'admin.user.show',
+            'edit' => 'admin.user.edit',
+            'update' => 'admin.user.update',
+        ]);
+        Route::post('/users/banned', 'Admin\AdminUsersController@banned')->name('admin.user.banned');
+
+
+        // ================ Route for admin request dashboard =====================
+        Route::get('/requests/register', 'Admin\AdminRegisterScholarshipController@index')->name('admin.request.register');
+        Route::get('/requests/language', 'Admin\AdminLanguageScholarshipController@index')->name('admin.request.language');
+        Route::get('/requests/cancel', 'Admin\AdminCancelScholarhipController@index')->name('admin.request.cancel');
+        Route::get('/requests/extend', 'Admin\AdminExtendScholarshipController@index')->name('admin.request.extend');
+        Route::get('/requests/change-supervisor', 'Admin\AdminChangeSupervisorController@index')->name('admin.request.change_supervisor');
+        Route::get('/requests/change-fellowship', 'Admin\AdminChangeFellowshipController@index')->name('admin.request.change_fellowship');
+
+        // ================ Route for admin register scholarship dashboard =====================
+        Route::get('/register/scholarship/{id}', 'Admin\AdminRegisterScholarshipController@show')->name('admin.registerScholarship.show');
+        Route::get('/register/scholarship/{id}/edit', 'Admin\AdminRegisterScholarshipController@edit')->name('admin.registerScholarship.edit');
+        Route::post('/register/scholarship/approve', 'Admin\AdminRegisterScholarshipController@approve')->name('admin.registerScholarship.approve');
+        Route::post('/register/scholarship/reject', 'Admin\AdminRegisterScholarshipController@reject')->name('admin.registerScholarship.reject');
+
+        // ================ Route for admin extend scholarship dashboard =====================
+        Route::get('/extend/scholarship/{id}', 'Admin\AdminExtendScholarshipController@show')->name('admin.extendScholarship.show');
+        Route::get('/extend/scholarship/{id}/edit', 'Admin\AdminExtendScholarshipController@edit')->name('admin.extendScholarship.edit');
+        Route::post('/extend/scholarship/approve', 'Admin\AdminExtendScholarshipController@approve')->name('admin.extendScholarship.approve');
+        Route::post('/extend/scholarship/reject', 'Admin\AdminExtendScholarshipController@reject')->name('admin.extendScholarship.reject');
+
+        // ================ Route for admin cancel scholarship dashboard =====================
+        Route::get('/cancel/scholarship/{id}', 'Admin\AdminCancelScholarhipController@show')->name('admin.cancelScholarship.show');
+        Route::get('/cancel/scholarship/{id}/edit', 'Admin\AdminCancelScholarhipController@edit')->name('admin.cancelScholarship.edit');
+        Route::post('/cancel/scholarship/approve', 'Admin\AdminCancelScholarhipController@approve')->name('admin.cancelScholarship.approve');
+        Route::post('/cancel/scholarship/reject', 'Admin\AdminCancelScholarhipController@reject')->name('admin.cancelScholarship.reject');
+
+        // ================ Route for admin change supervisor scholarship dashboard =====================
+        Route::get('/changesupervisor/scholarship/{id}', 'Admin\AdminChangeSupervisorController@show')->name('admin.changeSupervisorScholarship.show');
+        Route::get('/changesupervisor/scholarship/{id}/edit', 'Admin\AdminChangeSupervisorController@edit')->name('admin.changeSupervisorScholarship.edit');
+        Route::post('/changesupervisor/scholarship/approve', 'Admin\AdminChangeSupervisorController@approve')->name('admin.changeSupervisorScholarship.approve');
+        Route::post('/changesupervisor/scholarship/reject', 'Admin\AdminChangeSupervisorController@reject')->name('admin.changeSupervisorScholarship.reject');
+
+        // ================ Route for admin change fellowship scholarship dashboard =====================
+        Route::get('/changefellowship/scholarship/{id}', 'Admin\AdminChangeFellowshipController@show')->name('admin.changeFellowshipScholarship.show');
+        Route::get('/changefellowship/scholarship/{id}/edit', 'Admin\AdminChangeFellowshipController@edit')->name('admin.changeFellowshipScholarship.edit');
+        Route::post('/changefellowship/scholarship/approve', 'Admin\AdminChangeFellowshipController@approve')->name('admin.changeFellowshipScholarship.approve');
+        Route::post('/changefellowship/scholarship/reject', 'Admin\AdminChangeFellowshipController@reject')->name('admin.changeFellowshipScholarship.reject');
+
+        // ================ Route for admin language scholarship dashboard =====================
+        Route::get('/language/scholarship/{id}', 'Admin\AdminLanguageScholarshipController@show')->name('admin.languageScholarship.show');
+        Route::get('/language/scholarship/{id}/edit', 'Admin\AdminLanguageScholarshipController@edit')->name('admin.languageScholarship.edit');
+        Route::post('/language/scholarship/approve', 'Admin\AdminLanguageScholarshipController@approve')->name('admin.languageScholarship.approve');
+        Route::post('/language/scholarship/reject', 'Admin\AdminLanguageScholarshipController@reject')->name('admin.languageScholarship.reject');
+
+        // ================ Route for admin reports dashboard =====================
+        Route::get('/report', 'Admin\AdminReportsController@index')->name('admin.report.index');
+        Route::get('/report/seach', 'Admin\AdminReportsController@search')->name('admin.report.search');
+        Route::get('/report/{id}', 'Admin\AdminReportsController@show')->name('admin.report.show');
+
+    });
 });
 
 // Change language

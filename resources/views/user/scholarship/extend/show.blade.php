@@ -40,8 +40,8 @@
                         <tr>
                             <th>@lang('public.order_status')</th>
                             <td>{{App::getlocale() == "en" ? $order->status->name_en : $order->status->name_ar}}</td>
-                            <th>@lang('public.specialist')</th>
-                            <td>{{App::getlocale() == "en" ? $order->registerScholarship->specialist->name_en : $order->registerScholarship->specialist->name_ar}}</td>
+                            <th>@lang('public.fellowship')</th>
+                            <td>{{App::getlocale() == "en" ? $order->registerScholarship->fellowship->name_en : $order->registerScholarship->fellowship->name_ar}}</td>
                         </tr>
                         <tr>
                             <th>@lang('public.created_at')</th>
