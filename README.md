@@ -1,6 +1,6 @@
 ## About Scholarship
 
-Scholarship is a web appliaction for graduation project which may facilitate all the services like request to get scholarship, extend it, cancele it , change supervisor and change fellow and all these services has been transfer from manually process to electronic.
+Scholarship is a web appliaction for graduation project which may facilitate all the services like request to get scholarship, extend, cancele , change supervisor and change fellowship and all these services has been transfer from manually process to electronic.
 
 ## Getting Started
 
