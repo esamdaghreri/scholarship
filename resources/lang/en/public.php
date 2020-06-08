@@ -24,6 +24,7 @@
         'panel' => 'control panel',
         'personnel_data' => 'Personnel data',
         'name' => 'Name',
+        'your_name' => 'Your name',
         'username' => 'Username',
         'first_name' => 'First name',
         'second_name' => 'Second name',

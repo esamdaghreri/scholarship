@@ -197,7 +197,7 @@ class PersonnelController extends Controller
         $extends = ExtendScholarship::where('user_id', Auth::id())->with(['status', 'registerationType'])->orderBy('created_at', 'desc')->get();
         $change_supervisors = ChangeSupervisorScholarship::where('user_id', Auth::id())->with(['status', 'registerationType'])->orderBy('created_at', 'desc')->get();
         $change_fellowships = ChangeFellowshipScholarship::where('user_id', Auth::id())->with(['status', 'registerationType'])->orderBy('created_at', 'desc')->get();
-        $language_scholarships = LanguageScholarship::where('user_id', Auth::id())->with(['status', 'registerationType'])->orderBy('created_at', 'desc')->get();
+        $language_scholarships = LanguageScholarship::where('user_id', Auth::id())->where('registeration_type_id', 6)->with(['status', 'registerationType'])->orderBy('created_at', 'desc')->get();
         $orders = [$change_fellowships, $registers, $change_supervisors, $extends, $cancels, $language_scholarships];
         return view('user.personnel.orders', ['orders' => $orders]);
     }
