@@ -23,7 +23,7 @@ class AdminDashboardController extends Controller
         $change_fellowship_count = ChangeFellowshipScholarship::count();
         $register_scholarship_count = RegisterScholarship::count();
         $language_scholarship_count = RegisterScholarship::where('registeration_type_id', 6)->count();
-        $total_requests = CancelScholarship::count() + ChangeFellowshipScholarship::count() + ChangeSupervisorScholarship::count() + LanguageScholarship::count() + RegisterScholarship::count() + ExtendScholarship::count();
+        $total_requests = CancelScholarship::count() + ChangeFellowshipScholarship::count() + ChangeSupervisorScholarship::count() + LanguageScholarship::where('registeration_type_id', 6)->count() + RegisterScholarship::count() + ExtendScholarship::count();
         return view('admin.dashboard', 
             ['user_count' => $user_count,
             'cancel_count' => $cancel_count,
